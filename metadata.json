@@ -1,0 +1,6 @@
+{
+  "name": "FraudGuard",
+  "description": "Full-stack AI fraud detection and investigation platform with real-time biometric telemetry, ML anomaly detection, Gemini AI assistant, and forensic case management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

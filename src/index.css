@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    
+    /* White / Light Theme - Full screen crisp clean layout */
+    --bg-app: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-card: #ffffff;
+    --bg-subtle: #f1f5f9;
+    --bg-hover: #e2e8f0;
+    --border-color: #e2e8f0;
+    --border-subtle: #cbd5e1;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+
+    /* Theme Accents (Matching Screenshot & Precision Palette) */
+    --color-accent-teal: #0d9488;
+    --color-accent-teal-light: #ccfbf1;
+    --color-accent-amber: #d97706;
+    --color-accent-amber-light: #fef3c7;
+    --color-accent-red: #dc2626;
+    --color-accent-red-light: #fee2e2;
+  }
+
+  .dark {
+    /* Dark Theme - Sleek FraudGuard Obsidian Matrix */
+    --bg-app: #0c1017;
+    --bg-surface: #0e131c;
+    --bg-card: #121721;
+    --bg-subtle: #161e2b;
+    --bg-hover: #1a2434;
+    --border-color: #1c2638;
+    --border-subtle: #24324a;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    /* Theme Accents */
+    --color-accent-teal: #2dd4bf;
+    --color-accent-teal-light: #134e48;
+    --color-accent-amber: #fbbf24;
+    --color-accent-amber-light: #451a03;
+    --color-accent-red: #f87171;
+    --color-accent-red-light: #450a0a;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: -0.012em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+  }
+
+  code, kbd, samp, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-feature-settings: "tnum" 1, "zero" 1;
+  }
+}
+
+/* Custom Scrollbars */
+.custom-scrollbar::-webkit-scrollbar,
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #1c2638;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #24324a;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
