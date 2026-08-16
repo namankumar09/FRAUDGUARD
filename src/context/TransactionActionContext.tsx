@@ -190,7 +190,7 @@ export const TransactionActionProvider: React.FC<{ children: React.ReactNode }> 
           id="toast-txn-action"
           className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-2xl border border-slate-700 dark:border-slate-200 animate-in fade-in slide-in-from-bottom-3 font-sans text-xs font-semibold"
         >
-          <CheckCircle2 className="w-4 h-4 text-emerald-400 dark:text-emerald-600 shrink-0" />
+          <CheckCircle2 className="w-4 h-4 text-[var(--color-tier-low)] shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -203,7 +203,7 @@ export const TransactionActionProvider: React.FC<{ children: React.ReactNode }> 
           onClick={() => !isProcessing && setConfirmModalOpen(false)}
         >
           <div
-            className="bg-white dark:bg-[#0e1422] border border-slate-200 dark:border-[#223354] rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-slate-900 dark:text-slate-100 font-sans transition-colors"
+            className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-[var(--text-primary)] font-sans transition-colors"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
@@ -212,10 +212,10 @@ export const TransactionActionProvider: React.FC<{ children: React.ReactNode }> 
                 <div
                   className={`w-10 h-10 rounded-xl flex items-center justify-center border ${
                     pendingAction === 'APPROVE'
-                      ? 'bg-emerald-500/10 dark:bg-emerald-500/20 border-emerald-500/30 text-emerald-600 dark:text-emerald-400'
+                      ? 'bg-[var(--color-tier-low)]/10 border-[var(--color-tier-low)]/30 text-[var(--color-tier-low)]'
                       : pendingAction === 'STEP_UP'
-                      ? 'bg-amber-500/10 dark:bg-amber-500/20 border-amber-500/30 text-amber-600 dark:text-amber-400'
-                      : 'bg-rose-500/10 dark:bg-rose-500/20 border-rose-500/30 text-rose-600 dark:text-rose-400'
+                      ? 'bg-[var(--color-tier-medium)]/10 border-[var(--color-tier-medium)]/30 text-[var(--color-tier-medium)]'
+                      : 'bg-[var(--color-tier-high)]/10 border-[var(--color-tier-high)]/30 text-[var(--color-tier-high)]'
                   }`}
                 >
                   {pendingAction === 'APPROVE' && <CheckCircle2 className="w-5 h-5" />}
@@ -223,7 +223,7 @@ export const TransactionActionProvider: React.FC<{ children: React.ReactNode }> 
                   {pendingAction === 'QUARANTINE' && <Lock className="w-5 h-5" />}
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-base font-bold text-[var(--text-primary)]">
                     {pendingAction === 'APPROVE' && 'Approve this transaction?'}
                     {pendingAction === 'STEP_UP' && 'Trigger a step-up challenge?'}
                     {pendingAction === 'QUARANTINE' && 'Quarantine and block this transaction?'}
@@ -244,7 +244,7 @@ export const TransactionActionProvider: React.FC<{ children: React.ReactNode }> 
 
             {/* Body */}
             <div className="p-5 space-y-4">
-              <p className="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
                 {pendingAction === 'APPROVE' &&
                   'This will override the current fraud decision and mark this transaction as approved. The original risk assessment will remain available for review.'}
                 {pendingAction === 'STEP_UP' &&
@@ -254,7 +254,7 @@ export const TransactionActionProvider: React.FC<{ children: React.ReactNode }> 
               </p>
 
               {errorMessage && (
-                <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-500/40 text-xs text-rose-700 dark:text-rose-300 font-medium">
+                <div className="p-3 rounded-xl bg-[var(--color-tier-high-bg)] border border-[var(--color-tier-high-border)] text-xs text-[var(--color-tier-high)] font-medium">
                   {errorMessage}
                 </div>
               )}
@@ -266,7 +266,7 @@ export const TransactionActionProvider: React.FC<{ children: React.ReactNode }> 
                 type="button"
                 disabled={isProcessing}
                 onClick={() => setConfirmModalOpen(false)}
-                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-white dark:bg-[#162238] border border-slate-200 dark:border-[#223354] hover:bg-slate-100 dark:hover:bg-[#1f2e4c] text-slate-700 dark:text-slate-300 font-semibold text-xs transition-colors cursor-pointer"
+                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] hover:bg-[var(--bg-hover)] text-[var(--text-secondary)] font-semibold text-xs transition-colors cursor-pointer"
               >
                 Cancel
               </button>
@@ -276,10 +276,10 @@ export const TransactionActionProvider: React.FC<{ children: React.ReactNode }> 
                 onClick={executeConfirmedAction}
                 className={`w-full sm:w-auto px-4 py-2 rounded-xl text-white font-bold text-xs shadow-md flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
                   pendingAction === 'APPROVE'
-                    ? 'bg-emerald-600 hover:bg-emerald-500'
+                    ? 'bg-[var(--color-tier-low)] hover:opacity-90'
                     : pendingAction === 'STEP_UP'
-                    ? 'bg-amber-600 hover:bg-amber-500'
-                    : 'bg-rose-600 hover:bg-rose-500'
+                    ? 'bg-[var(--color-tier-medium)] hover:opacity-90'
+                    : 'bg-[var(--color-tier-high)] hover:opacity-90'
                 }`}
               >
                 {pendingAction === 'APPROVE' && (

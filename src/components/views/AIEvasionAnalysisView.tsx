@@ -82,18 +82,18 @@ export const AIEvasionAnalysisView: React.FC = () => {
               <Brain className="w-3.5 h-3.5" />
               "HOW WOULD A FRAUDSTER EVADE US?" AI RED-TEAM
             </span>
-            <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">• Gemini Proactive Threat Synthesizer</span>
+            <span className="text-xs text-[var(--text-muted)] font-mono">• Gemini Proactive Threat Synthesizer</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
+          <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] tracking-tight mt-1">
             Probing System Blind Spots Before Real Attackers Exploit Them
           </h2>
-          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed mt-1">
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed mt-1">
             Our AI Red-Team model continuously analyzes your active detection rules and simulates: <em>"If I were a sophisticated fraud syndicate, how would I bypass this defense?"</em> and synthesizes immediate candidate counter-rules.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="px-3 py-1.5 rounded-xl bg-white dark:bg-[#091122] border border-purple-200 dark:border-[#1b2b4c] text-purple-700 dark:text-purple-300 font-mono text-xs shadow-xs">
+          <span className="px-3 py-1.5 rounded-xl bg-[var(--bg-card)] border border-purple-200 dark:border-[#1b2b4c] text-purple-700 dark:text-purple-300 font-mono text-xs shadow-xs">
             🤖 Gemini Red-Team Engine
           </span>
         </div>
@@ -102,15 +102,15 @@ export const AIEvasionAnalysisView: React.FC = () => {
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Input Prompt Scenario (5 cols) */}
-        <div className="lg:col-span-5 p-5 rounded-2xl bg-white dark:bg-[#0c1427] border border-slate-200 dark:border-[#1b2b4c] shadow-xs space-y-4 transition-colors">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-[#1b2b4c]">
-            <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+        <div className="lg:col-span-5 p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs space-y-4 transition-colors">
+          <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
+            <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider">
               Current Defensive Rules Context
             </h3>
             <span className="text-[10px] font-mono text-slate-400">Target Scenario</span>
           </div>
 
-          <p className="text-xs text-slate-600 dark:text-slate-300">
+          <p className="text-xs text-[var(--text-secondary)]">
             Specify the behavioral rules or detection filters you want Gemini to red-team and probe:
           </p>
 
@@ -118,7 +118,7 @@ export const AIEvasionAnalysisView: React.FC = () => {
             rows={6}
             value={promptScenario}
             onChange={(e) => setPromptScenario(e.target.value)}
-            className="w-full bg-slate-50 dark:bg-[#080f22] border border-slate-200 dark:border-[#1e2f54] rounded-xl px-3.5 py-2.5 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-purple-400 font-mono leading-relaxed"
+            className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-3.5 py-2.5 text-[var(--text-primary)] text-xs focus:outline-none focus:border-purple-400 font-mono leading-relaxed"
             placeholder="Describe your current fraud rules..."
           />
 
@@ -140,8 +140,8 @@ export const AIEvasionAnalysisView: React.FC = () => {
             )}
           </button>
 
-          <div className="p-3 rounded-xl bg-slate-50 dark:bg-[#080e1e] border border-slate-200 dark:border-[#1a2846] text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
-            <span className="text-slate-700 dark:text-slate-300 font-bold block">Quick Scenarios:</span>
+          <div className="p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] text-[11px] text-[var(--text-muted)] space-y-1">
+            <span className="text-[var(--text-secondary)] font-bold block">Quick Scenarios:</span>
             <button
               onClick={() =>
                 setPromptScenario(
@@ -166,9 +166,9 @@ export const AIEvasionAnalysisView: React.FC = () => {
         </div>
 
         {/* Right Column: Red-Team Analysis Output (7 cols) */}
-        <div className="lg:col-span-7 p-5 rounded-2xl bg-white dark:bg-[#0c1427] border border-slate-200 dark:border-[#1b2b4c] shadow-xs space-y-4 flex flex-col justify-between transition-colors">
+        <div className="lg:col-span-7 p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs space-y-4 flex flex-col justify-between transition-colors">
           <div>
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-[#1b2b4c]">
+            <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
               <h3 className="text-xs font-mono font-bold text-purple-700 dark:text-purple-300 uppercase tracking-wider flex items-center gap-2">
                 <Bot className="w-3.5 h-3.5" />
                 AI Red-Team Evasion Blueprint & Counter-Rules
@@ -184,7 +184,7 @@ export const AIEvasionAnalysisView: React.FC = () => {
               )}
             </div>
 
-            <div className="mt-3 p-4 rounded-xl bg-slate-50 dark:bg-[#070d1e] border border-slate-200 dark:border-[#1a2846] text-xs font-mono leading-relaxed text-slate-800 dark:text-slate-200 max-h-[460px] overflow-y-auto custom-scrollbar whitespace-pre-line">
+            <div className="mt-3 p-4 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] text-xs font-mono leading-relaxed text-slate-800 dark:text-slate-200 max-h-[460px] overflow-y-auto custom-scrollbar whitespace-pre-line">
               {isLoading ? (
                 <div className="py-12 flex flex-col items-center justify-center text-slate-400 space-y-3">
                   <span className="w-6 h-6 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
@@ -198,7 +198,7 @@ export const AIEvasionAnalysisView: React.FC = () => {
             </div>
           </div>
 
-          <div className="pt-3 border-t border-slate-100 dark:border-[#1b2b4c] flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+          <div className="pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs text-[var(--text-muted)]">
             <span>Model: <strong className="text-purple-600 dark:text-purple-300">Gemini 2.5 Flash</strong></span>
             <span className="text-emerald-600 dark:text-emerald-400 font-mono">🟢 Defense Recommendations Armed</span>
           </div>

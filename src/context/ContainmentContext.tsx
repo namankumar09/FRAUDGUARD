@@ -228,7 +228,7 @@ export const ContainmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
           id="toast-containment"
           className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-2xl border border-slate-700 dark:border-slate-200 animate-in fade-in slide-in-from-bottom-3 font-sans text-xs font-semibold"
         >
-          <CheckCircle2 className="w-4 h-4 text-emerald-400 dark:text-emerald-600 shrink-0" />
+          <CheckCircle2 className="w-4 h-4 text-[var(--color-tier-low)] shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -241,17 +241,17 @@ export const ContainmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
           onClick={() => !isProcessing && setContainModalOpen(false)}
         >
           <div
-            className="bg-white dark:bg-[#0e1422] border border-slate-200 dark:border-[#223354] rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-slate-900 dark:text-slate-100 font-sans transition-colors"
+            className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-[var(--text-primary)] font-sans transition-colors"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="p-5 border-b border-slate-100 dark:border-[#1c2944] bg-slate-50/70 dark:bg-[#0a0f1b] flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-rose-500/10 dark:bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-600 dark:text-rose-400">
+                <div className="w-10 h-10 rounded-xl bg-[var(--color-tier-high)]/10 border border-[var(--color-tier-high)]/30 flex items-center justify-center text-[var(--color-tier-high)]">
                   <Lock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-base font-bold text-[var(--text-primary)]">
                     Contain this session?
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">
@@ -270,12 +270,12 @@ export const ContainmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
             {/* Body */}
             <div className="p-5 space-y-4">
-              <p className="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
                 Containing this session marks the associated onboarding attempt as blocked pending review. In a production system, this would freeze any account actions tied to this session until an analyst clears it. This action can be reversed at any time from the same screen.
               </p>
 
               {errorMessage && (
-                <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-500/40 text-xs text-rose-700 dark:text-rose-300 font-medium">
+                <div className="p-3 rounded-xl bg-[var(--color-tier-high-bg)] border border-[var(--color-tier-high-border)] text-xs text-[var(--color-tier-high)] font-medium">
                   {errorMessage}
                 </div>
               )}
@@ -287,7 +287,7 @@ export const ContainmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
                 type="button"
                 disabled={isProcessing}
                 onClick={() => setContainModalOpen(false)}
-                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-white dark:bg-[#162238] border border-slate-200 dark:border-[#223354] hover:bg-slate-100 dark:hover:bg-[#1f2e4c] text-slate-700 dark:text-slate-300 font-semibold text-xs transition-colors cursor-pointer"
+                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] hover:bg-[var(--bg-hover)] text-[var(--text-secondary)] font-semibold text-xs transition-colors cursor-pointer"
               >
                 Cancel
               </button>
@@ -295,7 +295,7 @@ export const ContainmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
                 type="button"
                 disabled={isProcessing}
                 onClick={() => containSessionDirect(targetSession.sessionId, targetSession.sessionRef, targetSession.customerName, targetSession.riskTier)}
-                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs shadow-md flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-[var(--color-tier-high)] hover:opacity-90 text-white font-bold text-xs shadow-md flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <Lock className="w-3.5 h-3.5" />
                 <span>{isProcessing ? 'Containing...' : 'Confirm Contain'}</span>
@@ -313,17 +313,17 @@ export const ContainmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
           onClick={() => !isProcessing && setReleaseModalOpen(false)}
         >
           <div
-            className="bg-white dark:bg-[#0e1422] border border-slate-200 dark:border-[#223354] rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-slate-900 dark:text-slate-100 font-sans transition-colors"
+            className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-[var(--text-primary)] font-sans transition-colors"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="p-5 border-b border-slate-100 dark:border-[#1c2944] bg-slate-50/70 dark:bg-[#0a0f1b] flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                <div className="w-10 h-10 rounded-xl bg-[var(--color-tier-low)]/10 border border-[var(--color-tier-low)]/30 flex items-center justify-center text-[var(--color-tier-low)]">
                   <Unlock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-base font-bold text-[var(--text-primary)]">
                     Release this session from containment?
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">
@@ -342,12 +342,12 @@ export const ContainmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
             {/* Body */}
             <div className="p-5 space-y-4">
-              <p className="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
                 This session will return to normal review status. This does not undo the original risk assessment — only the containment action.
               </p>
 
               {errorMessage && (
-                <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-500/40 text-xs text-rose-700 dark:text-rose-300 font-medium">
+                <div className="p-3 rounded-xl bg-[var(--color-tier-high-bg)] border border-[var(--color-tier-high-border)] text-xs text-[var(--color-tier-high)] font-medium">
                   {errorMessage}
                 </div>
               )}
@@ -359,7 +359,7 @@ export const ContainmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
                 type="button"
                 disabled={isProcessing}
                 onClick={() => setReleaseModalOpen(false)}
-                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-white dark:bg-[#162238] border border-slate-200 dark:border-[#223354] hover:bg-slate-100 dark:hover:bg-[#1f2e4c] text-slate-700 dark:text-slate-300 font-semibold text-xs transition-colors cursor-pointer"
+                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] hover:bg-[var(--bg-hover)] text-[var(--text-secondary)] font-semibold text-xs transition-colors cursor-pointer"
               >
                 Cancel
               </button>
@@ -367,7 +367,7 @@ export const ContainmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
                 type="button"
                 disabled={isProcessing}
                 onClick={() => releaseSessionDirect(targetSession.sessionId)}
-                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-[var(--color-tier-low)] hover:opacity-90 text-white font-bold text-xs shadow-md flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <Unlock className="w-3.5 h-3.5" />
                 <span>{isProcessing ? 'Releasing...' : 'Confirm Release'}</span>

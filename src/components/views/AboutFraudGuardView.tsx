@@ -248,17 +248,17 @@ export const AboutFraudGuardView: React.FC<AboutFraudGuardViewProps> = ({ onNavi
   return (
     <div id="view-about-fraudguard" className="p-4 md:p-6 space-y-6 animate-in fade-in transition-colors font-sans">
       {/* Top Banner */}
-      <div className="p-5 md:p-6 rounded-3xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638] shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+      <div className="p-5 md:p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-5">
         <div className="space-y-2 max-w-3xl">
           <div className="flex items-center gap-2">
-            <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-teal-500/10 text-teal-700 dark:text-teal-300 border border-teal-500/30 flex items-center gap-1.5">
-              <Shield className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+            <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[var(--color-brand)]/10 text-[var(--color-brand-strong)] border border-[var(--color-brand)]/30 flex items-center gap-1.5">
+              <Shield className="w-3.5 h-3.5 text-[var(--color-brand)]" />
               ABOUT FRAUDGUARD
             </span>
             <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">• Complete Product Guide</span>
           </div>
 
-          <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] tracking-tight">
             Understand what FraudGuard does and how each tool helps you find suspicious activity
           </h2>
 
@@ -267,9 +267,9 @@ export const AboutFraudGuardView: React.FC<AboutFraudGuardViewProps> = ({ onNavi
           </p>
         </div>
 
-        <div className="p-4 rounded-2xl bg-teal-50 dark:bg-teal-950/30 border border-teal-200 dark:border-teal-500/30 shrink-0 space-y-2 max-w-xs">
-          <div className="flex items-center gap-2 text-teal-800 dark:text-teal-300 text-xs font-bold font-mono">
-            <Bot className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+        <div className="p-4 rounded-2xl bg-[var(--color-brand-bg)] border border-[var(--color-brand-border)] shrink-0 space-y-2 max-w-xs">
+          <div className="flex items-center gap-2 text-[var(--color-brand-strong)] text-xs font-bold font-mono">
+            <Bot className="w-4 h-4 text-[var(--color-brand)]" />
             NEED INSTANT HELP?
           </div>
           <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -279,16 +279,16 @@ export const AboutFraudGuardView: React.FC<AboutFraudGuardViewProps> = ({ onNavi
       </div>
 
       {/* Search and Category Filter Bar */}
-      <div className="p-4 rounded-2xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638] shadow-xs space-y-3">
+      <div className="p-4 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="relative flex-1 max-w-md">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
             <input
               type="text"
               placeholder="What do you need help with? (e.g. check transaction, high risk, similar accounts)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500"
+              className="w-full pl-9 pr-4 py-2 bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl text-xs text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--color-brand)]"
             />
           </div>
 
@@ -297,8 +297,8 @@ export const AboutFraudGuardView: React.FC<AboutFraudGuardViewProps> = ({ onNavi
               onClick={() => setActiveFilter('all')}
               className={`px-3 py-1.5 rounded-xl font-medium text-xs transition-colors shrink-0 ${
                 activeFilter === 'all'
-                  ? 'bg-teal-600 text-white font-bold'
-                  : 'bg-slate-100 dark:bg-[#182132] text-slate-700 dark:text-slate-300 hover:bg-slate-200'
+                  ? 'bg-[var(--color-brand-solid)] text-white font-bold'
+                  : 'bg-[var(--bg-subtle)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'
               }`}
             >
               All Features ({allFeatures.length})
@@ -307,8 +307,8 @@ export const AboutFraudGuardView: React.FC<AboutFraudGuardViewProps> = ({ onNavi
               onClick={() => setActiveFilter('essential')}
               className={`px-3 py-1.5 rounded-xl font-medium text-xs transition-colors shrink-0 ${
                 activeFilter === 'essential'
-                  ? 'bg-teal-600 text-white font-bold'
-                  : 'bg-slate-100 dark:bg-[#182132] text-slate-700 dark:text-slate-300 hover:bg-slate-200'
+                  ? 'bg-[var(--color-brand-solid)] text-white font-bold'
+                  : 'bg-[var(--bg-subtle)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'
               }`}
             >
               Everyday Tools
@@ -317,8 +317,8 @@ export const AboutFraudGuardView: React.FC<AboutFraudGuardViewProps> = ({ onNavi
               onClick={() => setActiveFilter('investigation')}
               className={`px-3 py-1.5 rounded-xl font-medium text-xs transition-colors shrink-0 ${
                 activeFilter === 'investigation'
-                  ? 'bg-teal-600 text-white font-bold'
-                  : 'bg-slate-100 dark:bg-[#182132] text-slate-700 dark:text-slate-300 hover:bg-slate-200'
+                  ? 'bg-[var(--color-brand-solid)] text-white font-bold'
+                  : 'bg-[var(--bg-subtle)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'
               }`}
             >
               Investigation Tools
@@ -327,8 +327,8 @@ export const AboutFraudGuardView: React.FC<AboutFraudGuardViewProps> = ({ onNavi
               onClick={() => setActiveFilter('simulation')}
               className={`px-3 py-1.5 rounded-xl font-medium text-xs transition-colors shrink-0 ${
                 activeFilter === 'simulation'
-                  ? 'bg-teal-600 text-white font-bold'
-                  : 'bg-slate-100 dark:bg-[#182132] text-slate-700 dark:text-slate-300 hover:bg-slate-200'
+                  ? 'bg-[var(--color-brand-solid)] text-white font-bold'
+                  : 'bg-[var(--bg-subtle)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'
               }`}
             >
               Testing & Scenarios
@@ -344,17 +344,17 @@ export const AboutFraudGuardView: React.FC<AboutFraudGuardViewProps> = ({ onNavi
           return (
             <div
               key={feat.id}
-              className="p-5 rounded-2xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638] shadow-xs flex flex-col justify-between space-y-4 hover:border-slate-300 dark:hover:border-slate-700 transition-all"
+              className="p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs flex flex-col justify-between space-y-4 hover:border-slate-300 dark:hover:border-slate-700 transition-all"
             >
               <div className="space-y-3">
                 {/* Title & Icon Header */}
                 <div className="flex items-start justify-between gap-2 pb-2 border-b border-slate-100 dark:border-[#1c2638]">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-600 dark:text-teal-400 shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--color-brand)]/10 border border-[var(--color-brand)]/30 flex items-center justify-center text-[var(--color-brand)] shrink-0">
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-slate-900 dark:text-white font-sans">
+                      <h3 className="text-base font-bold text-[var(--text-primary)] font-sans">
                         {feat.name}
                       </h3>
                       <p className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
@@ -366,17 +366,17 @@ export const AboutFraudGuardView: React.FC<AboutFraudGuardViewProps> = ({ onNavi
 
                 {/* What it does */}
                 <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 font-mono block mb-1">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-brand-strong)] font-mono block mb-1">
                     What it does:
                   </span>
-                  <p className="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-medium">
                     {feat.whatItDoes}
                   </p>
                 </div>
 
                 {/* When should I use it */}
-                <div className="p-3 rounded-xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] space-y-1">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 font-mono block">
+                <div className="p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-1">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)] font-mono block">
                     When should I use it?
                   </span>
                   <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -402,7 +402,7 @@ export const AboutFraudGuardView: React.FC<AboutFraudGuardViewProps> = ({ onNavi
                 <span className="text-[10px] font-mono text-slate-400">Ready to try?</span>
                 <button
                   onClick={() => onNavigate(feat.id as ViewId)}
-                  className="px-3.5 py-1.5 rounded-xl bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/40 dark:hover:bg-teal-900/60 border border-teal-200 dark:border-teal-500/40 text-teal-700 dark:text-teal-300 text-xs font-bold flex items-center gap-1.5 transition-colors shadow-2xs"
+                  className="px-3.5 py-1.5 rounded-xl bg-[var(--color-brand-bg)] hover:opacity-80 border border-[var(--color-brand-border)] text-[var(--color-brand-strong)] text-xs font-bold flex items-center gap-1.5 transition-colors shadow-2xs"
                 >
                   <span>Open {feat.name}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -413,7 +413,7 @@ export const AboutFraudGuardView: React.FC<AboutFraudGuardViewProps> = ({ onNavi
         })}
 
         {filteredFeatures.length === 0 && (
-          <div className="col-span-2 p-8 text-center rounded-2xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638] text-xs text-slate-500">
+          <div className="col-span-2 p-8 text-center rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] text-xs text-slate-500">
             No features found matching "{searchQuery}". Try searching for "transaction", "alert", or "customer".
           </div>
         )}

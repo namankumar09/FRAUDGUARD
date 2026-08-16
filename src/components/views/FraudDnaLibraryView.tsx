@@ -57,7 +57,7 @@ export const FraudDnaLibraryView: React.FC = () => {
             </span>
             <span className="text-xs text-slate-400 font-mono">• Continuous Threat Intelligence Taxonomy</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
+          <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] tracking-tight mt-1">
             Global Repository of Discovered Behavioral Fraud Signatures
           </h2>
           <p className="text-xs md:text-sm text-slate-300 max-w-3xl leading-relaxed mt-1">
@@ -86,7 +86,7 @@ export const FraudDnaLibraryView: React.FC = () => {
               placeholder="Search DNA catalog by ID, name, or attack type..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white border border-slate-300 rounded-xl pl-8 pr-3 py-2 text-xs text-slate-900 placeholder-slate-400 dark:bg-[#080e1e] dark:border-[#1e2f54] dark:text-white dark:placeholder-slate-500 focus:outline-none focus:border-sky-400"
+              className="w-full bg-[var(--bg-card)] border border-slate-300 rounded-xl pl-8 pr-3 py-2 text-xs text-[var(--text-primary)] placeholder-slate-400 dark:border-[#1e2f54] dark:placeholder-slate-500 focus:outline-none focus:border-sky-400"
             />
           </div>
 
@@ -100,7 +100,7 @@ export const FraudDnaLibraryView: React.FC = () => {
                   className={`p-3.5 rounded-2xl border transition-all cursor-pointer ${
                     isSelected
                       ? 'bg-sky-50 border-sky-400 shadow-md ring-1 ring-sky-400/20 dark:bg-[#121f3d] dark:shadow-xl dark:ring-1 dark:ring-sky-400/30'
-                      : 'bg-white border-slate-200 hover:bg-slate-50 dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:hover:bg-[#0f1a35]'
+                      : 'bg-[var(--bg-card)] border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -112,10 +112,10 @@ export const FraudDnaLibraryView: React.FC = () => {
                     </span>
                   </div>
 
-                  <h4 className="text-xs font-bold text-slate-900 dark:text-white mt-1.5">{sig.name}</h4>
+                  <h4 className="text-xs font-bold text-[var(--text-primary)] mt-1.5">{sig.name}</h4>
                   <p className="text-[11px] text-slate-300 mt-1 line-clamp-2">{sig.description}</p>
 
-                  <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-[#1a2846] flex items-center justify-between text-[10px] font-mono">
+                  <div className="mt-2.5 pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-[10px] font-mono">
                     <span className="text-slate-400">Severity: <b className="text-rose-400 uppercase">{sig.severity}</b></span>
                     <span className="text-emerald-400">🟢 Edge Deployed</span>
                   </div>
@@ -128,21 +128,21 @@ export const FraudDnaLibraryView: React.FC = () => {
         {/* Right Column: Signature Rule Inspector & Code View (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
           {selectedSignature && (
-            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-5">
+            <div className="p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-5">
               {/* Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-[#1b2b4c]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[var(--border-subtle)]">
                 <div>
                   <span className="text-[10px] font-mono text-sky-400 uppercase font-bold">
                     Signature Code: {selectedSignature.code}
                   </span>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white mt-0.5">
+                  <h3 className="text-base font-bold text-[var(--text-primary)] mt-0.5">
                     {selectedSignature.name}
                   </h3>
                 </div>
 
                 <button
                   onClick={() => handleCopyRule(selectedSignature.ruleDefinitionYaml)}
-                  className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 text-xs font-mono text-slate-700 dark:bg-[#14203a] dark:hover:bg-[#1c2e54] dark:border-[#203358] dark:text-slate-300 flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 text-xs font-mono text-[var(--text-secondary)] dark:bg-[#14203a] dark:hover:bg-[#1c2e54] dark:border-[#203358] flex items-center gap-1.5"
                 >
                   <Copy className="w-3.5 h-3.5" />
                   {copied ? 'Rule Copied!' : 'Copy YAML Rule'}
@@ -152,7 +152,7 @@ export const FraudDnaLibraryView: React.FC = () => {
               {/* Description */}
               <div className="space-y-1">
                 <span className="text-[10px] font-mono text-slate-400 uppercase">Description & Threat Scope</span>
-                <p className="text-xs text-slate-700 dark:text-slate-200 leading-relaxed bg-slate-50 dark:bg-[#080e1e] p-3 rounded-xl border border-slate-200 dark:border-[#1a2846]">
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed bg-[var(--bg-subtle)] p-3 rounded-xl border border-[var(--border-color)]">
                   {selectedSignature.description}
                 </p>
               </div>
@@ -167,7 +167,7 @@ export const FraudDnaLibraryView: React.FC = () => {
                   <span className="text-[10px] font-mono text-slate-500">Live Evaluator</span>
                 </div>
 
-                <pre className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-sky-700 dark:bg-[#070c1a] dark:border-[#182644] dark:text-sky-300 font-mono text-[11px] overflow-x-auto leading-relaxed">
+                <pre className="p-4 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] text-sky-700 dark:text-sky-300 font-mono text-[11px] overflow-x-auto leading-relaxed">
                   {selectedSignature.ruleDefinitionYaml}
                 </pre>
               </div>

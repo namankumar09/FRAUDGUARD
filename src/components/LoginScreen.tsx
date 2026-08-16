@@ -72,23 +72,23 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
   return (
     <div
       id="login-screen-container"
-      className="min-h-screen w-full bg-[#f8fafc] text-slate-900 dark:bg-[#0c1017] dark:text-slate-100 flex flex-col items-center justify-center p-4 sm:p-6 select-none relative overflow-hidden font-sans"
+      className="min-h-screen w-full bg-[var(--bg-app)] text-[var(--text-primary)] flex flex-col items-center justify-center p-4 sm:p-6 select-none relative overflow-hidden font-sans"
     >
       {/* Subtle Background Glow Elements */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[var(--color-brand)]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main Login Card */}
-      <div className="w-full max-w-md bg-white border border-slate-200 dark:bg-[#121722] dark:border-[#1c2638] rounded-3xl p-6 sm:p-8 shadow-xs dark:shadow-2xl relative z-10 space-y-6">
+      <div className="w-full max-w-md bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 sm:p-8 shadow-xs dark:shadow-2xl relative z-10 space-y-6">
         {/* Brand Header */}
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-teal-500/10 border border-teal-500/30 text-teal-400 shadow-md mb-1">
-            <Shield className="w-7 h-7 text-teal-400" />
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[var(--color-brand)]/10 border border-[var(--color-brand)]/30 text-[var(--color-brand)] shadow-md mb-1">
+            <Shield className="w-7 h-7 text-[var(--color-brand)]" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white font-sans flex items-center justify-center gap-2">
+          <h1 className="text-2xl font-bold tracking-tight text-[var(--text-primary)] font-sans flex items-center justify-center gap-2">
             FraudGuard
           </h1>
-          <p className="text-xs font-mono tracking-wider text-slate-500 dark:text-slate-400 uppercase">
+          <p className="text-xs font-mono tracking-wider text-[var(--text-muted)] uppercase">
             Enterprise AI Behavioral Defense
           </p>
         </div>
@@ -104,11 +104,11 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
         <form onSubmit={handleStandardSignIn} className="space-y-4">
           {/* Username Field */}
           <div className="space-y-1.5">
-            <label className="text-xs font-mono font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider block">
+            <label className="text-xs font-mono font-semibold text-[var(--text-secondary)] uppercase tracking-wider block">
               Analyst Username / Email
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[var(--text-muted)]">
                 <User className="w-4 h-4" />
               </div>
               <input
@@ -117,7 +117,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="analyst@fraudguard.bank"
-                className="w-full pl-10 pr-4 py-3 bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:border-teal-400 rounded-xl text-xs focus:outline-none transition-colors font-mono dark:bg-[#0a0e17] dark:border-[#223048] dark:text-white dark:placeholder-slate-500"
+                className="w-full pl-10 pr-4 py-3 bg-[var(--bg-subtle)] border border-[var(--border-color)] text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:border-[var(--color-brand)] rounded-xl text-xs focus:outline-none transition-colors font-mono"
               />
             </div>
           </div>
@@ -125,13 +125,13 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
           {/* Password Field */}
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-mono font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider block">
+              <label className="text-xs font-mono font-semibold text-[var(--text-secondary)] uppercase tracking-wider block">
                 Password
               </label>
-              <span className="text-[10px] text-teal-600 dark:text-teal-400/80 font-mono">256-Bit TLS Guard</span>
+              <span className="text-[10px] text-[var(--color-brand)] font-mono">256-Bit TLS Guard</span>
             </div>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[var(--text-muted)]">
                 <Lock className="w-4 h-4" />
               </div>
               <input
@@ -140,12 +140,12 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full pl-10 pr-10 py-3 bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:border-teal-400 rounded-xl text-xs focus:outline-none transition-colors font-mono tracking-wider dark:bg-[#0a0e17] dark:border-[#223048] dark:text-white dark:placeholder-slate-500"
+                className="w-full pl-10 pr-10 py-3 bg-[var(--bg-subtle)] border border-[var(--border-color)] text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:border-[var(--color-brand)] rounded-xl text-xs focus:outline-none transition-colors font-mono tracking-wider"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-500 hover:text-slate-300"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
                 tabIndex={-1}
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -158,11 +158,11 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             type="submit"
             id="btn-sign-in"
             disabled={isSubmitting || botFilling}
-            className="w-full min-h-[44px] py-3 px-4 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-teal-500/10 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
+            className="w-full min-h-[44px] py-3 px-4 rounded-xl bg-[var(--color-brand-solid)] hover:opacity-90 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-[var(--color-brand)]/10 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
           >
             {isSubmitting ? (
               <>
-                <span className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
+                <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                 <span>Authenticating...</span>
               </>
             ) : (
@@ -176,22 +176,22 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
 
         {/* Divider with "or" */}
         <div className="relative flex items-center justify-center">
-          <div className="border-t border-slate-200 dark:border-[#1c2638] w-full" />
-          <span className="bg-white dark:bg-[#121722] px-3 text-[11px] font-mono text-slate-500 uppercase tracking-widest absolute">
+          <div className="border-t border-[var(--border-color)] w-full" />
+          <span className="bg-[var(--bg-card)] px-3 text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-widest absolute">
             or
           </span>
         </div>
 
         {/* Secondary Option: Simulate Bot Sign-In */}
-        <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 dark:bg-[#090d16] dark:border-[#1e2a40] space-y-3">
+        <div className="p-4 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="p-1.5 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-400">
                 <Bot className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-xs font-bold text-slate-900 dark:text-white leading-tight">Simulate Bot Sign-In</p>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400">Rapid automated credentials fill</p>
+                <p className="text-xs font-bold text-[var(--text-primary)] leading-tight">Simulate Bot Sign-In</p>
+                <p className="text-[10px] text-[var(--text-muted)]">Rapid automated credentials fill</p>
               </div>
             </div>
 
@@ -247,7 +247,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
 
         {/* Footer Note */}
         <div className="text-center">
-          <p className="text-[11px] text-slate-500 font-mono">
+          <p className="text-[11px] text-[var(--text-muted)] font-mono">
             Protected by Real-Time Keystroke & Biometric Telemetry
           </p>
         </div>

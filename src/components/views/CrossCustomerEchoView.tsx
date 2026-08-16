@@ -26,18 +26,18 @@ export const CrossCustomerEchoView: React.FC = () => {
               <Share2 className="w-3.5 h-3.5" />
               CROSS-CUSTOMER BEHAVIORAL ECHO RADAR
             </span>
-            <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">• Viral Attack Propagation Engine</span>
+            <span className="text-xs text-[var(--text-muted)] font-mono">• Viral Attack Propagation Engine</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
+          <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] tracking-tight mt-1">
             Tracking How Attack Strains Travel Between Unrelated Accounts
           </h2>
-          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed mt-1">
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed mt-1">
             When an uncataloged attack pattern appears on Customer A, does it echo onto Customer B, C, and D within minutes? Our graph models <strong>viral behavioral contagion across independent customer accounts</strong>.
           </p>
         </div>
 
-        <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 dark:bg-[#091122] dark:border-[#1b2b4c] text-center font-mono">
-          <span className="text-[10px] text-slate-500 dark:text-slate-400 block">Propagation Speed</span>
+        <div className="p-3 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)] text-center font-mono">
+          <span className="text-[10px] text-[var(--text-muted)] block">Propagation Speed</span>
           <p className="text-xl font-bold text-rose-600 dark:text-rose-400 mt-0.5">{selectedEcho.propagationSpeed}</p>
           <span className="text-[10px] text-amber-600 dark:text-amber-400">Viral Contagion Active</span>
         </div>
@@ -47,7 +47,7 @@ export const CrossCustomerEchoView: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Propagation Trails (5 cols) */}
         <div className="lg:col-span-5 space-y-4">
-          <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+          <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider">
             Active Behavioral Propagation Chains
           </h3>
 
@@ -61,7 +61,7 @@ export const CrossCustomerEchoView: React.FC = () => {
                   className={`p-4 rounded-2xl border transition-all cursor-pointer ${
                     isSelected
                       ? 'bg-purple-50 border-purple-400 shadow-md ring-1 ring-purple-400/30 dark:bg-[#121f3d] dark:shadow-xl'
-                      : 'bg-white border-slate-200 hover:bg-slate-50 dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:hover:bg-[#0f1a35]'
+                      : 'bg-[var(--bg-card)] border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -73,12 +73,12 @@ export const CrossCustomerEchoView: React.FC = () => {
                     </span>
                   </div>
 
-                  <h4 className="text-xs font-bold text-slate-900 dark:text-white mt-2">{e.name}</h4>
-                  <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1 line-clamp-2">{e.description}</p>
+                  <h4 className="text-xs font-bold text-[var(--text-primary)] mt-2">{e.name}</h4>
+                  <p className="text-[11px] text-[var(--text-secondary)] mt-1 line-clamp-2">{e.description}</p>
 
-                  <div className="mt-3 pt-2 border-t border-slate-100 dark:border-[#1a2846] flex items-center justify-between text-[10px] font-mono text-slate-500 dark:text-slate-400">
+                  <div className="mt-3 pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-[10px] font-mono text-[var(--text-muted)]">
                     <span>Patient Zero: <strong className="text-emerald-600 dark:text-emerald-400">{e.originCustomer}</strong></span>
-                    <span>Echoes: <strong className="text-slate-900 dark:text-white">{e.echoVictims.length}</strong></span>
+                    <span>Echoes: <strong className="text-[var(--text-primary)]">{e.echoVictims.length}</strong></span>
                   </div>
                 </div>
               );
@@ -89,18 +89,18 @@ export const CrossCustomerEchoView: React.FC = () => {
         {/* Right Column: Propagation Chain Visualization (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
           {selectedEcho && (
-            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-5">
-              <div className="pb-3 border-b border-slate-100 dark:border-[#1b2b4c]">
+            <div className="p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-5">
+              <div className="pb-3 border-b border-[var(--border-subtle)]">
                 <span className="text-[10px] font-mono text-purple-600 dark:text-purple-400 font-bold uppercase">
                   Contagion Dossier: {selectedEcho.echoPatternId}
                 </span>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mt-0.5">{selectedEcho.name}</h3>
-                <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">{selectedEcho.description}</p>
+                <h3 className="text-base font-bold text-[var(--text-primary)] mt-0.5">{selectedEcho.name}</h3>
+                <p className="text-xs text-[var(--text-secondary)] mt-1">{selectedEcho.description}</p>
               </div>
 
               {/* Patient Zero -> Echo Chain Visual */}
               <div className="space-y-3">
-                <h4 className="text-xs font-mono font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider">
+                <h4 className="text-xs font-mono font-bold text-[var(--text-secondary)] uppercase tracking-wider">
                   Chronological Contagion Graph
                 </h4>
 
@@ -111,8 +111,8 @@ export const CrossCustomerEchoView: React.FC = () => {
                       P0
                     </span>
                     <div>
-                      <p className="font-bold text-slate-900 dark:text-white">Patient Zero: {selectedEcho.originCustomer}</p>
-                      <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">Initial attack strain execution • T+0:00</span>
+                      <p className="font-bold text-[var(--text-primary)]">Patient Zero: {selectedEcho.originCustomer}</p>
+                      <span className="text-[10px] text-[var(--text-muted)] font-mono">Initial attack strain execution • T+0:00</span>
                     </div>
                   </div>
                   <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200 text-[10px] font-mono font-bold">
@@ -125,11 +125,11 @@ export const CrossCustomerEchoView: React.FC = () => {
                   {selectedEcho.echoVictims.map((v, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#091122] dark:border-[#1c2c4d] flex items-center justify-between text-xs"
+                      className="p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] flex items-center justify-between text-xs"
                     >
                       <div className="flex items-center gap-2">
                         <span className="font-mono text-purple-600 dark:text-purple-400 font-bold">↳ T+{v.timeDeltaMinutes}m</span>
-                        <span className="font-medium text-slate-900 dark:text-white">{v.customerName}</span>
+                        <span className="font-medium text-[var(--text-primary)]">{v.customerName}</span>
                       </div>
                       <span className="font-mono text-[10px] text-rose-700 bg-rose-100 dark:text-rose-300 dark:bg-rose-950 px-2 py-0.5 rounded border border-rose-300 dark:border-rose-500/40">
                         {v.similarity}% Exact Strain Match

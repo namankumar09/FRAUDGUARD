@@ -39,23 +39,23 @@ export const BehavioralTellsDiscoveryView: React.FC = () => {
               <Brain className="w-3.5 h-3.5" />
               AUTOMATED BEHAVIORAL "TELLS" DISCOVERY (DIGITAL LIE DETECTOR)
             </span>
-            <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">• Unsupervised Correlation Multipliers</span>
+            <span className="text-xs text-[var(--text-muted)] font-mono">• Unsupervised Correlation Multipliers</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
+          <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] tracking-tight mt-1">
             Discovering Subtle Micro-Tells Correlated with Fraudulent Intent
           </h2>
-          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed mt-1">
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed mt-1">
             Like a poker player having a physical tell, fraudsters exhibit subconscious digital micro-behaviors: <strong>checking balance 3 times before payment (4.2x risk)</strong>, rapidly hovering between cancel and confirm, or zero hesitation on 16-digit card numbers.
           </p>
         </div>
 
         <div className="flex items-center gap-3 font-mono text-xs">
           <div className="p-2.5 rounded-xl bg-sky-50 border border-sky-200 dark:bg-[#091122] dark:border-[#1b2b4c]">
-            <span className="text-[10px] text-slate-500 dark:text-slate-400">Discovered Tells:</span>
+            <span className="text-[10px] text-[var(--text-muted)]">Discovered Tells:</span>
             <p className="text-base font-bold text-sky-700 dark:text-sky-300">{tells.length} Active</p>
           </div>
           <div className="p-2.5 rounded-xl bg-rose-50 border border-rose-200 dark:bg-[#091122] dark:border-[#1b2b4c]">
-            <span className="text-[10px] text-slate-500 dark:text-slate-400">Top Multiplier:</span>
+            <span className="text-[10px] text-[var(--text-muted)]">Top Multiplier:</span>
             <p className="text-base font-bold text-rose-600 dark:text-rose-400">6.2x</p>
           </div>
         </div>
@@ -66,7 +66,7 @@ export const BehavioralTellsDiscoveryView: React.FC = () => {
         {/* Left Column: Discovered Tells List (5 cols) */}
         <div className="lg:col-span-5 space-y-4">
           {/* Filter & Search */}
-          <div className="p-3.5 rounded-2xl bg-white border border-slate-200 dark:bg-[#0c1427] dark:border-[#1b2b4c] space-y-3">
+          <div className="p-3.5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] space-y-3">
             <div className="relative">
               <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
               <input
@@ -74,7 +74,7 @@ export const BehavioralTellsDiscoveryView: React.FC = () => {
                 placeholder="Search tells (e.g. FD-047, rehearsal, balance)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-white border border-slate-300 text-slate-900 placeholder-slate-400 rounded-xl pl-8 pr-3 py-2 text-xs focus:outline-none focus:border-sky-400 dark:bg-[#080e1e] dark:border-[#1e2f54] dark:text-white dark:placeholder-slate-500"
+                className="w-full bg-[var(--bg-card)] border border-slate-300 text-[var(--text-primary)] placeholder-slate-400 rounded-xl pl-8 pr-3 py-2 text-xs focus:outline-none focus:border-sky-400 dark:border-[#1e2f54] dark:placeholder-slate-500"
               />
             </div>
 
@@ -86,7 +86,7 @@ export const BehavioralTellsDiscoveryView: React.FC = () => {
                   className={`px-2.5 py-1 rounded-lg font-mono text-[11px] capitalize whitespace-nowrap transition-all ${
                     filterCategory === cat
                       ? 'bg-sky-100 text-sky-700 border border-sky-300 dark:bg-sky-500/20 dark:text-sky-300 dark:border-sky-500/40 font-bold'
-                      : 'bg-slate-50 text-slate-500 hover:text-slate-900 border-slate-200 dark:bg-[#091122] dark:text-slate-400 dark:hover:text-white dark:border-[#1a2846]'
+                      : 'bg-[var(--bg-subtle)] text-[var(--text-muted)] hover:text-slate-900 border-[var(--border-color)] dark:hover:text-white'
                   }`}
                 >
                   {cat}
@@ -106,7 +106,7 @@ export const BehavioralTellsDiscoveryView: React.FC = () => {
                   className={`p-3.5 rounded-2xl border transition-all cursor-pointer ${
                     isSelected
                       ? 'bg-sky-50 border-sky-400 shadow-md ring-1 ring-sky-400/20 dark:bg-[#121f3d] dark:border-sky-400/60 dark:shadow-lg dark:shadow-sky-950/40 dark:ring-sky-400/30'
-                      : 'bg-white border-slate-200 hover:bg-slate-50 dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:hover:bg-[#0f1a35]'
+                      : 'bg-[var(--bg-card)] border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -114,20 +114,20 @@ export const BehavioralTellsDiscoveryView: React.FC = () => {
                       <span className="font-mono font-bold text-xs text-sky-700 bg-sky-50 px-2 py-0.5 rounded border border-sky-200 dark:text-sky-300 dark:bg-[#14203a] dark:border-[#203358]">
                         {tell.code}
                       </span>
-                      <h4 className="text-xs font-bold text-slate-900 dark:text-white">{tell.name}</h4>
+                      <h4 className="text-xs font-bold text-[var(--text-primary)]">{tell.name}</h4>
                     </div>
                     <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-rose-100 text-rose-700 border border-rose-300 dark:bg-rose-950 dark:text-rose-300 dark:border-rose-500/40">
                       {tell.correlationRiskMultiplier}x Multiplier
                     </span>
                   </div>
 
-                  <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-2 line-clamp-2 leading-relaxed">
+                  <p className="text-[11px] text-[var(--text-secondary)] mt-2 line-clamp-2 leading-relaxed">
                     {tell.description}
                   </p>
 
-                  <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-[#1a2846] flex items-center justify-between text-[10px] font-mono text-slate-500 dark:text-slate-400">
-                    <span>Confidence: <strong className="text-slate-900 dark:text-white">{tell.confidencePercent}%</strong></span>
-                    <span>Observed in <strong className="text-slate-700 dark:text-slate-200">{tell.frequencyObserved}</strong> txns</span>
+                  <div className="mt-2.5 pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-[10px] font-mono text-[var(--text-muted)]">
+                    <span>Confidence: <strong className="text-[var(--text-primary)]">{tell.confidencePercent}%</strong></span>
+                    <span>Observed in <strong className="text-[var(--text-secondary)]">{tell.frequencyObserved}</strong> txns</span>
                   </div>
                 </div>
               );
@@ -138,19 +138,19 @@ export const BehavioralTellsDiscoveryView: React.FC = () => {
         {/* Right Column: Tell Deep Analysis & Mathematical Weighting (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
           {selectedTell && (
-            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-5">
+            <div className="p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-5">
               {/* Header */}
-              <div className="flex items-start justify-between pb-4 border-b border-slate-100 dark:border-[#1b2b4c]">
+              <div className="flex items-start justify-between pb-4 border-b border-[var(--border-subtle)]">
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="px-2 py-0.5 rounded bg-sky-100 text-sky-700 text-[11px] font-mono font-bold border border-sky-300 dark:bg-sky-950 dark:text-sky-300 dark:border-sky-500/40">
                       {selectedTell.code}
                     </span>
-                    <span className="capitalize text-xs font-mono text-slate-500 dark:text-slate-400">
+                    <span className="capitalize text-xs font-mono text-[var(--text-muted)]">
                       Category: {selectedTell.category}
                     </span>
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white mt-1">
+                  <h3 className="text-base font-bold text-[var(--text-primary)] mt-1">
                     {selectedTell.name}
                   </h3>
                 </div>
@@ -162,17 +162,17 @@ export const BehavioralTellsDiscoveryView: React.FC = () => {
 
               {/* Description & Mechanics */}
               <div className="space-y-2">
-                <h4 className="text-xs font-mono font-bold text-slate-600 dark:text-slate-300 uppercase">
+                <h4 className="text-xs font-mono font-bold text-[var(--text-secondary)] uppercase">
                   Subconscious Behavioral Mechanic
                 </h4>
-                <p className="text-xs text-slate-700 dark:text-slate-200 leading-relaxed bg-slate-50 border border-slate-200 p-3.5 rounded-xl dark:bg-[#091122] dark:border-[#1a2846]">
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed bg-[var(--bg-subtle)] border border-[var(--border-color)] p-3.5 rounded-xl">
                   {selectedTell.description}
                 </p>
               </div>
 
               {/* Key Trigger Metric */}
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#080e1e] dark:border-[#1e2f54] space-y-1">
-                <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase">Deterministic Signal Trigger Formula</span>
+              <div className="p-3.5 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-1">
+                <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Deterministic Signal Trigger Formula</span>
                 <p className="text-xs font-mono text-amber-700 dark:text-amber-300 font-semibold">
                   {selectedTell.triggerMetric}
                 </p>
@@ -180,21 +180,21 @@ export const BehavioralTellsDiscoveryView: React.FC = () => {
 
               {/* Statistics Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-mono">
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#080e1e] dark:border-[#192642]">
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400">Risk Multiplier</span>
+                <div className="p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+                  <span className="text-[10px] text-[var(--text-muted)]">Risk Multiplier</span>
                   <p className="text-lg font-bold text-rose-600 dark:text-rose-400 mt-0.5">{selectedTell.correlationRiskMultiplier}x</p>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#080e1e] dark:border-[#192642]">
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400">Confidence</span>
+                <div className="p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+                  <span className="text-[10px] text-[var(--text-muted)]">Confidence</span>
                   <p className="text-lg font-bold text-sky-700 dark:text-sky-300 mt-0.5">{selectedTell.confidencePercent}%</p>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#080e1e] dark:border-[#192642]">
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400">Historical Samples</span>
-                  <p className="text-lg font-bold text-slate-900 dark:text-white mt-0.5">{selectedTell.frequencyObserved}</p>
+                <div className="p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+                  <span className="text-[10px] text-[var(--text-muted)]">Historical Samples</span>
+                  <p className="text-lg font-bold text-[var(--text-primary)] mt-0.5">{selectedTell.frequencyObserved}</p>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#080e1e] dark:border-[#192642]">
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400">First Discovered</span>
-                  <p className="text-xs font-bold text-slate-600 dark:text-slate-300 mt-1">{selectedTell.firstDiscoveredDate}</p>
+                <div className="p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+                  <span className="text-[10px] text-[var(--text-muted)]">First Discovered</span>
+                  <p className="text-xs font-bold text-[var(--text-secondary)] mt-1">{selectedTell.firstDiscoveredDate}</p>
                 </div>
               </div>
 

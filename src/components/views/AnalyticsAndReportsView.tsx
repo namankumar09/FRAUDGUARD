@@ -77,23 +77,23 @@ export const AnalyticsAndReportsView: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* 3-Part Guidance */}
-      <div className="p-4 bg-white dark:bg-[#121722] rounded-xl border border-slate-200 dark:border-[#1c2638] shadow-xs">
+      <div className="p-4 bg-[var(--bg-subtle)] rounded-xl border border-[var(--border-color)] shadow-xs">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <span className="text-[11px] font-mono font-bold uppercase text-teal-600 dark:text-teal-400">1. What this does</span>
-            <p className="text-xs text-slate-700 dark:text-slate-300 mt-1">
+            <span className="text-[11px] font-mono font-bold uppercase text-[var(--color-brand)]">1. What this does</span>
+            <p className="text-xs text-[var(--text-secondary)] mt-1">
               Computes real-time risk intelligence, geographic distribution, signal frequency, and exportable regulatory audit reports directly from the database.
             </p>
           </div>
           <div>
             <span className="text-[11px] font-mono font-bold uppercase text-amber-600 dark:text-amber-400">2. What should I look for?</span>
-            <p className="text-xs text-slate-700 dark:text-slate-300 mt-1">
+            <p className="text-xs text-[var(--text-secondary)] mt-1">
               Sudden spikes in high-risk transaction hours, high-velocity signals, and high fraud-rate countries.
             </p>
           </div>
           <div>
             <span className="text-[11px] font-mono font-bold uppercase text-indigo-600 dark:text-indigo-400">3. What can I do?</span>
-            <p className="text-xs text-slate-700 dark:text-slate-300 mt-1">
+            <p className="text-xs text-[var(--text-secondary)] mt-1">
               Export executive CSV reports, download JSON forensic summaries, or review top triggering risk signals.
             </p>
           </div>
@@ -103,11 +103,11 @@ export const AnalyticsAndReportsView: React.FC = () => {
       {/* Header Controls */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+          <h2 className="text-xl font-bold text-[var(--text-primary)] flex items-center gap-2">
+            <BarChart3 className="w-5 h-5 text-[var(--color-brand)]" />
             Analytics, Risk Trends & Reports
           </h2>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+          <p className="text-xs text-[var(--text-muted)] mt-0.5">
             Real-time analytics engine computed dynamically from persistent transaction records.
           </p>
         </div>
@@ -116,7 +116,7 @@ export const AnalyticsAndReportsView: React.FC = () => {
           <button
             onClick={loadAnalytics}
             disabled={isLoading}
-            className="flex items-center gap-1.5 px-3 py-2 bg-slate-100 dark:bg-[#182030] hover:bg-slate-200 dark:hover:bg-[#223048] text-slate-700 dark:text-slate-300 rounded-xl text-xs font-semibold transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-2 bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] text-[var(--text-secondary)] rounded-xl text-xs font-semibold transition-colors cursor-pointer"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin' : ''}`} />
             Refresh Metrics
@@ -125,7 +125,7 @@ export const AnalyticsAndReportsView: React.FC = () => {
           <button
             onClick={() => handleExport('fraud_summary', 'csv')}
             disabled={exporting !== null}
-            className="flex items-center gap-1.5 px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-4 py-2 bg-[var(--color-brand-solid)] hover:opacity-90 text-white rounded-xl text-xs font-semibold shadow-xs transition-colors cursor-pointer"
           >
             <FileSpreadsheet className="w-4 h-4" />
             Export Fraud Summary (CSV)
@@ -136,28 +136,28 @@ export const AnalyticsAndReportsView: React.FC = () => {
       {/* Top 4 KPI Metrics */}
       {data?.metrics && (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="p-4 bg-white dark:bg-[#121722] rounded-xl border border-slate-200 dark:border-[#1c2638] shadow-xs">
-            <span className="text-[11px] font-mono uppercase font-semibold text-slate-400">Total Scanned Volume</span>
-            <p className="text-xl font-bold text-slate-900 dark:text-white mt-1">
+          <div className="p-4 bg-[var(--bg-subtle)] rounded-xl border border-[var(--border-color)] shadow-xs">
+            <span className="text-[11px] font-mono uppercase font-semibold text-[var(--text-muted)]">Total Scanned Volume</span>
+            <p className="text-xl font-bold text-[var(--text-primary)] mt-1">
               ₹{Number(data.metrics.totalVolume || 0).toLocaleString('en-IN')}
             </p>
-            <span className="text-[11px] text-teal-600 dark:text-teal-400 mt-1 block">
+            <span className="text-[11px] text-[var(--color-brand)] mt-1 block">
               {data.metrics.totalAnalyzed} total transactions in DB
             </span>
           </div>
 
-          <div className="p-4 bg-white dark:bg-[#121722] rounded-xl border border-slate-200 dark:border-[#1c2638] shadow-xs">
-            <span className="text-[11px] font-mono uppercase font-semibold text-slate-400">Fraud Detection Rate</span>
-            <p className="text-xl font-bold text-amber-600 dark:text-amber-400 mt-1">
+          <div className="p-4 bg-[var(--bg-subtle)] rounded-xl border border-[var(--border-color)] shadow-xs">
+            <span className="text-[11px] font-mono uppercase font-semibold text-[var(--text-muted)]">Fraud Detection Rate</span>
+            <p className="text-xl font-bold text-[var(--color-tier-medium)] mt-1">
               {data.metrics.fraudRate}
             </p>
-            <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">
+            <span className="text-[11px] text-[var(--text-muted)] mt-1 block">
               {data.metrics.highRiskCount} high-risk flagged transactions
             </span>
           </div>
 
-          <div className="p-4 bg-white dark:bg-[#121722] rounded-xl border border-slate-200 dark:border-[#1c2638] shadow-xs">
-            <span className="text-[11px] font-mono uppercase font-semibold text-slate-400">Loss Prevented</span>
+          <div className="p-4 bg-[var(--bg-subtle)] rounded-xl border border-[var(--border-color)] shadow-xs">
+            <span className="text-[11px] font-mono uppercase font-semibold text-[var(--text-muted)]">Loss Prevented</span>
             <p className="text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">
               ₹{Number(data.metrics.totalPreventedFraud || 0).toLocaleString('en-IN')}
             </p>
@@ -166,12 +166,12 @@ export const AnalyticsAndReportsView: React.FC = () => {
             </span>
           </div>
 
-          <div className="p-4 bg-white dark:bg-[#121722] rounded-xl border border-slate-200 dark:border-[#1c2638] shadow-xs">
-            <span className="text-[11px] font-mono uppercase font-semibold text-slate-400">Average Risk Score</span>
-            <p className="text-xl font-bold text-teal-600 dark:text-teal-400 mt-1">
+          <div className="p-4 bg-[var(--bg-subtle)] rounded-xl border border-[var(--border-color)] shadow-xs">
+            <span className="text-[11px] font-mono uppercase font-semibold text-[var(--text-muted)]">Average Risk Score</span>
+            <p className="text-xl font-bold text-[var(--color-brand)] mt-1">
               {data.metrics.avgRiskScore} / 100
             </p>
-            <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 block">
+            <span className="text-[11px] text-[var(--text-muted)] mt-1 block">
               {data.metrics.activeCustomersCount} monitored customers
             </span>
           </div>
@@ -181,16 +181,16 @@ export const AnalyticsAndReportsView: React.FC = () => {
       {/* Main Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Activity Over Time (Area Chart) */}
-        <div className="lg:col-span-8 bg-white dark:bg-[#121722] p-5 rounded-xl border border-slate-200 dark:border-[#1c2638] space-y-4">
+        <div className="lg:col-span-8 bg-[var(--bg-subtle)] p-5 rounded-xl border border-[var(--border-color)] space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+              <h3 className="text-sm font-bold text-[var(--text-primary)] flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 text-[var(--color-brand)]" />
                 24-Hour Velocity & Risk Quarantine Trends
               </h3>
-              <p className="text-xs text-slate-400">Transaction counts vs flagged high-risk quarantines</p>
+              <p className="text-xs text-[var(--text-muted)]">Transaction counts vs flagged high-risk quarantines</p>
             </div>
-            <span className="text-[11px] font-mono text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/40 px-2.5 py-1 rounded-md border border-teal-200 dark:border-teal-800/40">
+            <span className="text-[11px] font-mono text-[var(--color-brand)] bg-[var(--color-brand-bg)] px-2.5 py-1 rounded-md border border-[var(--color-brand-border)]">
               Live DB Feed
             </span>
           </div>
@@ -228,13 +228,13 @@ export const AnalyticsAndReportsView: React.FC = () => {
         </div>
 
         {/* Risk Distribution Breakdown (Pie Chart) */}
-        <div className="lg:col-span-4 bg-white dark:bg-[#121722] p-5 rounded-xl border border-slate-200 dark:border-[#1c2638] space-y-4">
+        <div className="lg:col-span-4 bg-[var(--bg-subtle)] p-5 rounded-xl border border-[var(--border-color)] space-y-4">
           <div>
-            <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <h3 className="text-sm font-bold text-[var(--text-primary)] flex items-center gap-2">
               <ShieldAlert className="w-4 h-4 text-amber-600 dark:text-amber-400" />
               Risk Severity Distribution
             </h3>
-            <p className="text-xs text-slate-400">Categorization across all transactions</p>
+            <p className="text-xs text-[var(--text-muted)]">Categorization across all transactions</p>
           </div>
 
           <div className="h-52 w-full flex items-center justify-center">
@@ -268,9 +268,9 @@ export const AnalyticsAndReportsView: React.FC = () => {
 
           <div className="grid grid-cols-2 gap-2 text-xs">
             {(data?.riskDistribution || []).map((item: any) => (
-              <div key={item.name} className="flex items-center gap-2 p-1.5 rounded-lg bg-slate-50 dark:bg-[#182030]">
+              <div key={item.name} className="flex items-center gap-2 p-1.5 rounded-lg bg-[var(--bg-subtle)]">
                 <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: item.fill }} />
-                <span className="truncate text-slate-700 dark:text-slate-300">{item.name}: <strong>{item.count}</strong></span>
+                <span className="truncate text-[var(--text-secondary)]">{item.name}: <strong>{item.count}</strong></span>
               </div>
             ))}
           </div>
@@ -280,22 +280,22 @@ export const AnalyticsAndReportsView: React.FC = () => {
       {/* Secondary Row: Top Signals & Geographic Breakdown */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Top Risk Signals Frequency */}
-        <div className="lg:col-span-6 bg-white dark:bg-[#121722] p-5 rounded-xl border border-slate-200 dark:border-[#1c2638] space-y-4 text-left">
-          <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+        <div className="lg:col-span-6 bg-[var(--bg-subtle)] p-5 rounded-xl border border-[var(--border-color)] space-y-4 text-left">
+          <h3 className="text-sm font-bold text-[var(--text-primary)]">
             Top Triggering Risk Signals in Database
           </h3>
-          <p className="text-xs text-slate-400">Most frequent anomaly drivers flagged by the fraud engine</p>
+          <p className="text-xs text-[var(--text-muted)]">Most frequent anomaly drivers flagged by the fraud engine</p>
 
           <div className="space-y-3">
             {(data?.topSignals || []).map((sig: any, idx: number) => (
               <div key={idx} className="space-y-1">
-                <div className="flex justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
+                <div className="flex justify-between text-xs font-semibold text-[var(--text-secondary)]">
                   <span>{sig.name}</span>
-                  <span className="font-mono text-teal-600 dark:text-teal-400">{sig.count} triggers</span>
+                  <span className="font-mono text-[var(--color-brand)]">{sig.count} triggers</span>
                 </div>
-                <div className="w-full bg-slate-100 dark:bg-[#1c2638] h-2 rounded-full overflow-hidden">
+                <div className="w-full bg-[var(--bg-subtle)] h-2 rounded-full overflow-hidden">
                   <div
-                    className="bg-teal-500 h-full rounded-full"
+                    className="bg-[var(--color-brand)] h-full rounded-full"
                     style={{ width: `${Math.min(100, (sig.count / Math.max(1, data?.metrics?.totalAnalyzed || 100)) * 300)}%` }}
                   />
                 </div>
@@ -305,15 +305,15 @@ export const AnalyticsAndReportsView: React.FC = () => {
         </div>
 
         {/* Geographic Breakdown Table */}
-        <div className="lg:col-span-6 bg-white dark:bg-[#121722] p-5 rounded-xl border border-slate-200 dark:border-[#1c2638] space-y-4 text-left">
+        <div className="lg:col-span-6 bg-[var(--bg-subtle)] p-5 rounded-xl border border-[var(--border-color)] space-y-4 text-left">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Globe className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+            <h3 className="text-sm font-bold text-[var(--text-primary)] flex items-center gap-2">
+              <Globe className="w-4 h-4 text-[var(--color-brand)]" />
               Volume & Fraud Rate by Country
             </h3>
             <button
               onClick={() => handleExport('alerts_report', 'csv')}
-              className="text-xs text-teal-600 dark:text-teal-400 hover:underline font-semibold"
+              className="text-xs text-[var(--color-brand)] hover:underline font-semibold"
             >
               Export Alerts CSV
             </button>
@@ -322,7 +322,7 @@ export const AnalyticsAndReportsView: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-slate-200 dark:border-[#1c2638] text-slate-400 font-mono text-[11px]">
+                <tr className="border-b border-[var(--border-color)] text-[var(--text-muted)] font-mono text-[11px]">
                   <th className="pb-2">Country</th>
                   <th className="pb-2">Transactions</th>
                   <th className="pb-2">Total Volume</th>
@@ -332,10 +332,10 @@ export const AnalyticsAndReportsView: React.FC = () => {
               <tbody className="divide-y divide-slate-100 dark:divide-[#1c2638]">
                 {(data?.countryBreakdown || []).slice(0, 6).map((c: any) => (
                   <tr key={c.country}>
-                    <td className="py-2.5 font-semibold text-slate-900 dark:text-white">{c.country}</td>
-                    <td className="py-2.5 text-slate-600 dark:text-slate-300">{c.count}</td>
-                    <td className="py-2.5 text-slate-600 dark:text-slate-300">₹{Number(c.volume).toLocaleString('en-IN')}</td>
-                    <td className="py-2.5 text-right font-bold text-amber-600 dark:text-amber-400">{c.fraudRate}%</td>
+                    <td className="py-2.5 font-semibold text-[var(--text-primary)]">{c.country}</td>
+                    <td className="py-2.5 text-[var(--text-secondary)]">{c.count}</td>
+                    <td className="py-2.5 text-[var(--text-secondary)]">₹{Number(c.volume).toLocaleString('en-IN')}</td>
+                    <td className="py-2.5 text-right font-bold text-[var(--color-tier-medium)]">{c.fraudRate}%</td>
                   </tr>
                 ))}
               </tbody>

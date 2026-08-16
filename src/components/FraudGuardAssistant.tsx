@@ -180,16 +180,16 @@ export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({
       <button
         id="btn-open-assistant"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-5 right-5 z-40 flex items-center gap-2.5 px-4 py-3 rounded-full bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 font-sans"
+        className="fixed bottom-5 right-5 z-40 flex items-center gap-2.5 px-4 py-3 rounded-full bg-[var(--color-brand-solid)] hover:opacity-90 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 font-sans"
         aria-label="Open FraudGuard Assistant"
       >
         <div className="relative">
           <Bot className="w-5 h-5" />
-          <span className="w-2.5 h-2.5 bg-emerald-400 border-2 border-teal-600 rounded-full absolute -top-0.5 -right-0.5 animate-pulse" />
+          <span className="w-2.5 h-2.5 bg-emerald-400 border-2 border-[var(--color-brand-solid)] rounded-full absolute -top-0.5 -right-0.5 animate-pulse" />
         </div>
         <div className="text-left hidden sm:block">
           <div className="text-xs font-bold leading-tight">FraudGuard Assistant</div>
-          <div className="text-[10px] text-teal-100 font-normal">Ask anything • Simple English</div>
+          <div className="text-[10px] text-white/75 font-normal">Ask anything • Simple English</div>
         </div>
       </button>
 
@@ -197,22 +197,22 @@ export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({
       {isOpen && (
         <div
           id="assistant-chat-window"
-          className="fixed bottom-20 right-4 sm:right-6 w-[94vw] sm:w-[420px] h-[560px] max-h-[82vh] bg-white dark:bg-[#0f1523] border border-slate-200 dark:border-[#1c2638] rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-200 font-sans"
+          className="fixed bottom-20 right-4 sm:right-6 w-[94vw] sm:w-[420px] h-[560px] max-h-[82vh] bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-200 font-sans"
         >
           {/* Header */}
-          <div className="p-3.5 bg-slate-50 dark:bg-[#090d16] text-slate-900 dark:text-white flex items-center justify-between border-b border-slate-200 dark:border-slate-800">
+          <div className="p-3.5 bg-[var(--bg-subtle)] text-[var(--text-primary)] flex items-center justify-between border-b border-[var(--border-color)]">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-teal-500/10 dark:bg-teal-500/20 border border-teal-500/30 flex items-center justify-center text-teal-600 dark:text-teal-400">
+              <div className="w-8 h-8 rounded-xl bg-[var(--color-brand)]/10 border border-[var(--color-brand)]/30 flex items-center justify-center text-[var(--color-brand)]">
                 <Bot className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-xs font-bold tracking-tight flex items-center gap-1.5 text-slate-900 dark:text-white">
+                <h3 className="text-xs font-bold tracking-tight flex items-center gap-1.5 text-[var(--text-primary)]">
                   FraudGuard Assistant
-                  <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-teal-50 dark:bg-teal-500/20 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-500/30 font-semibold">
+                  <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-[var(--color-brand-bg)] text-[var(--color-brand-strong)] border border-[var(--color-brand-border)] font-semibold">
                     AI Online
                   </span>
                 </h3>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400">Ask me anything about using FraudGuard</p>
+                <p className="text-[10px] text-[var(--text-muted)]">Ask me anything about using FraudGuard</p>
               </div>
             </div>
 
@@ -228,14 +228,14 @@ export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({
                     },
                   ])
                 }
-                className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-1.5 text-[var(--text-muted)] hover:text-[var(--text-primary)] rounded-lg hover:bg-[var(--bg-hover)] transition-colors cursor-pointer"
                 title="Clear conversation"
               >
                 <RefreshCw className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-1.5 text-[var(--text-muted)] hover:text-[var(--text-primary)] rounded-lg hover:bg-[var(--bg-hover)] transition-colors cursor-pointer"
                 title="Close Assistant"
               >
                 <X className="w-4 h-4" />
@@ -244,13 +244,13 @@ export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({
           </div>
 
           {/* Messages Area */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 custom-scrollbar bg-slate-50/50 dark:bg-[#0c1017]">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 custom-scrollbar bg-[var(--bg-app)]/50">
             {messages.map((msg) => {
               const isUser = msg.role === 'user';
               return (
                 <div key={msg.id} className={`flex gap-2.5 ${isUser ? 'justify-end' : 'justify-start'}`}>
                   {!isUser && (
-                    <div className="w-7 h-7 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-600 dark:text-teal-400 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-7 h-7 rounded-xl bg-[var(--color-brand)]/10 border border-[var(--color-brand)]/30 text-[var(--color-brand)] flex items-center justify-center shrink-0 mt-0.5">
                       <Bot className="w-3.5 h-3.5" />
                     </div>
                   )}
@@ -259,8 +259,8 @@ export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({
                     <div
                       className={`p-3 rounded-2xl text-xs leading-relaxed ${
                         isUser
-                          ? 'bg-teal-600 text-white rounded-tr-xs shadow-xs font-medium'
-                          : 'bg-white dark:bg-[#141b2b] text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-[#1e2a40] rounded-tl-xs shadow-xs assistant-markdown'
+                          ? 'bg-[var(--color-brand-solid)] text-white rounded-tr-xs shadow-xs font-medium'
+                          : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-color)] rounded-tl-xs shadow-xs assistant-markdown'
                       }`}
                     >
                       {isUser ? (
@@ -277,20 +277,20 @@ export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({
                           onNavigate(msg.suggestedView!);
                           setIsOpen(false);
                         }}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/40 dark:hover:bg-teal-900/60 border border-teal-200 dark:border-teal-500/40 text-teal-700 dark:text-teal-300 text-[11px] font-bold transition-colors shadow-2xs"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--color-brand-bg)] hover:bg-[var(--color-brand)]/15 border border-[var(--color-brand-border)] text-[var(--color-brand-strong)] text-[11px] font-bold transition-colors shadow-2xs"
                       >
                         <span>{msg.suggestedViewLabel || 'Go to page'}</span>
                         <ChevronRight className="w-3 h-3" />
                       </button>
                     )}
 
-                    <span className="text-[9px] text-slate-400 dark:text-slate-500 px-1 font-mono block">
+                    <span className="text-[9px] text-[var(--text-muted)] px-1 font-mono block">
                       {msg.timestamp}
                     </span>
                   </div>
 
                   {isUser && (
-                    <div className="w-7 h-7 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center shrink-0 mt-0.5 text-[11px] font-bold">
+                    <div className="w-7 h-7 rounded-xl bg-[var(--bg-subtle)] text-[var(--text-secondary)] flex items-center justify-center shrink-0 mt-0.5 text-[11px] font-bold">
                       NM
                     </div>
                   )}
@@ -300,11 +300,11 @@ export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({
 
             {isLoading && (
               <div className="flex gap-2.5 items-center">
-                <div className="w-7 h-7 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-600 dark:text-teal-400 flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-xl bg-[var(--color-brand)]/10 border border-[var(--color-brand)]/30 text-[var(--color-brand)] flex items-center justify-center shrink-0">
                   <Bot className="w-3.5 h-3.5 animate-spin" />
                 </div>
-                <div className="p-3 rounded-2xl bg-white dark:bg-[#141b2b] border border-slate-200 dark:border-[#1e2a40] text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
+                <div className="p-3 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] text-xs text-[var(--text-muted)] flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[var(--color-brand)] animate-pulse" />
                   <span>Thinking of a simple explanation...</span>
                 </div>
               </div>
@@ -314,12 +314,12 @@ export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({
           </div>
 
           {/* Quick Question Chips */}
-          <div className="p-2 border-t border-slate-200 dark:border-[#1c2638] bg-slate-100/70 dark:bg-[#101624] overflow-x-auto whitespace-nowrap custom-scrollbar flex gap-1.5">
+          <div className="p-2 border-t border-[var(--border-color)] bg-[var(--bg-subtle)] overflow-x-auto whitespace-nowrap custom-scrollbar flex gap-1.5">
             {quickQuestions.map((q, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSendMessage(q.query)}
-                className="px-2.5 py-1 rounded-lg bg-white dark:bg-[#182132] hover:bg-teal-50 dark:hover:bg-teal-950/40 border border-slate-200 dark:border-[#223048] hover:border-teal-300 dark:hover:border-teal-500/40 text-[10px] text-slate-700 dark:text-slate-300 hover:text-teal-700 dark:hover:text-teal-300 transition-all shrink-0 font-medium"
+                className="px-2.5 py-1 rounded-lg bg-[var(--bg-card)] hover:bg-[var(--color-brand-bg)] border border-[var(--border-color)] hover:border-[var(--color-brand-border)] text-[10px] text-[var(--text-secondary)] hover:text-[var(--color-brand-strong)] transition-all shrink-0 font-medium"
               >
                 {q.label}
               </button>
@@ -332,19 +332,19 @@ export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({
               e.preventDefault();
               handleSendMessage();
             }}
-            className="p-3 bg-white dark:bg-[#0f1523] border-t border-slate-200 dark:border-[#1c2638] flex items-center gap-2"
+            className="p-3 bg-[var(--bg-card)] border-t border-[var(--border-color)] flex items-center gap-2"
           >
             <input
               type="text"
               placeholder="Ask how to check a payment, alert, or score..."
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
-              className="flex-1 px-3.5 py-2 bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-[#1c2638] rounded-xl text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500"
+              className="flex-1 px-3.5 py-2 bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl text-xs text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--color-brand)]"
             />
             <button
               type="submit"
               disabled={!inputMessage.trim() || isLoading}
-              className="p-2 rounded-xl bg-teal-600 hover:bg-teal-500 disabled:opacity-40 disabled:hover:bg-teal-600 text-white transition-all shadow-xs shrink-0"
+              className="p-2 rounded-xl bg-[var(--color-brand-solid)] hover:opacity-90 disabled:opacity-40 text-white transition-all shadow-xs shrink-0"
               title="Send message"
             >
               <Send className="w-4 h-4" />

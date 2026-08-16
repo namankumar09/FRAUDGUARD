@@ -98,12 +98,12 @@ export const CounterfactualSimulatorView: React.FC = () => {
               <Scale className="w-3.5 h-3.5" />
               COUNTERFACTUAL FRAUD SIMULATOR ("WHAT-IF" ENGINE)
             </span>
-            <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">• Alternative Branch Modeling</span>
+            <span className="text-xs text-[var(--text-muted)] font-mono">• Alternative Branch Modeling</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
+          <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] tracking-tight mt-1">
             Simulating Downstream Financial & Friction Impacts of Decision Branches
           </h2>
-          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed mt-1">
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed mt-1">
             Evaluate: <em>"What would have happened if we didn't block this transaction?"</em> vs <em>"What if we triggered a 15-minute cooling window instead of a hard block?"</em>
           </p>
         </div>
@@ -114,7 +114,7 @@ export const CounterfactualSimulatorView: React.FC = () => {
             setDecisionPolicy('step_up_video');
             setAttackerSkillLevel('advanced_syndicate');
           }}
-          className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 dark:bg-[#091122] dark:hover:bg-[#121e3a] dark:border-[#1b2b4c] dark:text-slate-300 text-xs font-mono flex items-center gap-1.5"
+          className="p-2.5 rounded-xl bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-color)] text-[var(--text-secondary)] text-xs font-mono flex items-center gap-1.5"
         >
           <RotateCcw className="w-3.5 h-3.5" /> Reset Parameters
         </button>
@@ -123,9 +123,9 @@ export const CounterfactualSimulatorView: React.FC = () => {
       {/* Main Grid: Controls (Left) & Simulation Visualizer (Right) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Interactive Simulation Controls (5 cols) */}
-        <div className="lg:col-span-5 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-5">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-[#1b2b4c]">
-            <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+        <div className="lg:col-span-5 p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
+            <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider">
               Simulation Configuration
             </h3>
             <span className="text-[10px] font-mono text-sky-600 dark:text-sky-400">Live Recalculation</span>
@@ -134,8 +134,8 @@ export const CounterfactualSimulatorView: React.FC = () => {
           {/* Slider: Transaction Amount */}
           <div className="space-y-2">
             <div className="flex justify-between text-xs font-mono">
-              <span className="text-slate-500 dark:text-slate-400">Transaction Under Test:</span>
-              <span className="text-slate-900 dark:text-white font-bold">₹{transferAmount.toLocaleString('en-IN')}</span>
+              <span className="text-[var(--text-muted)]">Transaction Under Test:</span>
+              <span className="text-[var(--text-primary)] font-bold">₹{transferAmount.toLocaleString('en-IN')}</span>
             </div>
             <input
               type="range"
@@ -146,7 +146,7 @@ export const CounterfactualSimulatorView: React.FC = () => {
               onChange={(e) => setTransferAmount(parseInt(e.target.value))}
               className="w-full accent-sky-400 cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] font-mono text-slate-500 dark:text-slate-400">
+            <div className="flex justify-between text-[10px] font-mono text-[var(--text-muted)]">
               <span>₹25,000</span>
               <span>₹7,50,000</span>
               <span>₹15,00,000</span>
@@ -155,7 +155,7 @@ export const CounterfactualSimulatorView: React.FC = () => {
 
           {/* Decision Branch Policy Selector */}
           <div className="space-y-2">
-            <label className="block text-xs font-mono text-slate-500 dark:text-slate-400 uppercase">
+            <label className="block text-xs font-mono text-[var(--text-muted)] uppercase">
               Tested Intervention Policy
             </label>
             <div className="grid grid-cols-1 gap-2">
@@ -170,12 +170,12 @@ export const CounterfactualSimulatorView: React.FC = () => {
                   onClick={() => setDecisionPolicy(p.id as any)}
                   className={`p-3 rounded-xl border text-left transition-all text-xs ${
                     decisionPolicy === p.id
-                      ? 'bg-sky-50 border-sky-400 ring-1 ring-sky-400/20 text-slate-900 dark:bg-[#152344] dark:ring-sky-400/40 dark:text-white'
-                      : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100 dark:bg-[#091122] dark:border-[#1a2846] dark:text-slate-300 dark:hover:bg-[#0f1a35]'
+                      ? 'bg-sky-50 border-sky-400 ring-1 ring-sky-400/20 text-[var(--text-primary)] dark:bg-[#152344] dark:ring-sky-400/40'
+                      : 'bg-[var(--bg-subtle)] border-[var(--border-color)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'
                   }`}
                 >
-                  <p className="font-bold text-slate-900 dark:text-white">{p.title}</p>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">{p.desc}</p>
+                  <p className="font-bold text-[var(--text-primary)]">{p.title}</p>
+                  <p className="text-[11px] text-[var(--text-muted)] mt-0.5">{p.desc}</p>
                 </button>
               ))}
             </div>
@@ -183,7 +183,7 @@ export const CounterfactualSimulatorView: React.FC = () => {
 
           {/* Attacker Skill Level */}
           <div className="space-y-2">
-            <label className="block text-xs font-mono text-slate-500 dark:text-slate-400 uppercase">
+            <label className="block text-xs font-mono text-[var(--text-muted)] uppercase">
               Attacker Sophistication Level
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -198,7 +198,7 @@ export const CounterfactualSimulatorView: React.FC = () => {
                   className={`py-2 rounded-lg text-xs font-mono transition-all border ${
                     attackerSkillLevel === level.id
                       ? 'bg-purple-100 text-purple-700 border-purple-400 font-bold dark:bg-purple-950 dark:text-purple-300 dark:border-purple-500'
-                      : 'bg-slate-50 text-slate-500 border-slate-200 dark:bg-[#091122] dark:text-slate-400 dark:border-[#1a2846]'
+                      : 'bg-[var(--bg-subtle)] text-[var(--text-muted)] border-[var(--border-color)]'
                   }`}
                 >
                   {level.label}
@@ -212,29 +212,29 @@ export const CounterfactualSimulatorView: React.FC = () => {
         <div className="lg:col-span-7 space-y-5">
           {/* Outcome Stat Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg">
-              <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 block">Downstream Loss</span>
+            <div className="p-3.5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg">
+              <span className="text-[10px] font-mono text-[var(--text-muted)] block">Downstream Loss</span>
               <p className={`text-base font-bold font-mono mt-1 ${outcomes.lossExposure > 0 ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'}`}>
                 ₹{outcomes.lossExposure.toLocaleString('en-IN')}
               </p>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg">
-              <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 block">Customer Friction</span>
+            <div className="p-3.5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg">
+              <span className="text-[10px] font-mono text-[var(--text-muted)] block">Customer Friction</span>
               <p className={`text-base font-bold font-mono mt-1 ${outcomes.customerFriction > 40 ? 'text-amber-600 dark:text-amber-400' : 'text-sky-600 dark:text-sky-300'}`}>
                 {outcomes.customerFriction}% Index
               </p>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg">
-              <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 block">Risk Reduction</span>
+            <div className="p-3.5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg">
+              <span className="text-[10px] font-mono text-[var(--text-muted)] block">Risk Reduction</span>
               <p className="text-base font-bold font-mono text-emerald-600 dark:text-emerald-400 mt-1">
                 +{outcomes.riskReduction}%
               </p>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg">
-              <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 block">Contagion Drains</span>
+            <div className="p-3.5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg">
+              <span className="text-[10px] font-mono text-[var(--text-muted)] block">Contagion Drains</span>
               <p className="text-base font-bold font-mono text-purple-600 dark:text-purple-300 mt-1">
                 {outcomes.contagionAccounts} Accounts
               </p>
@@ -242,9 +242,9 @@ export const CounterfactualSimulatorView: React.FC = () => {
           </div>
 
           {/* Comparative Exposure Bar Chart */}
-          <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-3">
+          <div className="p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-3">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+              <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider">
                 Policy Comparison: Downstream Loss vs Customer Friction
               </h3>
             </div>
@@ -264,12 +264,12 @@ export const CounterfactualSimulatorView: React.FC = () => {
           </div>
 
           {/* Recommendation Note */}
-          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-600 dark:bg-[#0a1226] dark:border-[#1c2c4d] dark:text-slate-300 space-y-1.5">
+          <div className="p-4 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)] text-xs text-[var(--text-secondary)] space-y-1.5">
             <div className="flex items-center gap-2 text-sky-700 dark:text-sky-300 font-bold font-mono">
               <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>Optimal Policy Recommendation: Biometric Step-Up Challenge</span>
             </div>
-            <p className="text-[11px] leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="text-[11px] leading-relaxed text-[var(--text-secondary)]">
               Selecting <strong>Biometric Step-Up</strong> delivers a <strong>98% risk reduction</strong> with zero downstream fraud leakage while keeping customer friction to only <strong>12%</strong> (vs 68% for hard blocking).
             </p>
           </div>
