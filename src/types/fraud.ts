@@ -288,12 +288,18 @@ export interface DnaTreeNode {
 export interface ZeroDayIncident {
   id: string;
   patternCode: string;
+  strainId: string;
+  strainName: string;
   discoveredAt: string;
+  discoveredTime: string;
+  description: string;
   accountsAffected: number;
+  affectedAccountsCount: number;
   behavioralSimilarity: number;
   fraudProbability: number;
   connectedDevices: number;
   characteristics: string[];
+  candidateRule: string;
   investigatorNotes: string;
   isContained: boolean;
 }

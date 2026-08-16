@@ -47,6 +47,7 @@ interface HeaderProps {
   onToggleInvestigatorMode: () => void;
   onOpenSettings: () => void;
   onOpenProfile: () => void;
+  isMobile: boolean;
 }
 
 interface NotificationItem {
@@ -66,6 +67,7 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleSimulation,
   onOpenSettings,
   onOpenProfile,
+  isMobile,
 }) => {
   const { resolvedTheme, setThemeMode, profile } = useTheme();
   const { logout, user } = useAuth();
@@ -130,6 +132,11 @@ export const Header: React.FC<HeaderProps> = ({
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  // Close the mobile drawer if the viewport crosses back into desktop layout
+  useEffect(() => {
+    if (!isMobile) setIsHamburgerOpen(false);
+  }, [isMobile]);
 
   const unreadCount = notifications.filter((n) => !n.isRead).length;
 
@@ -495,30 +502,32 @@ export const Header: React.FC<HeaderProps> = ({
           )}
         </div>
 
-        {/* TOP-RIGHT HAMBURGER MENU BUTTON (ALL SCREEN SIZES) */}
-        <div className="relative">
-          <button
-            id="btn-header-hamburger"
-            onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}
-            className={`min-h-[44px] min-w-[44px] p-2.5 rounded-xl border transition-all flex items-center justify-center cursor-pointer shadow-xs ${
-              isHamburgerOpen
-                ? 'bg-teal-500/15 border-teal-500/40 text-teal-600 dark:text-teal-400'
-                : 'bg-slate-100 hover:bg-slate-200 dark:bg-[#121722] dark:hover:bg-[#182132] border-slate-200 dark:border-[#1c2638] text-slate-700 dark:text-slate-300'
-            }`}
-            title={isHamburgerOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
-            aria-label="Navigation Menu"
-          >
-            {isHamburgerOpen ? (
-              <X className="w-5 h-5 text-teal-600 dark:text-teal-400 transition-transform duration-200 rotate-90" />
-            ) : (
-              <Menu className="w-5 h-5 transition-transform duration-200" />
-            )}
-          </button>
-        </div>
+        {/* TOP-RIGHT HAMBURGER MENU BUTTON (MOBILE ONLY) */}
+        {isMobile && (
+          <div className="relative">
+            <button
+              id="btn-header-hamburger"
+              onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}
+              className={`min-h-[44px] min-w-[44px] p-2.5 rounded-xl border transition-all flex items-center justify-center cursor-pointer shadow-xs ${
+                isHamburgerOpen
+                  ? 'bg-teal-500/15 border-teal-500/40 text-teal-600 dark:text-teal-400'
+                  : 'bg-slate-100 hover:bg-slate-200 dark:bg-[#121722] dark:hover:bg-[#182132] border-slate-200 dark:border-[#1c2638] text-slate-700 dark:text-slate-300'
+              }`}
+              title={isHamburgerOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+              aria-label="Navigation Menu"
+            >
+              {isHamburgerOpen ? (
+                <X className="w-5 h-5 text-teal-600 dark:text-teal-400 transition-transform duration-200 rotate-90" />
+              ) : (
+                <Menu className="w-5 h-5 transition-transform duration-200" />
+              )}
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* SLIDE-IN NAVIGATION DRAWER (ACCESSIBLE ON MOBILE & DESKTOP) */}
-      {isHamburgerOpen && (
+      {/* SLIDE-IN NAVIGATION DRAWER (MOBILE ONLY) */}
+      {isMobile && isHamburgerOpen && (
         <div className="fixed inset-0 z-50 flex justify-end animate-in fade-in duration-200">
           {/* Dark Backdrop */}
           <div

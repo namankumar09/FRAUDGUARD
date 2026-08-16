@@ -87,7 +87,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
         {/* Modal Header */}
         <div className="p-4 md:p-5 border-b border-slate-200 dark:border-[#19284d] bg-slate-50 dark:bg-[#070e20] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1e0e38] via-[#0c1938] to-[#1c2e12] border border-[#3b1d64] dark:border-[#581c87]/50 flex items-center justify-center text-purple-300 shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-50 via-white to-emerald-50 dark:from-[#1e0e38] dark:via-[#0c1938] dark:to-[#1c2e12] border border-purple-200 dark:border-[#3b1d64] dark:border-[#581c87]/50 flex items-center justify-center text-purple-700 dark:text-purple-300 shadow-xs">
               <SlidersHorizontal className="w-5 h-5 text-purple-300 dark:text-purple-200" />
             </div>
             <div>
@@ -141,7 +141,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-left text-xs transition-all whitespace-nowrap ${
                     isActive
-                      ? 'bg-[#182647] dark:bg-[#13203c] text-white font-bold shadow-xs border-l-2 border-purple-500 dark:border-purple-400'
+                      ? 'bg-purple-50 dark:bg-[#182647] dark:bg-[#13203c] text-slate-900 dark:text-white font-bold shadow-xs border-l-2 border-purple-500 dark:border-purple-400'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-[#0e172e]'
                   }`}
                 >
@@ -187,12 +187,12 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                     onClick={() => setThemeMode('dark')}
                     className={`p-3.5 rounded-2xl border text-left transition-all relative flex flex-col justify-between ${
                       themeMode === 'dark'
-                        ? 'bg-[#0f1b38] border-purple-500 shadow-md ring-2 ring-purple-500/20 text-white'
+                        ? 'bg-purple-50 border-purple-500 shadow-md ring-2 ring-purple-500/20 text-slate-900 dark:bg-[#0f1b38] dark:text-white'
                         : 'bg-slate-50 dark:bg-[#070e20] border-slate-200 dark:border-[#1a2b4f] hover:border-slate-400 dark:hover:border-slate-600'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-3">
-                      <div className="w-8 h-8 rounded-xl bg-[#23123d] border border-[#581c87] flex items-center justify-center text-purple-300">
+                      <div className="w-8 h-8 rounded-xl bg-purple-100 border border-purple-300 dark:bg-[#23123d] dark:border-[#581c87] flex items-center justify-center text-purple-700 dark:text-purple-300">
                         <Moon className="w-4 h-4" />
                       </div>
                       {themeMode === 'dark' && (
@@ -382,7 +382,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
 
                 {/* Profile Badge Card */}
                 <div className="p-4 rounded-2xl bg-gradient-to-r from-purple-50 via-slate-50 to-blue-50 dark:from-[#1b0c2e] dark:via-[#0c1630] dark:to-[#071328] border border-purple-200 dark:border-[#381d61] flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#23123d] to-[#0c1938] border-2 border-purple-400/50 flex items-center justify-center text-white text-xl font-bold font-mono shadow-md">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 dark:from-[#23123d] dark:to-[#0c1938] border-2 border-purple-400/50 flex items-center justify-center text-purple-900 dark:text-white text-xl font-bold font-mono shadow-md">
                     {profile.name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>
@@ -480,7 +480,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#070e20] border border-slate-200 dark:border-[#1d2f57] space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-[#1c2e12] border border-[#364f24] flex items-center justify-center text-[#84a35c]">
+                      <div className="w-9 h-9 rounded-xl bg-emerald-100 border border-emerald-300 dark:bg-[#1c2e12] dark:border-[#364f24] flex items-center justify-center text-emerald-700 dark:text-[#84a35c]">
                         <Fingerprint className="w-5 h-5" />
                       </div>
                       <div>
@@ -502,7 +502,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#070e20] border border-slate-200 dark:border-[#1d2f57] space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-[#23123d] border border-[#581c87] flex items-center justify-center text-purple-300">
+                      <div className="w-9 h-9 rounded-xl bg-purple-100 border border-purple-300 dark:bg-[#23123d] dark:border-[#581c87] flex items-center justify-center text-purple-700 dark:text-purple-300">
                         <Key className="w-5 h-5" />
                       </div>
                       <div>
@@ -582,7 +582,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                     <span className="text-xs font-bold text-slate-900 dark:text-white">
                       Auto-Quarantine Risk Threshold
                     </span>
-                    <span className="text-xs font-mono font-bold text-[#ef4444] dark:text-[#f87171]">
+                    <span className="text-xs font-mono font-bold text-red-600 dark:text-red-400">
                       Score &gt; {profile.autoQuarantineThreshold}/100
                     </span>
                   </div>
@@ -601,7 +601,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
 
                 {/* Reset Data Button */}
                 {onResetSimulationData && (
-                  <div className="p-4 rounded-2xl bg-[#3b1402]/20 border border-[#7c2d12]/40 flex items-center justify-between">
+                  <div className="p-4 rounded-2xl bg-red-50 border-red-200 dark:bg-[#3b1402]/20 dark:border-[#7c2d12]/40 flex items-center justify-between">
                     <div>
                       <div className="text-xs font-bold text-slate-900 dark:text-white">Reset Synthetic Dataset</div>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400">Reload default transactions, tells, and zero-day threat patterns</p>
@@ -611,7 +611,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                         onResetSimulationData();
                         handleSave();
                       }}
-                      className="px-3 py-1.5 rounded-xl bg-[#451a03] hover:bg-[#5c2404] text-amber-200 border border-[#7c2d12] text-xs font-mono font-semibold"
+                      className="px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border-amber-300 dark:bg-[#451a03] dark:hover:bg-[#5c2404] dark:text-amber-200 dark:border-[#7c2d12] text-xs font-mono font-semibold"
                     >
                       Reset State
                     </button>
@@ -678,7 +678,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                   </div>
                   <button
                     onClick={handleExportLogs}
-                    className="px-3.5 py-2 rounded-xl bg-[#23123d] hover:bg-[#321957] text-purple-200 border border-[#581c87] text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs"
+                    className="px-3.5 py-2 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 border-purple-300 dark:bg-[#23123d] dark:hover:bg-[#321957] dark:text-purple-200 dark:border-[#581c87] text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs"
                   >
                     <Download className="w-3.5 h-3.5" />
                     Export Audit JSON
