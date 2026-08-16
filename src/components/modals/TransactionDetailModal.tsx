@@ -209,27 +209,33 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
         </div>
 
         {/* Navigation Tabs */}
-        <div className="px-6 border-b border-[var(--border-color)] bg-[var(--bg-card)] flex gap-2 overflow-x-auto">
+        <div
+          role="tablist"
+          className="shrink-0 px-2 sm:px-6 border-b border-[var(--border-color)] bg-[var(--bg-card)] flex gap-1 sm:gap-2 overflow-x-auto snap-x snap-proximity custom-scrollbar"
+        >
           {[
-            { id: 'overview', label: '1. Forensic Signals & Explainability', icon: Layers },
-            { id: 'precursor', label: '2. Precursor Intent Sequence', icon: Zap },
-            { id: 'dna', label: '3. Behavioral DNA Mutation Radar', icon: User },
-            { id: 'counterfactual', label: '4. Counterfactual "What-If" Matrix', icon: Scale },
+            { id: 'overview', label: '1. Forensic Signals & Explainability', shortLabel: 'Signals', icon: Layers },
+            { id: 'precursor', label: '2. Precursor Intent Sequence', shortLabel: 'Intent', icon: Zap },
+            { id: 'dna', label: '3. Behavioral DNA Mutation Radar', shortLabel: 'DNA Radar', icon: User },
+            { id: 'counterfactual', label: '4. Counterfactual "What-If" Matrix', shortLabel: 'What If', icon: Scale },
           ].map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
+                role="tab"
+                aria-selected={isActive}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`py-3 px-3 text-xs font-semibold flex items-center gap-2 border-b-2 whitespace-nowrap transition-all ${
+                className={`shrink-0 snap-start min-h-[44px] py-3 px-3 text-xs font-semibold flex items-center gap-1.5 sm:gap-2 border-b-2 whitespace-nowrap transition-all cursor-pointer ${
                   isActive
                     ? 'border-blue-600 dark:border-sky-400 text-blue-600 dark:text-sky-300 bg-blue-50/50 dark:bg-sky-950/20'
                     : 'border-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                 }`}
               >
-                <Icon className="w-3.5 h-3.5" />
-                {tab.label}
+                <Icon className="w-4 h-4 sm:w-3.5 sm:h-3.5 shrink-0" />
+                <span className="sm:hidden">{tab.shortLabel}</span>
+                <span className="hidden sm:inline">{tab.label}</span>
               </button>
             );
           })}
