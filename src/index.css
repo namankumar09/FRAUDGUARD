@@ -6,8 +6,17 @@
   :root {
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    
-    /* White / Light Theme - Full screen crisp clean layout */
+
+    /* ================================================================
+       COLOR ACCENT PALETTE PRESET SYSTEM
+       Two independent axes: mode (:root=light / .dark=dark) controls
+       background/surface/text lightness. [data-preset] controls the
+       brand accent family layered on top. Risk-tier colors (low/medium/
+       high) are intentionally FIXED across every preset — they're a
+       safety signal, not a branding choice — and only adapt for mode.
+       ================================================================ */
+
+    /* ---- Signature (default) — Light ---- */
     --bg-app: #f8fafc;
     --bg-surface: #ffffff;
     --bg-card: #ffffff;
@@ -19,17 +28,34 @@
     --text-secondary: #334155;
     --text-muted: #64748b;
 
-    /* Theme Accents (Matching Screenshot & Precision Palette) */
-    --color-accent-teal: #0d9488;
-    --color-accent-teal-light: #ccfbf1;
+    --color-brand: #0d9488;
+    --color-brand-strong: #0f766e;
+    --color-brand-bg: #f0fdfa;
+    --color-brand-border: #99f6e4;
+    --color-brand-solid: #0d9488; /* mode-independent — for solid fills (avatars, buttons) paired with white text */
+
+    /* Theme Accents (legacy names, kept for existing consumers) */
+    --color-accent-teal: var(--color-brand);
+    --color-accent-teal-light: var(--color-brand-bg);
     --color-accent-amber: #d97706;
     --color-accent-amber-light: #fef3c7;
     --color-accent-red: #dc2626;
     --color-accent-red-light: #fee2e2;
+
+    /* Risk-tier colors — fixed hue per mode, identical across all presets */
+    --color-tier-low: #16a34a;
+    --color-tier-low-bg: #dcfce7;
+    --color-tier-low-border: #86efac;
+    --color-tier-medium: #d97706;
+    --color-tier-medium-bg: #fef3c7;
+    --color-tier-medium-border: #fcd34d;
+    --color-tier-high: #dc2626;
+    --color-tier-high-bg: #fee2e2;
+    --color-tier-high-border: #fca5a5;
   }
 
   .dark {
-    /* Dark Theme - Sleek FraudGuard Obsidian Matrix */
+    /* ---- Signature (default) — Dark ---- */
     --bg-app: #0c1017;
     --bg-surface: #0e131c;
     --bg-card: #121721;
@@ -41,13 +67,150 @@
     --text-secondary: #94a3b8;
     --text-muted: #64748b;
 
-    /* Theme Accents */
-    --color-accent-teal: #2dd4bf;
-    --color-accent-teal-light: #134e48;
+    --color-brand: #2dd4bf;
+    --color-brand-strong: #5eead4;
+    --color-brand-bg: rgba(19, 78, 72, 0.4);
+    --color-brand-border: rgba(45, 212, 191, 0.3);
+
+    --color-accent-teal: var(--color-brand);
+    --color-accent-teal-light: var(--color-brand-bg);
     --color-accent-amber: #fbbf24;
     --color-accent-amber-light: #451a03;
     --color-accent-red: #f87171;
     --color-accent-red-light: #450a0a;
+
+    --color-tier-low: #4ade80;
+    --color-tier-low-bg: rgba(20, 83, 45, 0.35);
+    --color-tier-low-border: rgba(74, 222, 128, 0.3);
+    --color-tier-medium: #fbbf24;
+    --color-tier-medium-bg: rgba(69, 26, 3, 0.5);
+    --color-tier-medium-border: rgba(251, 191, 36, 0.3);
+    --color-tier-high: #f87171;
+    --color-tier-high-bg: rgba(69, 10, 10, 0.5);
+    --color-tier-high-border: rgba(248, 113, 113, 0.3);
+  }
+
+  /* ---- Cyber Emerald — Light ---- */
+  [data-preset="emerald"] {
+    --bg-app: #f6faf8;
+    --bg-surface: #ffffff;
+    --bg-card: #ffffff;
+    --bg-subtle: #eef7f2;
+    --bg-hover: #dcf1e6;
+    --border-color: #d7ece2;
+    --border-subtle: #b7ddc9;
+    --text-primary: #0b1f17;
+    --text-secondary: #33544a;
+
+    --color-brand: #059669;
+    --color-brand-strong: #047857;
+    --color-brand-bg: #ecfdf5;
+    --color-brand-border: #a7f3d0;
+    --color-brand-solid: #059669;
+    --color-accent-teal: var(--color-brand);
+    --color-accent-teal-light: var(--color-brand-bg);
+  }
+
+  /* ---- Cyber Emerald — Dark ---- */
+  .dark[data-preset="emerald"] {
+    --bg-app: #05100d;
+    --bg-surface: #071a15;
+    --bg-card: #0a2119;
+    --bg-subtle: #0e2a20;
+    --bg-hover: #123527;
+    --border-color: #14392a;
+    --border-subtle: #1c4a37;
+    --text-primary: #ecfdf5;
+    --text-secondary: #86bfa8;
+
+    --color-brand: #34d399;
+    --color-brand-strong: #6ee7b7;
+    --color-brand-bg: rgba(6, 78, 59, 0.4);
+    --color-brand-border: rgba(52, 211, 153, 0.3);
+    --color-accent-teal: var(--color-brand);
+    --color-accent-teal-light: var(--color-brand-bg);
+  }
+
+  /* ---- Imperial Amethyst — Light ---- */
+  [data-preset="amethyst"] {
+    --bg-app: #faf8fd;
+    --bg-surface: #ffffff;
+    --bg-card: #ffffff;
+    --bg-subtle: #f3effa;
+    --bg-hover: #e6ddf5;
+    --border-color: #e4dbf5;
+    --border-subtle: #cbb8e8;
+    --text-primary: #1e1033;
+    --text-secondary: #4a3866;
+
+    --color-brand: #7c3aed;
+    --color-brand-strong: #6d28d9;
+    --color-brand-bg: #f5f3ff;
+    --color-brand-border: #ddd6fe;
+    --color-brand-solid: #7c3aed;
+    --color-accent-teal: var(--color-brand);
+    --color-accent-teal-light: var(--color-brand-bg);
+  }
+
+  /* ---- Imperial Amethyst — Dark ---- */
+  .dark[data-preset="amethyst"] {
+    --bg-app: #0f0a1f;
+    --bg-surface: #150f28;
+    --bg-card: #1b1433;
+    --bg-subtle: #221a3d;
+    --bg-hover: #2a2049;
+    --border-color: #2d2350;
+    --border-subtle: #3d2f66;
+    --text-primary: #f3edfd;
+    --text-secondary: #b3a0d1;
+
+    --color-brand: #c084fc;
+    --color-brand-strong: #d8b4fe;
+    --color-brand-bg: rgba(59, 7, 100, 0.4);
+    --color-brand-border: rgba(192, 132, 252, 0.3);
+    --color-accent-teal: var(--color-brand);
+    --color-accent-teal-light: var(--color-brand-bg);
+  }
+
+  /* ---- Titanium Slate — Light ---- */
+  [data-preset="monochrome"] {
+    --bg-app: #f7f7f8;
+    --bg-surface: #ffffff;
+    --bg-card: #ffffff;
+    --bg-subtle: #f0f0f1;
+    --bg-hover: #e4e4e6;
+    --border-color: #e2e2e5;
+    --border-subtle: #c8c8cc;
+    --text-primary: #18181b;
+    --text-secondary: #3f3f46;
+
+    --color-brand: #52525b;
+    --color-brand-strong: #3f3f46;
+    --color-brand-bg: #fafafa;
+    --color-brand-border: #d4d4d8;
+    --color-brand-solid: #52525b;
+    --color-accent-teal: var(--color-brand);
+    --color-accent-teal-light: var(--color-brand-bg);
+  }
+
+  /* ---- Titanium Slate — Dark ---- */
+  .dark[data-preset="monochrome"] {
+    --bg-app: #0a0a0b;
+    --bg-surface: #101012;
+    --bg-card: #18181b;
+    --bg-subtle: #1e1e21;
+    --bg-hover: #27272a;
+    --border-color: #2a2a2e;
+    --border-subtle: #3a3a3f;
+    --text-primary: #fafafa;
+    --text-secondary: #a1a1aa;
+
+    --color-brand: #d4d4d8;
+    --color-brand-strong: #e4e4e7;
+    --color-brand-bg: rgba(39, 39, 42, 0.5);
+    --color-brand-border: rgba(161, 161, 170, 0.3);
+    --color-accent-teal: var(--color-brand);
+    --color-accent-teal-light: var(--color-brand-bg);
   }
 
   body {

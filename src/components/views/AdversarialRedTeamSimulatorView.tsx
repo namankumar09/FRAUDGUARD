@@ -74,12 +74,12 @@ export const AdversarialRedTeamSimulatorView: React.FC = () => {
               <Swords className="w-3.5 h-3.5" />
               ADVERSARIAL FRAUD ARMS RACE SIMULATOR (RED VS BLUE)
             </span>
-            <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">• Live Interactive Bot Mimicry Arena</span>
+            <span className="text-xs text-[var(--text-muted)] font-mono">• Live Interactive Bot Mimicry Arena</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
+          <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] tracking-tight mt-1">
             Red-Team Synthetic Attacker Bot vs Blue-Team Behavioral Biometrics
           </h2>
-          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed mt-1">
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed mt-1">
             Simulate how attackers continually upgrade their automation bots with synthetic human jitter, pauses, and mouse bezier curves, while our defensive AI learns to detect their underlying algorithmic artifacts.
           </p>
         </div>
@@ -93,7 +93,7 @@ export const AdversarialRedTeamSimulatorView: React.FC = () => {
           </button>
           <button
             onClick={resetWar}
-            className="p-2 rounded-xl bg-white dark:bg-[#14203a] hover:bg-slate-100 dark:hover:bg-[#1a2c52] border border-slate-200 dark:border-[#203358] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
+            className="p-2 rounded-xl bg-[var(--bg-card)] hover:bg-[var(--bg-hover)] border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
             title="Reset Simulation"
           >
             <RotateCcw className="w-4 h-4" />
@@ -104,12 +104,12 @@ export const AdversarialRedTeamSimulatorView: React.FC = () => {
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Line Chart showing Evasion vs Catch (7 cols) */}
-        <div className="lg:col-span-7 p-5 rounded-2xl bg-white dark:bg-[#0c1427] border border-slate-200 dark:border-[#1b2b4c] shadow-xs dark:shadow-lg space-y-4 transition-colors">
+        <div className="lg:col-span-7 p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-4 transition-colors">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+            <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider">
               Arms Race Trajectory: Red Evasion Rate vs Blue Interception Rate
             </h3>
-            <span className="text-[10px] font-mono text-teal-600 dark:text-sky-400 font-bold">Round {round} Active</span>
+            <span className="text-[10px] font-mono text-[var(--color-brand)] font-bold">Round {round} Active</span>
           </div>
 
           <div className="h-64 w-full">
@@ -135,9 +135,9 @@ export const AdversarialRedTeamSimulatorView: React.FC = () => {
           </div>
 
           {/* Interactive Parameters Sliders */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-slate-100 dark:border-[#1b2b4c] text-xs font-mono">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-[var(--border-subtle)] text-xs font-mono">
             <div>
-              <div className="flex justify-between text-slate-700 dark:text-slate-300 mb-1">
+              <div className="flex justify-between text-[var(--text-secondary)] mb-1">
                 <span>Red Bot Human-Mimicry Level:</span>
                 <span className="text-rose-600 dark:text-rose-400 font-bold">{botMimicryLevel}%</span>
               </div>
@@ -151,7 +151,7 @@ export const AdversarialRedTeamSimulatorView: React.FC = () => {
               />
             </div>
             <div>
-              <div className="flex justify-between text-slate-700 dark:text-slate-300 mb-1">
+              <div className="flex justify-between text-[var(--text-secondary)] mb-1">
                 <span>Blue Defensive Strictness:</span>
                 <span className="text-sky-600 dark:text-sky-300 font-bold">{defenseStrictness}%</span>
               </div>
@@ -168,21 +168,21 @@ export const AdversarialRedTeamSimulatorView: React.FC = () => {
         </div>
 
         {/* Right Column: Arms Race Live Combat Log (5 cols) */}
-        <div className="lg:col-span-5 p-5 rounded-2xl bg-white dark:bg-[#0c1427] border border-slate-200 dark:border-[#1b2b4c] shadow-xs dark:shadow-lg space-y-4 flex flex-col justify-between transition-colors">
+        <div className="lg:col-span-5 p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-4 flex flex-col justify-between transition-colors">
           <div>
-            <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-[#1b2b4c]">
-              <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+            <div className="flex items-center justify-between pb-2 border-b border-[var(--border-subtle)]">
+              <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
                 <Bot className="w-3.5 h-3.5 text-rose-500 dark:text-rose-400" />
                 Combat Logs & Tactical Shifts
               </h3>
-              <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">{logs.length} Rounds</span>
+              <span className="text-[10px] font-mono text-[var(--text-muted)]">{logs.length} Rounds</span>
             </div>
 
             <div className="space-y-2.5 max-h-[300px] overflow-y-auto custom-scrollbar pr-1 mt-3">
               {logs.map((log, idx) => (
                 <div
                   key={idx}
-                  className="p-3 rounded-xl bg-slate-50 dark:bg-[#091122] border border-slate-200 dark:border-[#1c2c4d] text-xs font-mono leading-relaxed text-slate-800 dark:text-slate-200"
+                  className="p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] text-xs font-mono leading-relaxed text-[var(--text-secondary)]"
                 >
                   {log}
                 </div>

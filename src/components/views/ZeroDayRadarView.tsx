@@ -32,12 +32,12 @@ export const ZeroDayRadarView: React.FC = () => {
               <Radio className="w-3.5 h-3.5 animate-pulse" />
               ZERO-DAY BEHAVIORAL ANOMALY RADAR
             </span>
-            <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">• Unsupervised Novel Attack Discovery</span>
+            <span className="text-xs text-[var(--text-muted)] font-mono">• Unsupervised Novel Attack Discovery</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
+          <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] tracking-tight mt-1">
             Detecting Attacks That Match Neither Known Fraud nor Normal Baselines
           </h2>
-          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed mt-1">
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed mt-1">
             Rule-based engines only catch what they've seen before. Our unsupervised clustering flags <strong>unprecedented behavioral topologies</strong> (Zero-Days) in real-time and auto-synthesizes candidate defense signatures.
           </p>
         </div>
@@ -53,7 +53,7 @@ export const ZeroDayRadarView: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Zero-Day Incidents List (5 cols) */}
         <div className="lg:col-span-5 space-y-4">
-          <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+          <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider">
             Unsupervised Zero-Day Incidents
           </h3>
 
@@ -69,22 +69,22 @@ export const ZeroDayRadarView: React.FC = () => {
                   className={`p-4 rounded-2xl border transition-all cursor-pointer ${
                     isSelected
                       ? 'bg-rose-50 border-rose-400 shadow-md ring-1 ring-rose-400/30 dark:bg-[#121f3d] dark:shadow-xl'
-                      : 'bg-white border-slate-200 hover:bg-slate-50 dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:hover:bg-[#0f1a35]'
+                      : 'bg-[var(--bg-card)] border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-mono font-bold text-xs text-rose-700 bg-rose-100 px-2 py-0.5 rounded border border-rose-300 dark:text-rose-300 dark:bg-rose-950 dark:border-rose-500/40">
                       {z.strainId}
                     </span>
-                    <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">{z.discoveredTime}</span>
+                    <span className="text-[10px] font-mono text-[var(--text-muted)]">{z.discoveredTime}</span>
                   </div>
 
-                  <h4 className="text-xs font-bold text-slate-900 dark:text-white mt-2">{z.strainName}</h4>
-                  <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1 line-clamp-2">{z.description}</p>
+                  <h4 className="text-xs font-bold text-[var(--text-primary)] mt-2">{z.strainName}</h4>
+                  <p className="text-[11px] text-[var(--text-secondary)] mt-1 line-clamp-2">{z.description}</p>
 
-                  <div className="mt-3 pt-2 border-t border-slate-100 dark:border-[#1a2846] flex items-center justify-between text-[10px] font-mono">
-                    <span className="text-slate-500 dark:text-slate-400">
-                      Affected: <strong className="text-slate-900 dark:text-white">{z.affectedAccountsCount} accounts</strong>
+                  <div className="mt-3 pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-[10px] font-mono">
+                    <span className="text-[var(--text-muted)]">
+                      Affected: <strong className="text-[var(--text-primary)]">{z.affectedAccountsCount} accounts</strong>
                     </span>
                     <span className={isQuarantined ? 'text-emerald-600 dark:text-emerald-400 font-bold' : 'text-amber-600 dark:text-amber-400'}>
                       {isQuarantined ? '🛡️ Quarantined' : '🔴 Uncontained'}
@@ -99,13 +99,13 @@ export const ZeroDayRadarView: React.FC = () => {
         {/* Right Column: Deep Incident Breakdown & Auto-Signature (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
           {selectedIncident && (
-            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-5 transition-colors">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-[#1b2b4c]">
+            <div className="p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-5 transition-colors">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[var(--border-subtle)]">
                 <div>
                   <span className="text-[10px] font-mono text-rose-600 dark:text-rose-400 font-bold uppercase">
                     Zero-Day Signature: {selectedIncident.strainId}
                   </span>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white mt-0.5">
+                  <h3 className="text-base font-bold text-[var(--text-primary)] mt-0.5">
                     {selectedIncident.strainName}
                   </h3>
                 </div>
@@ -127,14 +127,14 @@ export const ZeroDayRadarView: React.FC = () => {
               </div>
 
               {/* Behavior Breakdown */}
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#080e1e] dark:border-[#1e2f54] space-y-2">
-                <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase">
+              <div className="p-4 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-2">
+                <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase">
                   Unprecedented Behavioral Artifact
                 </span>
-                <p className="text-xs text-slate-700 dark:text-slate-200 font-medium leading-relaxed">
+                <p className="text-xs text-[var(--text-secondary)] font-medium leading-relaxed">
                   {selectedIncident.description}
                 </p>
-                <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-slate-600 dark:text-slate-300 pt-1">
+                <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-[var(--text-secondary)] pt-1">
                   <span>Anomaly Distance: <b className="text-rose-600 dark:text-rose-400">4.8 Sigma from baseline</b></span>
                   <span>Clustered Nodes: <b className="text-sky-600 dark:text-sky-300">{selectedIncident.affectedAccountsCount} Accounts</b></span>
                 </div>
@@ -146,7 +146,7 @@ export const ZeroDayRadarView: React.FC = () => {
                   <Sparkles className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
                   Auto-Synthesized Candidate Rule
                 </span>
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sky-700 dark:bg-[#070c1a] dark:border-[#182644] dark:text-sky-300 font-mono text-[11px] leading-relaxed">
+                <div className="p-3.5 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] text-sky-700 dark:text-sky-300 font-mono text-[11px] leading-relaxed">
                   {selectedIncident.candidateRule}
                 </div>
               </div>

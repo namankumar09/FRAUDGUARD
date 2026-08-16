@@ -544,7 +544,7 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
       case 'APPROVED':
         return 'bg-emerald-100 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/40';
       default:
-        return 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700';
+        return 'bg-[var(--bg-subtle)] text-[var(--text-secondary)] border-[var(--border-color)]';
     }
   };
 
@@ -580,33 +580,33 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
       )}
 
       {/* Top Banner Header */}
-      <div className="p-5 md:p-6 rounded-3xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638] shadow-xs space-y-4">
+      <div className="p-5 md:p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs space-y-4">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-teal-500/10 text-teal-700 dark:text-teal-300 border border-teal-500/30 flex items-center gap-1.5">
-                <Activity className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+              <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[var(--color-brand)]/10 text-[var(--color-brand-strong)] border border-[var(--color-brand)]/30 flex items-center gap-1.5">
+                <Activity className="w-3.5 h-3.5 text-[var(--color-brand)]" />
                 TRANSACTION INTELLIGENCE & FORENSIC STREAM
               </span>
-              <span className="text-xs text-slate-500 dark:text-slate-400 font-mono flex items-center gap-1">
+              <span className="text-xs text-[var(--text-muted)] font-mono flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                 Live Database Stream
               </span>
             </div>
-            <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] tracking-tight">
               Real-time payment risk evaluation, behavioral signals, and investigator controls
             </h2>
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5">
             {/* View Mode Toggle */}
-            <div className="flex items-center p-1 rounded-xl bg-slate-100 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
+            <div className="flex items-center p-1 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
               <button
                 onClick={() => setViewMode('split')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                   viewMode === 'split'
-                    ? 'bg-white dark:bg-[#1a2233] text-teal-700 dark:text-teal-300 shadow-2xs'
-                    : 'text-slate-500 hover:text-slate-800 dark:hover:text-white'
+                    ? 'bg-[var(--bg-card)] text-[var(--color-brand-strong)] shadow-2xs'
+                    : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                 }`}
                 title="Split Dossier View"
               >
@@ -617,8 +617,8 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                 onClick={() => setViewMode('table')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                   viewMode === 'table'
-                    ? 'bg-white dark:bg-[#1a2233] text-teal-700 dark:text-teal-300 shadow-2xs'
-                    : 'text-slate-500 hover:text-slate-800 dark:hover:text-white'
+                    ? 'bg-[var(--bg-card)] text-[var(--color-brand-strong)] shadow-2xs'
+                    : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                 }`}
                 title="Full Table View"
               >
@@ -629,7 +629,7 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
 
             <button
               onClick={() => setShowCreateModal(true)}
-              className="flex items-center gap-1.5 px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-4 py-2 bg-[var(--color-brand-solid)] hover:opacity-90 text-white rounded-xl text-xs font-semibold shadow-xs transition-colors cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               Test / Evaluate Payment
@@ -637,7 +637,7 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
 
             <button
               onClick={loadTransactions}
-              className="p-2 bg-slate-100 dark:bg-[#182030] hover:bg-slate-200 dark:hover:bg-[#223048] rounded-xl text-slate-600 dark:text-slate-300 transition-colors cursor-pointer"
+              className="p-2 bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] rounded-xl text-[var(--text-secondary)] transition-colors cursor-pointer"
               title="Refresh and sync transactions feed"
             >
               <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
@@ -646,30 +646,30 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
         </div>
 
         {/* Live Metrics Summary Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-slate-100 dark:border-[#1c2638] text-xs font-mono">
-          <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
-            <span className="text-[10px] text-slate-400 block uppercase">Total Monitored</span>
-            <span className="text-sm font-bold text-slate-900 dark:text-white">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-[var(--border-subtle)] text-xs font-mono">
+          <div className="p-3 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+            <span className="text-[10px] text-[var(--text-muted)] block uppercase">Total Monitored</span>
+            <span className="text-sm font-bold text-[var(--text-primary)]">
               {rawTransactions.length} Transactions
             </span>
           </div>
 
-          <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
-            <span className="text-[10px] text-slate-400 block uppercase">High Risk (🔴)</span>
+          <div className="p-3 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+            <span className="text-[10px] text-[var(--text-muted)] block uppercase">High Risk (🔴)</span>
             <span className="text-sm font-bold text-red-600 dark:text-red-400">
               {rawTransactions.filter((t) => t.riskScore.riskLevel === 'high' || t.riskScore.totalScore >= 60).length} Flagged
             </span>
           </div>
 
-          <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
-            <span className="text-[10px] text-slate-400 block uppercase">Suspicious (🟡)</span>
+          <div className="p-3 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+            <span className="text-[10px] text-[var(--text-muted)] block uppercase">Suspicious (🟡)</span>
             <span className="text-sm font-bold text-amber-600 dark:text-amber-400">
               {rawTransactions.filter((t) => t.riskScore.riskLevel === 'suspicious' || (t.riskScore.totalScore >= 30 && t.riskScore.totalScore < 60)).length} Under Review
             </span>
           </div>
 
-          <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
-            <span className="text-[10px] text-slate-400 block uppercase">Low Risk (🟢)</span>
+          <div className="p-3 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+            <span className="text-[10px] text-[var(--text-muted)] block uppercase">Low Risk (🟢)</span>
             <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">
               {rawTransactions.filter((t) => t.riskScore.riskLevel === 'low' || t.riskScore.totalScore < 30).length} Clean
             </span>
@@ -678,22 +678,22 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
       </div>
 
       {/* Comprehensive Search & Multi-Filter Control Panel */}
-      <div className="p-4 md:p-5 rounded-3xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638] shadow-xs space-y-4">
+      <div className="p-4 md:p-5 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs space-y-4">
         {/* Search Row */}
         <div className="flex flex-col md:flex-row items-center gap-3">
           <div className="relative flex-1 w-full">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[var(--text-muted)] absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search by Transaction ID, Customer Name, Customer ID, Payee, Email, IP, or Driver..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl pl-10 pr-10 py-2.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 transition-colors"
+              className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl pl-10 pr-10 py-2.5 text-xs text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--color-brand)] transition-colors"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -701,13 +701,13 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
           </div>
 
           <div className="flex items-center gap-2 w-full md:w-auto justify-between md:justify-end">
-            <div className="flex items-center gap-1.5 text-xs text-slate-500 font-mono">
-              <ArrowUpDown className="w-3.5 h-3.5 text-slate-400" />
+            <div className="flex items-center gap-1.5 text-xs text-[var(--text-muted)] font-mono">
+              <ArrowUpDown className="w-3.5 h-3.5 text-[var(--text-muted)]" />
               <span>Sort:</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-lg px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-teal-500"
+                className="bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-lg px-2.5 py-1.5 text-xs text-[var(--text-secondary)] focus:outline-none focus:border-[var(--color-brand)]"
               >
                 <option value="newest">Newest First</option>
                 <option value="highest_risk">Highest Risk Score</option>
@@ -729,14 +729,14 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
         </div>
 
         {/* Filter Dropdowns Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5 pt-2 border-t border-slate-100 dark:border-[#1c2638] text-xs">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5 pt-2 border-t border-[var(--border-subtle)] text-xs">
           {/* Risk Level */}
           <div>
-            <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">Risk Level</label>
+            <label className="block text-[10px] font-mono uppercase text-[var(--text-muted)] mb-1">Risk Level</label>
             <select
               value={selectedRiskFilter}
               onChange={(e) => setSelectedRiskFilter(e.target.value as any)}
-              className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl px-2.5 py-1.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-teal-500 font-semibold"
+              className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-2.5 py-1.5 text-[var(--text-secondary)] focus:outline-none focus:border-[var(--color-brand)] font-semibold"
             >
               <option value="all">All Risk Levels</option>
               <option value="high">🔴 High Risk (60+)</option>
@@ -747,11 +747,11 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
 
           {/* Decision */}
           <div>
-            <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">Decision</label>
+            <label className="block text-[10px] font-mono uppercase text-[var(--text-muted)] mb-1">Decision</label>
             <select
               value={selectedDecisionFilter}
               onChange={(e) => setSelectedDecisionFilter(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl px-2.5 py-1.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-teal-500 font-semibold"
+              className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-2.5 py-1.5 text-[var(--text-secondary)] focus:outline-none focus:border-[var(--color-brand)] font-semibold"
             >
               <option value="all">All Decisions</option>
               <option value="APPROVE">Approve</option>
@@ -764,11 +764,11 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
 
           {/* Status */}
           <div>
-            <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">Status</label>
+            <label className="block text-[10px] font-mono uppercase text-[var(--text-muted)] mb-1">Status</label>
             <select
               value={selectedStatusFilter}
               onChange={(e) => setSelectedStatusFilter(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl px-2.5 py-1.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-teal-500 font-semibold"
+              className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-2.5 py-1.5 text-[var(--text-secondary)] focus:outline-none focus:border-[var(--color-brand)] font-semibold"
             >
               <option value="all">All Statuses</option>
               <option value="PENDING_REVIEW">Pending Review</option>
@@ -781,11 +781,11 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
 
           {/* Country */}
           <div>
-            <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">Country</label>
+            <label className="block text-[10px] font-mono uppercase text-[var(--text-muted)] mb-1">Country</label>
             <select
               value={selectedCountryFilter}
               onChange={(e) => setSelectedCountryFilter(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl px-2.5 py-1.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-teal-500 font-semibold"
+              className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-2.5 py-1.5 text-[var(--text-secondary)] focus:outline-none focus:border-[var(--color-brand)] font-semibold"
             >
               <option value="all">All Countries</option>
               {availableCountries.map((c) => (
@@ -798,11 +798,11 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
 
           {/* Amount Range */}
           <div>
-            <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">Amount Range</label>
+            <label className="block text-[10px] font-mono uppercase text-[var(--text-muted)] mb-1">Amount Range</label>
             <select
               value={selectedAmountFilter}
               onChange={(e) => setSelectedAmountFilter(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl px-2.5 py-1.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-teal-500 font-semibold"
+              className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-2.5 py-1.5 text-[var(--text-secondary)] focus:outline-none focus:border-[var(--color-brand)] font-semibold"
             >
               <option value="all">All Amounts</option>
               <option value="<25k">Under ₹25,000</option>
@@ -813,11 +813,11 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
 
           {/* Payment Method */}
           <div>
-            <label className="block text-[10px] font-mono uppercase text-slate-400 mb-1">Payment Method</label>
+            <label className="block text-[10px] font-mono uppercase text-[var(--text-muted)] mb-1">Payment Method</label>
             <select
               value={selectedPaymentMethodFilter}
               onChange={(e) => setSelectedPaymentMethodFilter(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl px-2.5 py-1.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-teal-500 font-semibold"
+              className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-2.5 py-1.5 text-[var(--text-secondary)] focus:outline-none focus:border-[var(--color-brand)] font-semibold"
             >
               <option value="all">All Methods</option>
               <option value="UPI">UPI</option>
@@ -829,12 +829,12 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
         </div>
 
         {/* Status Count Feedback */}
-        <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono pt-1">
+        <div className="flex items-center justify-between text-xs text-[var(--text-muted)] font-mono pt-1">
           <span>
             Showing <strong>{filteredTransactions.length}</strong> of <strong>{rawTransactions.length}</strong> transactions
           </span>
           {activeFiltersCount > 0 && (
-            <span className="text-teal-600 dark:text-teal-400 font-semibold">
+            <span className="text-[var(--color-brand)] font-semibold">
               Filtered by {activeFiltersCount} active filter{activeFiltersCount > 1 ? 's' : ''}
             </span>
           )}
@@ -848,17 +848,17 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
           <div className="lg:col-span-5 space-y-3">
             <div className="space-y-3 max-h-[720px] overflow-y-auto custom-scrollbar pr-1">
               {isLoading ? (
-                <div className="p-12 text-center text-xs text-slate-400 bg-white dark:bg-[#121721] rounded-3xl border border-slate-200 dark:border-[#1c2638]">
-                  <RefreshCw className="w-5 h-5 animate-spin mx-auto mb-2 text-teal-500" />
+                <div className="p-12 text-center text-xs text-[var(--text-muted)] bg-[var(--bg-card)] rounded-3xl border border-[var(--border-color)]">
+                  <RefreshCw className="w-5 h-5 animate-spin mx-auto mb-2 text-[var(--color-brand)]" />
                   Loading live database transactions...
                 </div>
               ) : filteredTransactions.length === 0 ? (
-                <div className="p-12 text-center text-xs text-slate-400 bg-white dark:bg-[#121721] rounded-3xl border border-slate-200 dark:border-[#1c2638] space-y-3">
-                  <SlidersHorizontal className="w-6 h-6 mx-auto text-slate-300 dark:text-slate-600" />
+                <div className="p-12 text-center text-xs text-[var(--text-muted)] bg-[var(--bg-card)] rounded-3xl border border-[var(--border-color)] space-y-3">
+                  <SlidersHorizontal className="w-6 h-6 mx-auto text-[var(--text-muted)]" />
                   <p>No transactions match your search and filter criteria.</p>
                   <button
                     onClick={handleResetFilters}
-                    className="px-4 py-1.5 rounded-xl bg-teal-50 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300 text-xs font-semibold border border-teal-200 dark:border-teal-800/40"
+                    className="px-4 py-1.5 rounded-xl bg-[var(--color-brand-bg)] text-[var(--color-brand-strong)] text-xs font-semibold border border-[var(--color-brand-border)]"
                   >
                     Clear All Filters
                   </button>
@@ -875,14 +875,14 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                       }}
                       className={`p-4 rounded-2xl border transition-all cursor-pointer text-left ${
                         isSelected
-                          ? 'bg-teal-50/50 dark:bg-teal-950/30 border-teal-500 dark:border-teal-500/60 shadow-xs ring-1 ring-teal-500/40'
-                          : 'bg-white dark:bg-[#121721] border-slate-200 dark:border-[#1c2638] hover:border-slate-300 dark:hover:border-[#28364e]'
+                          ? 'bg-[var(--color-brand)]/10 border-[var(--color-brand)] shadow-xs ring-1 ring-[var(--color-brand)]/40'
+                          : 'bg-[var(--bg-card)] border-[var(--border-color)] hover:border-[var(--border-subtle)]'
                       }`}
                     >
                       {/* Top Header */}
                       <div className="flex items-center justify-between gap-2 mb-2">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono font-bold text-slate-900 dark:text-white">
+                          <span className="text-xs font-mono font-bold text-[var(--text-primary)]">
                             {txn.transactionRef}
                           </span>
                           <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border uppercase ${getDecisionBadge(txn.decision)}`}>
@@ -898,33 +898,33 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                       {/* Middle: Customer & Amount */}
                       <div className="flex items-center justify-between text-xs mb-2">
                         <div className="min-w-0 pr-2">
-                          <p className="font-semibold text-slate-900 dark:text-white truncate">
+                          <p className="font-semibold text-[var(--text-primary)] truncate">
                             {txn.customer.name}
-                            <span className="text-[10px] font-mono text-slate-400 ml-1">({txn.customer.id})</span>
+                            <span className="text-[10px] font-mono text-[var(--text-muted)] ml-1">({txn.customer.id})</span>
                           </p>
-                          <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
+                          <p className="text-[11px] text-[var(--text-muted)] truncate">
                             To: {txn.beneficiary.name}
                           </p>
                         </div>
                         <div className="text-right shrink-0">
-                          <p className="font-mono font-bold text-slate-900 dark:text-white text-sm">
+                          <p className="font-mono font-bold text-[var(--text-primary)] text-sm">
                             ₹{Number(txn.amount).toLocaleString('en-IN')}
                           </p>
-                          <p className="text-[10px] text-slate-400">{txn.timestamp}</p>
+                          <p className="text-[10px] text-[var(--text-muted)]">{txn.timestamp}</p>
                         </div>
                       </div>
 
                       {/* Bottom Footer Details */}
-                      <div className="pt-2 border-t border-slate-100 dark:border-[#1c2638] flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                      <div className="pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-[11px] text-[var(--text-muted)]">
                         <div className="flex items-center gap-2 truncate max-w-[240px]">
-                          <span className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-mono">
+                          <span className="px-1.5 py-0.5 rounded bg-[var(--bg-subtle)] text-[10px] font-mono">
                             {txn.channel || txn.paymentMethod || 'UPI'}
                           </span>
                           <span className="truncate">
                             {txn.country || txn.behavioralBiometrics?.deviceFingerprint?.ipCountry || 'India'}
                           </span>
                         </div>
-                        <span className="text-teal-600 dark:text-teal-400 font-semibold flex items-center gap-0.5 shrink-0">
+                        <span className="text-[var(--color-brand)] font-semibold flex items-center gap-0.5 shrink-0">
                           Inspect <ArrowRight className="w-3 h-3" />
                         </span>
                       </div>
@@ -938,12 +938,12 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
           {/* Right Column: Selected Transaction Forensic Inspector (7 cols) */}
           <div className="lg:col-span-7">
             {selectedTxn ? (
-              <div className="bg-white dark:bg-[#121721] rounded-3xl border border-slate-200 dark:border-[#1c2638] p-6 space-y-6 shadow-xs text-left">
+              <div className="bg-[var(--bg-card)] rounded-3xl border border-[var(--border-color)] p-6 space-y-6 shadow-xs text-left">
                 {/* Header & Quick Action Buttons */}
-                <div className="border-b border-slate-100 dark:border-[#1c2638] pb-5 space-y-4">
+                <div className="border-b border-[var(--border-subtle)] pb-5 space-y-4">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-xs font-mono font-bold text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/40 px-2.5 py-1 rounded-lg border border-teal-200 dark:border-teal-800/40">
+                      <span className="text-xs font-mono font-bold text-[var(--color-brand)] bg-[var(--color-brand-bg)] px-2.5 py-1 rounded-lg border border-[var(--color-brand-border)]">
                         {selectedTxn.transactionRef}
                       </span>
                       {getRiskBadge(selectedTxn.riskScore.riskLevel, selectedTxn.riskScore.totalScore)}
@@ -984,7 +984,7 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                       {onSelectTransaction && (
                         <button
                           onClick={() => onSelectTransaction(selectedTxn)}
-                          className="p-1.5 bg-slate-100 dark:bg-[#182030] hover:bg-slate-200 dark:hover:bg-[#223048] rounded-xl text-slate-600 dark:text-slate-300 transition-colors"
+                          className="p-1.5 bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] rounded-xl text-[var(--text-secondary)] transition-colors"
                           title="Open in full screen modal"
                         >
                           <ExternalLink className="w-4 h-4" />
@@ -995,42 +995,42 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
 
                   {/* Primary Grid Specs */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-                    <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
-                      <span className="text-[10px] font-mono text-slate-400 block uppercase">Payment Amount</span>
-                      <span className="font-mono font-bold text-slate-900 dark:text-white text-base">
+                    <div className="p-3 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+                      <span className="text-[10px] font-mono text-[var(--text-muted)] block uppercase">Payment Amount</span>
+                      <span className="font-mono font-bold text-[var(--text-primary)] text-base">
                         ₹{Number(selectedTxn.amount).toLocaleString('en-IN')}
                       </span>
-                      <span className="text-[10px] text-slate-400 font-mono block mt-0.5">
+                      <span className="text-[10px] text-[var(--text-muted)] font-mono block mt-0.5">
                         {selectedTxn.currency} via {selectedTxn.channel || selectedTxn.paymentMethod}
                       </span>
                     </div>
 
-                    <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
-                      <span className="text-[10px] font-mono text-slate-400 block uppercase">Customer</span>
-                      <span className="font-semibold text-slate-900 dark:text-white truncate block">
+                    <div className="p-3 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+                      <span className="text-[10px] font-mono text-[var(--text-muted)] block uppercase">Customer</span>
+                      <span className="font-semibold text-[var(--text-primary)] truncate block">
                         {selectedTxn.customer.name}
                       </span>
-                      <span className="text-[10px] text-slate-400 font-mono truncate block mt-0.5">
+                      <span className="text-[10px] text-[var(--text-muted)] font-mono truncate block mt-0.5">
                         {selectedTxn.customer.email}
                       </span>
                     </div>
 
-                    <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
-                      <span className="text-[10px] font-mono text-slate-400 block uppercase">Beneficiary Payee</span>
-                      <span className="font-semibold text-slate-900 dark:text-white truncate block">
+                    <div className="p-3 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+                      <span className="text-[10px] font-mono text-[var(--text-muted)] block uppercase">Beneficiary Payee</span>
+                      <span className="font-semibold text-[var(--text-primary)] truncate block">
                         {selectedTxn.beneficiary.name}
                       </span>
-                      <span className="text-[10px] text-slate-400 font-mono truncate block mt-0.5">
+                      <span className="text-[10px] text-[var(--text-muted)] font-mono truncate block mt-0.5">
                         {selectedTxn.beneficiary.accountNumberMasked}
                       </span>
                     </div>
 
-                    <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
-                      <span className="text-[10px] font-mono text-slate-400 block uppercase">Origin / Device</span>
-                      <span className="font-semibold text-slate-900 dark:text-white truncate block">
+                    <div className="p-3 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+                      <span className="text-[10px] font-mono text-[var(--text-muted)] block uppercase">Origin / Device</span>
+                      <span className="font-semibold text-[var(--text-primary)] truncate block">
                         {selectedTxn.country || selectedTxn.behavioralBiometrics?.deviceFingerprint?.ipCountry || 'India'}
                       </span>
-                      <span className="text-[10px] text-slate-400 font-mono truncate block mt-0.5">
+                      <span className="text-[10px] text-[var(--text-muted)] font-mono truncate block mt-0.5">
                         {selectedTxn.behavioralBiometrics?.deviceFingerprint?.os || 'Mobile OS'} • {selectedTxn.ipAddress}
                       </span>
                     </div>
@@ -1042,25 +1042,25 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                       <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
                       <span>Primary Risk Driver:</span>
                     </div>
-                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed font-mono text-xs">
+                    <p className="text-[var(--text-secondary)] leading-relaxed font-mono text-xs">
                       {selectedTxn.riskScore.primaryDriver}
                     </p>
                   </div>
                 </div>
 
                 {/* Gemini AI Synthesis Card */}
-                <div className="p-4 bg-gradient-to-br from-teal-50/80 to-indigo-50/80 dark:from-teal-950/20 dark:to-indigo-950/20 rounded-3xl border border-teal-200/60 dark:border-teal-500/30 space-y-3">
+                <div className="p-4 bg-gradient-to-br from-[var(--color-brand-bg)] to-indigo-50/80 dark:to-indigo-950/20 rounded-3xl border border-[var(--color-brand-border)] space-y-3">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-teal-600 dark:text-teal-400" />
-                      <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+                      <Sparkles className="w-4 h-4 text-[var(--color-brand)]" />
+                      <h4 className="text-xs font-bold text-[var(--text-primary)]">
                         Gemini AI Risk Synthesis & Forensic Explanation
                       </h4>
                     </div>
                     <button
                       onClick={handleExplainAi}
                       disabled={isAiLoading}
-                      className="flex items-center gap-1.5 px-3 py-1.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-semibold transition-colors disabled:opacity-50 cursor-pointer shadow-xs"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-[var(--color-brand-solid)] hover:opacity-90 text-white rounded-xl text-xs font-semibold transition-colors disabled:opacity-50 cursor-pointer shadow-xs"
                     >
                       <Sparkles className={`w-3.5 h-3.5 ${isAiLoading ? 'animate-spin' : ''}`} />
                       {isAiLoading ? 'Synthesizing...' : 'Explain Risk with AI'}
@@ -1068,11 +1068,11 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                   </div>
 
                   {aiExplanation ? (
-                    <div className="p-3.5 bg-white dark:bg-[#121721] rounded-2xl border border-teal-100 dark:border-teal-900/40 text-xs text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line font-sans">
+                    <div className="p-3.5 bg-[var(--bg-card)] rounded-2xl border border-[var(--color-brand-border)] text-xs text-[var(--text-secondary)] leading-relaxed whitespace-pre-line font-sans">
                       {aiExplanation}
                     </div>
                   ) : (
-                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                       Click the button above to request real-time behavioral forensic explanation synthesized by Gemini AI analyzing anomaly weights, cadence drift, and mule networks.
                     </p>
                   )}
@@ -1081,10 +1081,10 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                 {/* Forensic Signals Breakdown */}
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-mono font-bold uppercase text-slate-500 dark:text-slate-400">
+                    <h4 className="text-xs font-mono font-bold uppercase text-[var(--text-muted)]">
                       Risk Signal Breakdown ({selectedTxn.riskScore.breakdown.length} Signals)
                     </h4>
-                    <span className="text-[11px] font-mono text-slate-400">
+                    <span className="text-[11px] font-mono text-[var(--text-muted)]">
                       Confidence: {Math.round(selectedTxn.riskScore.confidence * 100)}%
                     </span>
                   </div>
@@ -1093,10 +1093,10 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                     {selectedTxn.riskScore.breakdown.map((sig, idx) => (
                       <div
                         key={idx}
-                        className="p-3.5 rounded-2xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] text-xs space-y-1.5"
+                        className="p-3.5 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)] text-xs space-y-1.5"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="font-bold text-slate-900 dark:text-white truncate pr-2">
+                          <span className="font-bold text-[var(--text-primary)] truncate pr-2">
                             {sig.signalName}
                           </span>
                           <span
@@ -1105,16 +1105,16 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                                 ? 'bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800/40'
                                 : sig.status === 'elevated'
                                 ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/40'
-                                : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                                : 'bg-[var(--bg-hover)] text-[var(--text-secondary)]'
                             }`}
                           >
                             +{sig.contribution} pts
                           </span>
                         </div>
-                        <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-normal">
+                        <p className="text-[11px] text-[var(--text-secondary)] leading-normal">
                           {sig.details}
                         </p>
-                        <span className="text-[10px] font-mono text-teal-600 dark:text-teal-400 block pt-1">
+                        <span className="text-[10px] font-mono text-[var(--color-brand)] block pt-1">
                           Evidence: {sig.microEvidence}
                         </span>
                       </div>
@@ -1123,36 +1123,36 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                 </div>
 
                 {/* Behavioral Biometrics Forensic Telemetry */}
-                <div className="p-4 rounded-3xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] space-y-3">
-                  <span className="text-xs font-mono font-bold text-slate-500 dark:text-slate-400 uppercase block">
+                <div className="p-4 rounded-3xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-3">
+                  <span className="text-xs font-mono font-bold text-[var(--text-muted)] uppercase block">
                     Behavioral Biometrics Telemetry
                   </span>
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center text-xs font-mono">
-                    <div className="p-2.5 rounded-xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638]">
-                      <span className="text-[10px] text-slate-400 block">Paste Latency</span>
-                      <span className={`font-bold text-sm ${(selectedTxn.behavioralBiometrics?.pasteLatencyMs ?? 0) < 600 ? 'text-red-600 dark:text-red-400' : 'text-slate-900 dark:text-white'}`}>
+                    <div className="p-2.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)]">
+                      <span className="text-[10px] text-[var(--text-muted)] block">Paste Latency</span>
+                      <span className={`font-bold text-sm ${(selectedTxn.behavioralBiometrics?.pasteLatencyMs ?? 0) < 600 ? 'text-red-600 dark:text-red-400' : 'text-[var(--text-primary)]'}`}>
                         {selectedTxn.behavioralBiometrics?.pasteLatencyMs ?? 340} ms
                       </span>
                     </div>
 
-                    <div className="p-2.5 rounded-xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638]">
-                      <span className="text-[10px] text-slate-400 block">Hesitation Pauses</span>
-                      <span className="font-bold text-slate-900 dark:text-white text-sm">
+                    <div className="p-2.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)]">
+                      <span className="text-[10px] text-[var(--text-muted)] block">Hesitation Pauses</span>
+                      <span className="font-bold text-[var(--text-primary)] text-sm">
                         {selectedTxn.behavioralBiometrics?.hesitationPauseCount ?? 3} pauses
                       </span>
                     </div>
 
-                    <div className="p-2.5 rounded-xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638]">
-                      <span className="text-[10px] text-slate-400 block">Seq. Deviation</span>
-                      <span className={`font-bold text-sm ${(selectedTxn.behavioralBiometrics?.formSequenceDeviationScore ?? 0) > 50 ? 'text-amber-600 dark:text-amber-400' : 'text-slate-900 dark:text-white'}`}>
+                    <div className="p-2.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)]">
+                      <span className="text-[10px] text-[var(--text-muted)] block">Seq. Deviation</span>
+                      <span className={`font-bold text-sm ${(selectedTxn.behavioralBiometrics?.formSequenceDeviationScore ?? 0) > 50 ? 'text-amber-600 dark:text-amber-400' : 'text-[var(--text-primary)]'}`}>
                         {selectedTxn.behavioralBiometrics?.formSequenceDeviationScore ?? 25}%
                       </span>
                     </div>
 
-                    <div className="p-2.5 rounded-xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638]">
-                      <span className="text-[10px] text-slate-400 block">Typing Speed</span>
-                      <span className="font-bold text-slate-900 dark:text-white text-sm">
+                    <div className="p-2.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)]">
+                      <span className="text-[10px] text-[var(--text-muted)] block">Typing Speed</span>
+                      <span className="font-bold text-[var(--text-primary)] text-sm">
                         {selectedTxn.behavioralBiometrics?.typingSpeedWPM ?? 45} WPM
                       </span>
                     </div>
@@ -1160,7 +1160,7 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                 </div>
               </div>
             ) : (
-              <div className="bg-white dark:bg-[#121721] rounded-3xl border border-slate-200 dark:border-[#1c2638] p-16 text-center text-slate-400 text-xs">
+              <div className="bg-[var(--bg-card)] rounded-3xl border border-[var(--border-color)] p-16 text-center text-[var(--text-muted)] text-xs">
                 Select a payment from the list to view its complete forensic telemetry and investigator controls.
               </div>
             )}
@@ -1170,11 +1170,11 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
 
       {/* VIEW MODE 2: DENSE DATA TABLE VIEW */}
       {viewMode === 'table' && (
-        <div className="bg-white dark:bg-[#121721] rounded-3xl border border-slate-200 dark:border-[#1c2638] shadow-xs overflow-hidden">
+        <div className="bg-[var(--bg-card)] rounded-3xl border border-[var(--border-color)] shadow-xs overflow-hidden">
           <div className="overflow-x-auto custom-scrollbar">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="border-b border-slate-200 dark:border-[#1c2638] bg-slate-50/80 dark:bg-[#0c1017] text-slate-500 dark:text-slate-400 font-mono text-[11px] uppercase">
+                <tr className="border-b border-[var(--border-color)] bg-[var(--bg-subtle)]/80 text-[var(--text-muted)] font-mono text-[11px] uppercase">
                   <th className="py-3.5 px-4 font-semibold">Transaction ID</th>
                   <th className="py-3.5 px-4 font-semibold">Customer</th>
                   <th className="py-3.5 px-4 font-semibold">Beneficiary Payee</th>
@@ -1187,10 +1187,10 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                   <th className="py-3.5 px-4 font-semibold text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-[#1c2638]">
+              <tbody className="divide-y divide-[var(--border-subtle)]">
                 {filteredTransactions.length === 0 ? (
                   <tr>
-                    <td colSpan={10} className="py-12 text-center text-slate-400 text-xs">
+                    <td colSpan={10} className="py-12 text-center text-[var(--text-muted)] text-xs">
                       No transactions match your search filters.
                     </td>
                   </tr>
@@ -1204,29 +1204,29 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                           setSelectedTxn(txn);
                           setAiExplanation(null);
                         }}
-                        className={`hover:bg-slate-50 dark:hover:bg-[#161d2a] cursor-pointer transition-colors ${
-                          isSelected ? 'bg-teal-50/50 dark:bg-teal-950/30 font-medium' : ''
+                        className={`hover:bg-[var(--bg-hover)] cursor-pointer transition-colors ${
+                          isSelected ? 'bg-[var(--color-brand)]/10 font-medium' : ''
                         }`}
                       >
-                        <td className="py-3.5 px-4 font-mono font-bold text-slate-900 dark:text-white whitespace-nowrap">
+                        <td className="py-3.5 px-4 font-mono font-bold text-[var(--text-primary)] whitespace-nowrap">
                           {txn.transactionRef}
                         </td>
                         <td className="py-3.5 px-4 whitespace-nowrap">
-                          <p className="font-semibold text-slate-900 dark:text-white">{txn.customer.name}</p>
-                          <p className="text-[10px] text-slate-400 font-mono">{txn.customer.id}</p>
+                          <p className="font-semibold text-[var(--text-primary)]">{txn.customer.name}</p>
+                          <p className="text-[10px] text-[var(--text-muted)] font-mono">{txn.customer.id}</p>
                         </td>
-                        <td className="py-3.5 px-4 whitespace-nowrap text-slate-700 dark:text-slate-300">
+                        <td className="py-3.5 px-4 whitespace-nowrap text-[var(--text-secondary)]">
                           {txn.beneficiary.name}
                         </td>
-                        <td className="py-3.5 px-4 font-mono font-bold text-slate-900 dark:text-white whitespace-nowrap">
+                        <td className="py-3.5 px-4 font-mono font-bold text-[var(--text-primary)] whitespace-nowrap">
                           ₹{Number(txn.amount).toLocaleString('en-IN')}
                         </td>
                         <td className="py-3.5 px-4 whitespace-nowrap">
-                          <span className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-[10px]">
+                          <span className="px-2 py-0.5 rounded bg-[var(--bg-subtle)] text-[var(--text-secondary)] font-mono text-[10px]">
                             {txn.channel || txn.paymentMethod || 'UPI'}
                           </span>
                         </td>
-                        <td className="py-3.5 px-4 whitespace-nowrap text-slate-600 dark:text-slate-400">
+                        <td className="py-3.5 px-4 whitespace-nowrap text-[var(--text-secondary)]">
                           {txn.country || txn.behavioralBiometrics?.deviceFingerprint?.ipCountry || 'India'}
                         </td>
                         <td className="py-3.5 px-4 whitespace-nowrap">
@@ -1249,7 +1249,7 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                               setSelectedTxn(txn);
                               if (onSelectTransaction) onSelectTransaction(txn);
                             }}
-                            className="px-2.5 py-1 bg-teal-50 dark:bg-teal-950/50 hover:bg-teal-100 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800/50 rounded-lg text-[11px] font-semibold transition-colors"
+                            className="px-2.5 py-1 bg-[var(--color-brand-bg)] hover:bg-[var(--color-brand)]/20 text-[var(--color-brand-strong)] border border-[var(--color-brand-border)] rounded-lg text-[11px] font-semibold transition-colors"
                           >
                             Inspect
                           </button>
@@ -1267,20 +1267,20 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
       {/* Modal: Create & Evaluate New Transaction */}
       {showCreateModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-          <div className="bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638] rounded-3xl w-full max-w-xl p-6 space-y-4 shadow-2xl text-left max-h-[90vh] overflow-y-auto custom-scrollbar">
+          <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl w-full max-w-xl p-6 space-y-4 shadow-2xl text-left max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                <h3 className="text-base font-bold text-[var(--text-primary)] flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-[var(--color-brand)]" />
                   Evaluate New Test Payment
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-[var(--text-muted)]">
                   Enter parameters to test real server-side risk scoring and ML anomaly detection
                 </p>
               </div>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="text-slate-400 hover:text-slate-600 dark:hover:text-white text-sm"
+                className="text-[var(--text-muted)] hover:text-[var(--text-primary)] text-sm"
               >
                 ✕
               </button>
@@ -1289,7 +1289,7 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
             <form onSubmit={handleCreateTransaction} className="space-y-4 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block font-semibold text-[var(--text-secondary)] mb-1">
                     Customer Name
                   </label>
                   <input
@@ -1297,12 +1297,12 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                     required
                     value={newCustName}
                     onChange={(e) => setNewCustName(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl text-slate-900 dark:text-white focus:outline-none focus:border-teal-500"
+                    className="w-full px-3 py-2 bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block font-semibold text-[var(--text-secondary)] mb-1">
                     Customer Email
                   </label>
                   <input
@@ -1310,14 +1310,14 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                     required
                     value={newCustEmail}
                     onChange={(e) => setNewCustEmail(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl text-slate-900 dark:text-white focus:outline-none focus:border-teal-500"
+                    className="w-full px-3 py-2 bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block font-semibold text-[var(--text-secondary)] mb-1">
                     Amount (INR ₹)
                   </label>
                   <input
@@ -1325,18 +1325,18 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                     required
                     value={newAmount}
                     onChange={(e) => setNewAmount(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 font-mono font-bold"
+                    className="w-full px-3 py-2 bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)] font-mono font-bold"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block font-semibold text-[var(--text-secondary)] mb-1">
                     Payment Method
                   </label>
                   <select
                     value={newPaymentMethod}
                     onChange={(e) => setNewPaymentMethod(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl text-slate-900 dark:text-white focus:outline-none focus:border-teal-500"
+                    className="w-full px-3 py-2 bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                   >
                     <option value="UPI">UPI</option>
                     <option value="NetBanking">NetBanking / IMPS</option>
@@ -1346,7 +1346,7 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block font-semibold text-[var(--text-secondary)] mb-1">
                     Country
                   </label>
                   <input
@@ -1354,13 +1354,13 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                     required
                     value={newCustCountry}
                     onChange={(e) => setNewCustCountry(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl text-slate-900 dark:text-white focus:outline-none focus:border-teal-500"
+                    className="w-full px-3 py-2 bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label className="block font-semibold text-[var(--text-secondary)] mb-1">
                   Beneficiary Payee Name
                 </label>
                 <input
@@ -1368,18 +1368,18 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                   required
                   value={newBeneficiary}
                   onChange={(e) => setNewBeneficiary(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl text-slate-900 dark:text-white focus:outline-none focus:border-teal-500"
+                  className="w-full px-3 py-2 bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                 />
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] space-y-3">
-                <span className="font-mono font-bold text-slate-500 dark:text-slate-400 uppercase text-[11px] block">
+              <div className="p-3.5 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-3">
+                <span className="font-mono font-bold text-[var(--text-muted)] uppercase text-[11px] block">
                   Simulate Behavioral & Anomaly Signals
                 </span>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-[var(--text-secondary)] mb-1">
                       Clipboard Paste Latency ({newPasteLatency} ms)
                     </label>
                     <input
@@ -1389,15 +1389,15 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                       step={50}
                       value={newPasteLatency}
                       onChange={(e) => setNewPasteLatency(parseInt(e.target.value))}
-                      className="w-full accent-teal-500"
+                      className="w-full accent-[var(--color-brand)]"
                     />
-                    <span className="text-[10px] text-slate-400">
+                    <span className="text-[10px] text-[var(--text-muted)]">
                       {newPasteLatency < 500 ? '⚡ Ultra-fast automated paste (<500ms)' : '✍️ Normal manual typing / paste'}
                     </span>
                   </div>
 
                   <div>
-                    <label className="block text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-[var(--text-secondary)] mb-1">
                       Hesitation Pauses: {newHesitations}
                     </label>
                     <input
@@ -1406,7 +1406,7 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                       max={10}
                       value={newHesitations}
                       onChange={(e) => setNewHesitations(parseInt(e.target.value))}
-                      className="w-full accent-teal-500"
+                      className="w-full accent-[var(--color-brand)]"
                     />
                   </div>
                 </div>
@@ -1417,7 +1417,7 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                       type="checkbox"
                       checked={newIsNewDevice}
                       onChange={(e) => setNewIsNewDevice(e.target.checked)}
-                      className="rounded accent-teal-500"
+                      className="rounded accent-[var(--color-brand)]"
                     />
                     <span>Unrecognized New Device</span>
                   </label>
@@ -1427,7 +1427,7 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                       type="checkbox"
                       checked={newIsVpn}
                       onChange={(e) => setNewIsVpn(e.target.checked)}
-                      className="rounded accent-teal-500"
+                      className="rounded accent-[var(--color-brand)]"
                     />
                     <span>Foreign VPN / Datacenter IP</span>
                   </label>
@@ -1438,14 +1438,14 @@ export const LiveTransactionStream: React.FC<LiveTransactionStreamProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="px-4 py-2 bg-slate-100 dark:bg-[#182030] text-slate-700 dark:text-slate-300 rounded-xl font-semibold hover:bg-slate-200 transition-colors"
+                  className="px-4 py-2 bg-[var(--bg-subtle)] text-[var(--text-secondary)] rounded-xl font-semibold hover:bg-[var(--bg-hover)] transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isCreatingTxn}
-                  className="px-5 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-semibold transition-colors disabled:opacity-50 cursor-pointer flex items-center gap-2 shadow-xs"
+                  className="px-5 py-2 bg-[var(--color-brand-solid)] hover:opacity-90 text-white rounded-xl font-semibold transition-colors disabled:opacity-50 cursor-pointer flex items-center gap-2 shadow-xs"
                 >
                   {isCreatingTxn ? 'Evaluating...' : 'Run Engine & Save'}
                 </button>

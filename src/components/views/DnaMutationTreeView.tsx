@@ -24,14 +24,14 @@ export const DnaMutationTreeView: React.FC = () => {
           onClick={() => setSelectedNode(node)}
           className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between text-xs ${
             isSelected
-              ? 'bg-purple-50 border-purple-400 ring-2 ring-purple-400/40 text-slate-900 font-bold dark:bg-[#152447] dark:text-white'
-              : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50 dark:bg-[#091122] dark:border-[#1b2b4c] dark:text-slate-300 dark:hover:bg-[#0e1b38]'
+              ? 'bg-purple-50 border-purple-400 ring-2 ring-purple-400/40 text-[var(--text-primary)] font-bold dark:bg-[#152447]'
+              : 'bg-[var(--bg-card)] border-[var(--border-color)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'
           }`}
           style={{ marginLeft: `${depth * 20}px` }}
         >
           <div className="flex items-center gap-2">
             <span className="text-purple-600 dark:text-purple-400 font-mono font-bold">🧬 {node.name}</span>
-            <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">({node.discoveredDate})</span>
+            <span className="text-[10px] font-mono text-[var(--text-muted)]">({node.discoveredDate})</span>
           </div>
           <span
             className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold ${
@@ -59,18 +59,18 @@ export const DnaMutationTreeView: React.FC = () => {
               <GitFork className="w-3.5 h-3.5" />
               FRAUD DNA MUTATION PHYLOGENETIC TREE
             </span>
-            <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">• Evolutionary Threat Genealogy</span>
+            <span className="text-xs text-[var(--text-muted)] font-mono">• Evolutionary Threat Genealogy</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
+          <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] tracking-tight mt-1">
             Visualizing the Evolutionary Genealogy of Fraud Strains
           </h2>
-          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed mt-1">
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed mt-1">
             Just like viral biology, financial fraud strategies mutate from ancestral strains: <strong>Pattern A (Ancestral Clipboard) → A1/A2 → A2.1 (Jitter Rehearsal) → A2.1.1 (Polymorphic Echo)</strong>.
           </p>
         </div>
 
         <div className="p-3 rounded-2xl bg-purple-50 border border-purple-200 dark:bg-[#091122] dark:border-[#1b2b4c] text-center font-mono">
-          <span className="text-[10px] text-slate-500 dark:text-slate-400 block">Genealogical Depth</span>
+          <span className="text-[10px] text-[var(--text-muted)] block">Genealogical Depth</span>
           <p className="text-xl font-bold text-purple-700 dark:text-purple-300 mt-0.5">Generation 4</p>
           <span className="text-[10px] text-sky-600 dark:text-sky-400">12 Lineages Mapped</span>
         </div>
@@ -79,12 +79,12 @@ export const DnaMutationTreeView: React.FC = () => {
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Interactive Tree Hierarchy (6 cols) */}
-        <div className="lg:col-span-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-3 transition-colors">
-          <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-[#1b2b4c]">
-            <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+        <div className="lg:col-span-6 p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-3 transition-colors">
+          <div className="flex items-center justify-between pb-2 border-b border-[var(--border-subtle)]">
+            <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider">
               Phylogenetic Branching Tree
             </h3>
-            <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">Click node to inspect</span>
+            <span className="text-[10px] font-mono text-[var(--text-muted)]">Click node to inspect</span>
           </div>
 
           <div className="space-y-2 max-h-[500px] overflow-y-auto custom-scrollbar pr-1">
@@ -95,20 +95,20 @@ export const DnaMutationTreeView: React.FC = () => {
         {/* Right Column: Node Forensic Dossier (6 cols) */}
         <div className="lg:col-span-6 space-y-4">
           {selectedNode && (
-            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-5 transition-colors">
-              <div className="pb-3 border-b border-slate-100 dark:border-[#1b2b4c]">
+            <div className="p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-5 transition-colors">
+              <div className="pb-3 border-b border-[var(--border-subtle)]">
                 <div className="flex items-center gap-2">
                   <span className="text-[10px] font-mono text-purple-600 dark:text-purple-400 font-bold uppercase">
                     Strain ID: {selectedNode.id}
                   </span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">• Discovered: {selectedNode.discoveredDate}</span>
+                  <span className="text-xs text-[var(--text-muted)] font-mono">• Discovered: {selectedNode.discoveredDate}</span>
                 </div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mt-1">{selectedNode.name}</h3>
+                <h3 className="text-base font-bold text-[var(--text-primary)] mt-1">{selectedNode.name}</h3>
               </div>
 
               <div className="space-y-1">
-                <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase">Mutation Description</span>
-                <p className="text-xs text-slate-700 dark:text-slate-200 leading-relaxed bg-slate-50 border-slate-200 dark:bg-[#080e1e] p-3 rounded-xl border dark:border-[#1a2846]">
+                <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Mutation Description</span>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed bg-[var(--bg-subtle)] border-[var(--border-color)] p-3 rounded-xl border">
                   {selectedNode.description}
                 </p>
               </div>

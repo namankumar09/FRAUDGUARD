@@ -71,12 +71,12 @@ export const PatternEvolutionEngineView: React.FC = () => {
               <GitBranch className="w-3.5 h-3.5" />
               FRAUD PATTERN EVOLUTION ENGINE
             </span>
-            <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">• 4-Week Evolutionary Mutation Tracking</span>
+            <span className="text-xs text-[var(--text-muted)] font-mono">• 4-Week Evolutionary Mutation Tracking</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
+          <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] tracking-tight mt-1">
             Tracking How Attack Strategies Branch & Mutate Over Time
           </h2>
-          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed mt-1">
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed mt-1">
             Fraud does not stay constant. As soon as a defensive rule is deployed, attackers mutate their cadence: <strong>Week 1 (Paste) → Week 2 (Replay) → Week 3 (Jitter Rehearsal) → Week 4 (Polymorphic Echo)</strong>.
           </p>
         </div>
@@ -89,13 +89,13 @@ export const PatternEvolutionEngineView: React.FC = () => {
       </div>
 
       {/* Evolutionary Chart */}
-      <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-4 transition-colors">
+      <div className="p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-4 transition-colors">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+            <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider">
               Evolutionary Strain Replacement Longitudinal Chart
             </h3>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+            <p className="text-[11px] text-[var(--text-muted)] mt-0.5">
               As older strains are intercepted by behavioral filters, mutated successor strains emerge.
             </p>
           </div>
@@ -148,22 +148,22 @@ export const PatternEvolutionEngineView: React.FC = () => {
               className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
                 isSelected
                   ? 'bg-sky-50 border-sky-400 shadow-md ring-1 ring-sky-400/30 dark:bg-[#121f3d] dark:shadow-xl'
-                  : 'bg-white border-slate-200 hover:bg-slate-50 dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:hover:bg-[#0f1a35]'
+                  : 'bg-[var(--bg-card)] border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
               }`}
             >
               <div>
-                <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-[#1a2846]">
+                <div className="flex items-center justify-between pb-2 border-b border-[var(--border-subtle)]">
                   <span className="font-mono font-bold text-xs" style={{ color: stage.color }}>
                     Week {stage.week}
                   </span>
-                  <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">{stage.riskVolume} intercepted</span>
+                  <span className="text-[10px] font-mono text-[var(--text-muted)]">{stage.riskVolume} intercepted</span>
                 </div>
 
-                <h4 className="text-xs font-bold text-slate-900 dark:text-white mt-2 leading-snug">{stage.name}</h4>
-                <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">{stage.description}</p>
+                <h4 className="text-xs font-bold text-[var(--text-primary)] mt-2 leading-snug">{stage.name}</h4>
+                <p className="text-[11px] text-[var(--text-secondary)] mt-2 leading-relaxed">{stage.description}</p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-[#1a2846] space-y-2 text-[10px] font-mono">
+              <div className="mt-4 pt-3 border-t border-[var(--border-subtle)] space-y-2 text-[10px] font-mono">
                 <div className="p-2 rounded bg-emerald-50 text-emerald-700 dark:bg-[#091122] dark:text-emerald-300">
                   <strong>Defensive Counter:</strong> {stage.countermeasure}
                 </div>

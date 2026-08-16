@@ -34,23 +34,23 @@ export const NextActionPredictionView: React.FC = () => {
               <Compass className="w-3.5 h-3.5" />
               NEXT ACTION STATE PREDICTION MODEL
             </span>
-            <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">• Probabilistic Behavioral Markov Transitions</span>
+            <span className="text-xs text-[var(--text-muted)] font-mono">• Probabilistic Behavioral Markov Transitions</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
+          <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] tracking-tight mt-1">
             Predicting What the Attacker Will Do Next
           </h2>
-          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed mt-1">
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed mt-1">
             Don't just evaluate the current action. Our probabilistic transition graph models the attacker's path: <strong>Current Action → Predicted Next Action (84% Probability) → Suggested Preemptive Defense</strong>.
           </p>
         </div>
 
         {/* Transaction Selector */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">Case:</span>
+          <span className="text-xs text-[var(--text-muted)] font-mono">Case:</span>
           <select
             value={selectedTxnId}
             onChange={(e) => setSelectedTxnId(e.target.value)}
-            className="bg-white border border-slate-300 text-slate-900 dark:bg-[#080e1e] dark:border-[#1e2f54] dark:text-white text-xs rounded-xl px-3 py-2 focus:outline-none focus:border-sky-400 font-mono"
+            className="bg-[var(--bg-card)] border border-slate-300 text-[var(--text-primary)] dark:border-[#1e2f54] text-xs rounded-xl px-3 py-2 focus:outline-none focus:border-sky-400 font-mono"
           >
             {MOCK_TRANSACTIONS.map((t) => (
               <option key={t.id} value={t.id}>
@@ -64,9 +64,9 @@ export const NextActionPredictionView: React.FC = () => {
       {/* Main Prediction Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Forecast Card (6 cols) */}
-        <div className="lg:col-span-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-5">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-[#1b2b4c]">
-            <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+        <div className="lg:col-span-6 p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
+            <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
               <Sparkles className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
               Predicted Next Behavioral Step
             </h3>
@@ -77,17 +77,17 @@ export const NextActionPredictionView: React.FC = () => {
 
           <div className="p-4 rounded-xl bg-gradient-to-r from-sky-50 to-indigo-50 dark:from-sky-950/40 dark:to-indigo-950/40 border border-sky-300 dark:border-sky-500/40 space-y-2">
             <span className="text-[10px] font-mono text-sky-700 dark:text-sky-400 uppercase font-bold">Highest Likelihood Transition</span>
-            <p className="text-base font-bold text-slate-900 dark:text-white font-mono">
+            <p className="text-base font-bold text-[var(--text-primary)] font-mono">
               {prediction.predictedAction}
             </p>
-            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
               Based on historical sequence traces across 12,000 compromise sessions, attackers exhibiting this specific hesitation cadence follow with high-velocity supplementary transfers within 90 seconds.
             </p>
           </div>
 
           {/* Markov State Transition Probabilities */}
           <div className="space-y-2.5">
-            <h4 className="text-xs font-mono font-bold text-slate-500 dark:text-slate-400 uppercase">
+            <h4 className="text-xs font-mono font-bold text-[var(--text-muted)] uppercase">
               Markov Transition Distribution
             </h4>
             {markovTransitions.map((tr, idx) => (
@@ -95,22 +95,22 @@ export const NextActionPredictionView: React.FC = () => {
                 key={idx}
                 className={`p-3 rounded-xl border flex items-center justify-between text-xs font-mono ${
                   tr.isPredicted
-                    ? 'bg-sky-50 border-sky-400 text-slate-900 dark:bg-[#142347] dark:text-white font-bold'
-                    : 'bg-slate-50 border-slate-200 text-slate-600 dark:bg-[#091122] dark:border-[#1a2846] dark:text-slate-300'
+                    ? 'bg-sky-50 border-sky-400 text-[var(--text-primary)] dark:bg-[#142347] font-bold'
+                    : 'bg-[var(--bg-subtle)] border-[var(--border-color)] text-[var(--text-secondary)]'
                 }`}
               >
                 <span>{tr.state}</span>
-                <span className={tr.isPredicted ? 'text-sky-700 dark:text-sky-300' : 'text-slate-500 dark:text-slate-400'}>{tr.probability}</span>
+                <span className={tr.isPredicted ? 'text-sky-700 dark:text-sky-300' : 'text-[var(--text-muted)]'}>{tr.probability}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Right Column: Preemptive Defense & Action (6 cols) */}
-        <div className="lg:col-span-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-5 flex flex-col justify-between">
+        <div className="lg:col-span-6 p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-5 flex flex-col justify-between">
           <div>
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-[#1b2b4c]">
-              <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+            <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
+              <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
                 <ShieldAlert className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                 Preemptive Defensive Interception
               </h3>
@@ -119,18 +119,18 @@ export const NextActionPredictionView: React.FC = () => {
 
             <div className="mt-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 dark:bg-emerald-950/20 dark:border-emerald-500/40 text-xs space-y-2">
               <span className="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 uppercase font-bold">Automated Defensive Recommendation</span>
-              <p className="text-slate-900 dark:text-white font-bold text-sm">
+              <p className="text-[var(--text-primary)] font-bold text-sm">
                 {prediction.preemptiveInterventionSuggested}
               </p>
-              <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-[11px]">
+              <p className="text-[var(--text-secondary)] leading-relaxed text-[11px]">
                 By arming the challenge <em>before</em> the attacker initiates the secondary transfer, we collapse the attack window to zero and preserve 100% of remaining account liquidity.
               </p>
             </div>
           </div>
 
-          <div className="pt-4 border-t border-slate-100 dark:border-[#1b2b4c] flex items-center justify-between">
-            <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">
-              Target Profile: <strong className="text-slate-900 dark:text-white">{selectedTxn.customer.name}</strong>
+          <div className="pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
+            <span className="text-xs text-[var(--text-muted)] font-mono">
+              Target Profile: <strong className="text-[var(--text-primary)]">{selectedTxn.customer.name}</strong>
             </span>
             <button
               onClick={() => alert(`Preemptive challenge armed for ${selectedTxn.customer.name}`)}

@@ -220,7 +220,7 @@ export function App() {
   }
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-[#f8fafc] dark:bg-[#0c1017] text-slate-900 dark:text-slate-100 font-sans transition-colors">
+    <div className="flex h-screen w-screen overflow-hidden bg-[var(--bg-app)] text-[var(--text-primary)] font-sans transition-colors">
       {/* Side Navigation Panel (desktop/browser only) */}
       {!isMobile && (
         <Sidebar

@@ -121,7 +121,7 @@ export const FraudRehearsalDetectorView: React.FC = () => {
             </span>
             <span className="text-xs text-slate-400 font-mono">• Non-Linear Execution Interception</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
+          <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] tracking-tight mt-1">
             Catching Attackers While They "Practice" Before Transferring
           </h2>
           <p className="text-xs md:text-sm text-slate-300 max-w-3xl leading-relaxed mt-1">
@@ -139,7 +139,7 @@ export const FraudRehearsalDetectorView: React.FC = () => {
           </button>
           <button
             onClick={resetPlayground}
-            className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-500 hover:text-slate-900 dark:bg-[#14203a] dark:hover:bg-[#1a2c52] dark:border-[#203358] dark:text-slate-400 dark:hover:text-white"
+            className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-[var(--text-muted)] hover:text-slate-900 dark:bg-[#14203a] dark:hover:bg-[#1a2c52] dark:border-[#203358] dark:hover:text-white"
             title="Reset Sandbox"
           >
             <RotateCcw className="w-4 h-4" />
@@ -185,9 +185,9 @@ export const FraudRehearsalDetectorView: React.FC = () => {
       {/* Main Grid: Interactive Sandbox (Left) & Real-Time Event Audit (Right) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Interactive Practice Playground (6 cols) */}
-        <div className="lg:col-span-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-[#1b2b4c]">
-            <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+        <div className="lg:col-span-6 p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
+            <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider">
               Interactive Practice Transfer Sandbox
             </h3>
             <span className="text-[10px] font-mono text-slate-400">Step-by-step Probing</span>
@@ -205,11 +205,11 @@ export const FraudRehearsalDetectorView: React.FC = () => {
                   placeholder="e.g. Mule Account 9908"
                   value={beneficiary}
                   onChange={(e) => setBeneficiary(e.target.value)}
-                  className="flex-1 bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 dark:bg-[#080f22] dark:border-[#1e2f54] dark:text-white focus:outline-none focus:border-sky-400"
+                  className="flex-1 bg-[var(--bg-card)] border border-slate-300 rounded-xl px-3.5 py-2 text-[var(--text-primary)] dark:border-[#1e2f54] focus:outline-none focus:border-sky-400"
                 />
                 <button
                   onClick={handleAddBeneficiary}
-                  className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 dark:bg-[#14203a] dark:hover:bg-[#1a2c52] dark:text-slate-200 dark:border-[#203358] font-mono text-xs"
+                  className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-[var(--text-secondary)] border border-slate-300 dark:bg-[#14203a] dark:hover:bg-[#1a2c52] dark:border-[#203358] font-mono text-xs"
                 >
                   Add Payee
                 </button>
@@ -217,7 +217,7 @@ export const FraudRehearsalDetectorView: React.FC = () => {
             </div>
 
             {/* Step 2: Probing Limit */}
-            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#080e1e] dark:border-[#1a2846] flex items-center justify-between">
+            <div className="p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] flex items-center justify-between">
               <div>
                 <span className="text-[11px] font-mono text-slate-400 block">Probe Max Account Limits</span>
                 <span className="text-xs text-slate-200">Daily IMPS Limit: ₹5,00,000 / day</span>
@@ -243,7 +243,7 @@ export const FraudRehearsalDetectorView: React.FC = () => {
                 placeholder="e.g. 480000"
                 value={transferAmount}
                 onChange={(e) => handleChangeAmount(e.target.value)}
-                className="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 dark:bg-[#080f22] dark:border-[#1e2f54] dark:text-white focus:outline-none focus:border-sky-400 font-mono"
+                className="w-full bg-[var(--bg-card)] border border-slate-300 rounded-xl px-3.5 py-2 text-[var(--text-primary)] dark:border-[#1e2f54] focus:outline-none focus:border-sky-400 font-mono"
               />
             </div>
 
@@ -266,9 +266,9 @@ export const FraudRehearsalDetectorView: React.FC = () => {
         </div>
 
         {/* Right Column: Rehearsal Audit Trail (6 cols) */}
-        <div className="lg:col-span-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-[#1b2b4c]">
-            <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+        <div className="lg:col-span-6 p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs dark:shadow-lg space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
+            <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
               <Clock className="w-3.5 h-3.5 text-sky-400" />
               Real-Time Practice Action Audit Log
             </h3>
@@ -284,11 +284,11 @@ export const FraudRehearsalDetectorView: React.FC = () => {
               events.map((ev) => (
                 <div
                   key={ev.id}
-                  className="p-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#091122] dark:border-[#1c2c4d] flex items-start justify-between gap-3 text-xs"
+                  className="p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] flex items-start justify-between gap-3 text-xs"
                 >
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-mono font-bold text-slate-900 dark:text-white">{ev.action}</span>
+                      <span className="font-mono font-bold text-[var(--text-primary)]">{ev.action}</span>
                       <span className="text-[10px] text-slate-500 font-mono">{ev.time}</span>
                     </div>
                     <p className="text-slate-300 text-[11px] mt-1">{ev.details}</p>

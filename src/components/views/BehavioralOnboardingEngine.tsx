@@ -240,19 +240,19 @@ export const BehavioralOnboardingEngine: React.FC = () => {
       className="p-4 md:p-6 space-y-6 animate-in fade-in select-none transition-colors"
     >
       {/* Header Banner */}
-      <div className="p-4 md:p-5 rounded-2xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638] flex flex-col lg:flex-row lg:items-center justify-between gap-4 shadow-xs">
+      <div className="p-4 md:p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] flex flex-col lg:flex-row lg:items-center justify-between gap-4 shadow-xs">
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
               <UserCheck className="w-3.5 h-3.5" />
               LIVE BEHAVIORAL ONBOARDING ENGINE
             </span>
-            <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">• Established Biometric Foundation</span>
+            <span className="text-xs text-[var(--text-muted)] font-mono">• Established Biometric Foundation</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1 font-sans">
+          <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] tracking-tight mt-1 font-sans">
             Real-Time Biometric KYC Telemetry & Behavioral Profile Synthesis
           </h2>
-          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed mt-1">
+          <p className="text-xs md:text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed mt-1">
             Instead of relying purely on static KYC documents (which can be forged or purchased), our engine creates a <strong>Living Behavioral Profile</strong> by measuring your keystroke rhythm, flight variance, copy-paste velocity, pause friction, and device fingerprint.
           </p>
         </div>
@@ -272,7 +272,7 @@ export const BehavioralOnboardingEngine: React.FC = () => {
           </button>
           <button
             onClick={resetSandbox}
-            className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-[#182132] dark:hover:bg-[#1f2c42] border border-slate-200 dark:border-[#24324a] text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+            className="p-2 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             title="Reset Sandbox"
           >
             <RefreshCw className="w-4 h-4" />
@@ -282,19 +282,19 @@ export const BehavioralOnboardingEngine: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Interactive Form Sandbox (7 cols) */}
-        <div className="lg:col-span-7 p-5 rounded-2xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638] shadow-xs space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-[#1c2638]">
+        <div className="lg:col-span-7 p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[var(--border-color)]">
             <div>
-              <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+              <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                 Live Customer Onboarding Form (Type or Paste Below to Test)
               </h3>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+              <p className="text-[11px] text-[var(--text-muted)] mt-0.5">
                 Every keystroke, hold duration, backspace, and cursor movement is recorded live.
               </p>
             </div>
             {activeField && (
-              <span className="px-2 py-0.5 rounded bg-teal-500/10 text-teal-700 dark:text-teal-300 text-[10px] font-mono border border-teal-500/30">
+              <span className="px-2 py-0.5 rounded bg-[var(--color-brand)]/10 text-[var(--color-brand-strong)] text-[10px] font-mono border border-[var(--color-brand)]/30">
                 Focus: {activeField}
               </span>
             )}
@@ -302,7 +302,7 @@ export const BehavioralOnboardingEngine: React.FC = () => {
 
           <div className="space-y-3.5 text-xs">
             <div>
-              <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1 flex justify-between">
+              <label className="block text-[var(--text-secondary)] font-medium mb-1 flex justify-between">
                 <span>1. Full Legal Name (as per Govt ID)</span>
                 <span className="text-[10px] font-mono text-slate-500">
                   {fieldMetrics.fullName.keystrokes} keys • {fieldMetrics.fullName.backspaces} corrections
@@ -318,13 +318,13 @@ export const BehavioralOnboardingEngine: React.FC = () => {
                 onBlur={() => handleFieldBlur('fullName')}
                 onKeyDown={(e) => handleKeyDown(e, 'fullName')}
                 onPaste={() => handlePaste('fullName')}
-                className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl px-3.5 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 dark:focus:border-teal-400 transition-colors"
+                className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-3.5 py-2.5 text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)] transition-colors"
               />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
-                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1 flex justify-between">
+                <label className="block text-[var(--text-secondary)] font-medium mb-1 flex justify-between">
                   <span>2. Govt ID / PAN / SSN</span>
                   <span className="text-[10px] font-mono text-slate-500">{fieldMetrics.idNumber.keystrokes} keys</span>
                 </label>
@@ -338,12 +338,12 @@ export const BehavioralOnboardingEngine: React.FC = () => {
                   onBlur={() => handleFieldBlur('idNumber')}
                   onKeyDown={(e) => handleKeyDown(e, 'idNumber')}
                   onPaste={() => handlePaste('idNumber')}
-                  className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl px-3.5 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 dark:focus:border-teal-400 transition-colors"
+                  className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-3.5 py-2.5 text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)] transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1 flex justify-between">
+                <label className="block text-[var(--text-secondary)] font-medium mb-1 flex justify-between">
                   <span>3. Mobile Phone</span>
                   <span className="text-[10px] font-mono text-slate-500">{fieldMetrics.phone.keystrokes} keys</span>
                 </label>
@@ -357,13 +357,13 @@ export const BehavioralOnboardingEngine: React.FC = () => {
                   onBlur={() => handleFieldBlur('phone')}
                   onKeyDown={(e) => handleKeyDown(e, 'phone')}
                   onPaste={() => handlePaste('phone')}
-                  className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl px-3.5 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 dark:focus:border-teal-400 transition-colors"
+                  className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-3.5 py-2.5 text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)] transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1 flex justify-between">
+              <label className="block text-[var(--text-secondary)] font-medium mb-1 flex justify-between">
                 <span>4. Email Address</span>
                 <span className="text-[10px] font-mono text-slate-500">{fieldMetrics.email.keystrokes} keys</span>
               </label>
@@ -377,12 +377,12 @@ export const BehavioralOnboardingEngine: React.FC = () => {
                 onBlur={() => handleFieldBlur('email')}
                 onKeyDown={(e) => handleKeyDown(e, 'email')}
                 onPaste={() => handlePaste('email')}
-                className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl px-3.5 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 dark:focus:border-teal-400 transition-colors"
+                className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-3.5 py-2.5 text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)] transition-colors"
               />
             </div>
 
             <div>
-              <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1 flex justify-between">
+              <label className="block text-[var(--text-secondary)] font-medium mb-1 flex justify-between">
                 <span>5. Residential Address (Test Copy-Paste Detection)</span>
                 <span className="text-[10px] font-mono text-slate-500">
                   {fieldMetrics.address.pastes > 0 ? (
@@ -402,12 +402,12 @@ export const BehavioralOnboardingEngine: React.FC = () => {
                 onBlur={() => handleFieldBlur('address')}
                 onKeyDown={(e) => handleKeyDown(e, 'address')}
                 onPaste={() => handlePaste('address')}
-                className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl px-3.5 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 dark:focus:border-teal-400 transition-colors"
+                className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-3.5 py-2 text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)] transition-colors"
               />
             </div>
 
             <div>
-              <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1 flex justify-between">
+              <label className="block text-[var(--text-secondary)] font-medium mb-1 flex justify-between">
                 <span>6. Monthly Income Range</span>
                 <span className="text-[10px] font-mono text-slate-500">{fieldMetrics.monthlyIncome.keystrokes} keys</span>
               </label>
@@ -421,7 +421,7 @@ export const BehavioralOnboardingEngine: React.FC = () => {
                 onBlur={() => handleFieldBlur('monthlyIncome')}
                 onKeyDown={(e) => handleKeyDown(e, 'monthlyIncome')}
                 onPaste={() => handlePaste('monthlyIncome')}
-                className="w-full bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] rounded-xl px-3.5 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 dark:focus:border-teal-400 transition-colors"
+                className="w-full bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl px-3.5 py-2.5 text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)] transition-colors"
               />
             </div>
 
@@ -429,7 +429,7 @@ export const BehavioralOnboardingEngine: React.FC = () => {
               <button
                 id="btn-generate-behavioral-profile"
                 onClick={handleGenerateProfile}
-                className="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs shadow-xs transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-xl bg-[var(--color-brand-solid)] hover:opacity-90 text-white font-bold text-xs shadow-xs transition-all flex items-center justify-center gap-2"
               >
                 <Sparkles className="w-4 h-4" />
                 Synthesize & Calibrate Behavioral DNA Profile
@@ -441,9 +441,9 @@ export const BehavioralOnboardingEngine: React.FC = () => {
         {/* Right Column: Real-time Live Biometric Telemetry (5 cols) */}
         <div className="lg:col-span-5 space-y-4">
           {/* Live Synthetic Bot vs Human Scoring Gauge */}
-          <div className="p-5 rounded-2xl bg-white dark:bg-[#121721] border border-slate-200 dark:border-[#1c2638] shadow-xs space-y-4">
+          <div className="p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-xs space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+              <h3 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider">
                 Real-Time Behavioral Verdict
               </h3>
               <span
@@ -460,17 +460,17 @@ export const BehavioralOnboardingEngine: React.FC = () => {
             {/* Risk Gauge Bar */}
             <div>
               <div className="flex justify-between text-xs font-mono mb-1.5">
-                <span className="text-slate-500 dark:text-slate-400">Automation / Bot Probability:</span>
+                <span className="text-[var(--text-muted)]">Automation / Bot Probability:</span>
                 <span className={botRiskScore > 50 ? 'text-rose-600 dark:text-rose-400 font-bold' : 'text-emerald-600 dark:text-emerald-400 font-bold'}>
                   {botRiskScore}%
                 </span>
               </div>
-              <div className="w-full h-3 bg-slate-100 dark:bg-[#0c1017] rounded-full overflow-hidden border border-slate-200 dark:border-[#1c2638] p-0.5">
+              <div className="w-full h-3 bg-[var(--bg-subtle)] rounded-full overflow-hidden border border-[var(--border-color)] p-0.5">
                 <div
                   className={`h-full rounded-full transition-all duration-300 ${
                     botRiskScore > 50
                       ? 'bg-gradient-to-r from-amber-500 to-rose-500'
-                      : 'bg-gradient-to-r from-emerald-500 to-teal-500'
+                      : 'bg-gradient-to-r from-[var(--color-tier-low)] to-[var(--color-brand)]'
                   }`}
                   style={{ width: `${botRiskScore}%` }}
                 />
@@ -479,69 +479,69 @@ export const BehavioralOnboardingEngine: React.FC = () => {
 
             {/* Micro Metrics Grid */}
             <div className="grid grid-cols-2 gap-2.5 pt-2 text-xs font-mono">
-              <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
-                  <Clock className="w-3 h-3 text-teal-600 dark:text-teal-400" /> Mean Flight Time:
+              <div className="p-2.5 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+                <span className="text-[10px] text-[var(--text-muted)] flex items-center gap-1">
+                  <Clock className="w-3 h-3 text-[var(--color-brand)]" /> Mean Flight Time:
                 </span>
-                <p className="text-sm font-bold text-slate-900 dark:text-white mt-1">{avgFlightTime} ms</p>
+                <p className="text-sm font-bold text-[var(--text-primary)] mt-1">{avgFlightTime} ms</p>
                 <span className="text-[9px] text-slate-500">Human norm: 120-280ms</span>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
+              <div className="p-2.5 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+                <span className="text-[10px] text-[var(--text-muted)] flex items-center gap-1">
                   <Activity className="w-3 h-3 text-purple-600 dark:text-purple-400" /> Flight Variance:
                 </span>
-                <p className="text-sm font-bold text-slate-900 dark:text-white mt-1">±{flightVariance} ms</p>
+                <p className="text-sm font-bold text-[var(--text-primary)] mt-1">±{flightVariance} ms</p>
                 <span className="text-[9px] text-slate-500">Low variance = Bot</span>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
+              <div className="p-2.5 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+                <span className="text-[10px] text-[var(--text-muted)] flex items-center gap-1">
                   <Copy className="w-3 h-3 text-amber-600 dark:text-amber-400" /> Clipboard Pastes:
                 </span>
-                <p className={`text-sm font-bold mt-1 ${totalPastes > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-slate-700 dark:text-slate-300'}`}>
+                <p className={`text-sm font-bold mt-1 ${totalPastes > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-[var(--text-secondary)]'}`}>
                   {totalPastes} events
                 </p>
                 <span className="text-[9px] text-slate-500">Address/PAN paste</span>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638]">
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
+              <div className="p-2.5 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)]">
+                <span className="text-[10px] text-[var(--text-muted)] flex items-center gap-1">
                   <Delete className="w-3 h-3 text-rose-600 dark:text-rose-400" /> Corrections:
                 </span>
-                <p className="text-sm font-bold text-slate-900 dark:text-white mt-1">{totalBackspaces} backspaces</p>
+                <p className="text-sm font-bold text-[var(--text-primary)] mt-1">{totalBackspaces} backspaces</p>
                 <span className="text-[9px] text-slate-500">Cognitive hesitation</span>
               </div>
             </div>
 
             {/* Mouse & Trajectory Telemetry */}
-            <div className="p-3 rounded-xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] text-xs font-mono space-y-1.5">
-              <div className="flex justify-between text-slate-700 dark:text-slate-300">
+            <div className="p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] text-xs font-mono space-y-1.5">
+              <div className="flex justify-between text-[var(--text-secondary)]">
                 <span>Mouse Micro-Events:</span>
-                <span className="text-teal-600 dark:text-teal-300 font-bold">{mouseMovesCount} points</span>
+                <span className="text-[var(--color-brand)] font-bold">{mouseMovesCount} points</span>
               </div>
-              <div className="flex justify-between text-slate-700 dark:text-slate-300">
+              <div className="flex justify-between text-[var(--text-secondary)]">
                 <span>Hesitation Pauses (&gt;1.2s):</span>
                 <span className="text-amber-600 dark:text-amber-300 font-bold">{hesitationPauses} instances</span>
               </div>
-              <div className="flex justify-between text-slate-700 dark:text-slate-300">
+              <div className="flex justify-between text-[var(--text-secondary)]">
                 <span>Form Navigation Order:</span>
-                <span className="text-slate-500 dark:text-slate-400 text-[10px] truncate max-w-[160px]">
+                <span className="text-[var(--text-muted)] text-[10px] truncate max-w-[160px]">
                   {formSequence.join(' → ') || 'None yet'}
                 </span>
               </div>
             </div>
 
             {/* Device & Hardware Fingerprint Box */}
-            <div className="p-3 rounded-xl bg-slate-50 dark:bg-[#0c1017] border border-slate-200 dark:border-[#1c2638] text-xs font-mono space-y-1">
-              <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 text-[11px] mb-1">
+            <div className="p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] text-xs font-mono space-y-1">
+              <div className="flex items-center gap-1.5 text-[var(--text-muted)] text-[11px] mb-1">
                 <Smartphone className="w-3.5 h-3.5 text-slate-400" />
                 <span>Captured Device Fingerprint</span>
               </div>
-              <p className="text-[11px] text-slate-700 dark:text-slate-300">
-                Screen: <b className="text-slate-900 dark:text-white">{window.innerWidth}x{window.innerHeight}</b> • Concurrency: <b className="text-slate-900 dark:text-white">{navigator.hardwareConcurrency || 8} cores</b>
+              <p className="text-[11px] text-[var(--text-secondary)]">
+                Screen: <b className="text-[var(--text-primary)]">{window.innerWidth}x{window.innerHeight}</b> • Concurrency: <b className="text-[var(--text-primary)]">{navigator.hardwareConcurrency || 8} cores</b>
               </p>
-              <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
+              <p className="text-[10px] text-[var(--text-muted)] truncate">
                 Canvas Hash: #4f882a1 • Touch: {('ontouchstart' in window) ? 'Yes' : 'No (Mouse/Trackpad)'}
               </p>
             </div>
@@ -554,7 +554,7 @@ export const BehavioralOnboardingEngine: React.FC = () => {
                 <CheckCircle2 className="w-4 h-4" />
                 <span>BEHAVIORAL DNA BASELINE GENERATED</span>
               </div>
-              <p className="text-slate-700 dark:text-slate-200 leading-relaxed text-[11px]">
+              <p className="text-[var(--text-secondary)] leading-relaxed text-[11px]">
                 A baseline typing rhythm score of <strong>{Math.max(10, 100 - botRiskScore)}%</strong> and mean flight time of <strong>{avgFlightTime}ms</strong> has been calibrated. Any future account takeover with mismatched biometrics will trigger immediate Step-Up Verification!
               </p>
             </div>

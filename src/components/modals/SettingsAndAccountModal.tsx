@@ -83,23 +83,23 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
       id="settings-account-modal"
       className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200"
     >
-      <div className="bg-white dark:bg-[#091124] border border-slate-200 dark:border-[#1d2f57] rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl text-slate-800 dark:text-slate-100 overflow-hidden transition-colors">
+      <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl text-[var(--text-secondary)] overflow-hidden transition-colors">
         {/* Modal Header */}
-        <div className="p-4 md:p-5 border-b border-slate-200 dark:border-[#19284d] bg-slate-50 dark:bg-[#070e20] flex items-center justify-between">
+        <div className="p-4 md:p-5 border-b border-[var(--border-color)] bg-[var(--bg-subtle)] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-50 via-white to-emerald-50 dark:from-[#1e0e38] dark:via-[#0c1938] dark:to-[#1c2e12] border border-purple-200 dark:border-[#3b1d64] dark:border-[#581c87]/50 flex items-center justify-center text-purple-700 dark:text-purple-300 shadow-xs">
-              <SlidersHorizontal className="w-5 h-5 text-purple-300 dark:text-purple-200" />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--color-brand-bg)] via-[var(--bg-card)] to-[var(--color-brand-bg)] border border-[var(--color-brand-border)] flex items-center justify-center text-[var(--color-brand-strong)] shadow-xs">
+              <SlidersHorizontal className="w-5 h-5 text-[var(--color-brand)]" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-base md:text-lg font-bold text-slate-900 dark:text-white font-sans tracking-tight">
+                <h2 className="text-base md:text-lg font-bold text-[var(--text-primary)] font-sans tracking-tight">
                   Settings & Account Center
                 </h2>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-purple-100 dark:bg-[#23123d] text-purple-800 dark:text-purple-300 border border-purple-300 dark:border-[#581c87]/60 font-semibold">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-[var(--color-brand)]/15 text-[var(--color-brand-strong)] border border-[var(--color-brand-border)] font-semibold">
                   FRAUD BUDDY CONTROL
                 </span>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <p className="text-xs text-[var(--text-muted)] mt-0.5">
                 Customize appearance themes, biometric security, operator profile, and AI fraud thresholds
               </p>
             </div>
@@ -124,7 +124,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
         {/* Modal Layout: Left Tabs + Right Content */}
         <div className="flex-1 flex flex-col md:flex-row overflow-hidden min-h-0">
           {/* Sidebar Tabs */}
-          <div className="w-full md:w-56 border-b md:border-b-0 md:border-r border-slate-200 dark:border-[#19284d] bg-slate-50/50 dark:bg-[#070e20]/80 p-2 md:p-3 flex md:flex-col gap-1 overflow-x-auto shrink-0 font-sans">
+          <div className="w-full md:w-56 border-b md:border-b-0 md:border-r border-[var(--border-color)] bg-[var(--bg-subtle)]/80 p-2 md:p-3 flex md:flex-col gap-1 overflow-x-auto shrink-0 font-sans">
             {[
               { id: 'appearance', label: 'Theme & Modes', icon: Palette },
               { id: 'account', label: 'Account Details', icon: User },
@@ -141,17 +141,17 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-left text-xs transition-all whitespace-nowrap ${
                     isActive
-                      ? 'bg-purple-50 dark:bg-[#182647] dark:bg-[#13203c] text-slate-900 dark:text-white font-bold shadow-xs border-l-2 border-purple-500 dark:border-purple-400'
+                      ? 'bg-[var(--color-brand-bg)] text-[var(--text-primary)] font-bold shadow-xs border-l-2 border-[var(--color-brand)]'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-[#0e172e]'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-purple-400 dark:text-purple-300' : 'text-slate-400 dark:text-slate-500'}`} />
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-[var(--color-brand)]' : 'text-slate-400 dark:text-slate-500'}`} />
                   <span>{tab.label}</span>
                 </button>
               );
             })}
 
-            <div className="hidden md:block mt-auto pt-4 border-t border-slate-200 dark:border-[#19284d] space-y-2">
+            <div className="hidden md:block mt-auto pt-4 border-t border-[var(--border-color)] space-y-2">
               <button
                 onClick={resetSettingsToDefault}
                 className="w-full flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-mono text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-[#101b36] transition-colors"
@@ -164,17 +164,17 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
           </div>
 
           {/* Tab Content Panel */}
-          <div className="flex-1 overflow-y-auto p-4 md:p-6 custom-scrollbar bg-white dark:bg-[#091124] text-slate-800 dark:text-slate-100 transition-colors space-y-6">
+          <div className="flex-1 overflow-y-auto p-4 md:p-6 custom-scrollbar bg-[var(--bg-card)] text-[var(--text-secondary)] transition-colors space-y-6">
             
             {/* 1. THEME & APPEARANCE TAB */}
             {activeTab === 'appearance' && (
               <div className="space-y-6 animate-in fade-in">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider font-mono flex items-center gap-2">
-                    <Palette className="w-4 h-4 text-purple-500" />
+                  <h3 className="text-sm font-bold text-[var(--text-primary)] uppercase tracking-wider font-mono flex items-center gap-2">
+                    <Palette className="w-4 h-4 text-[var(--color-brand)]" />
                     Theme Mode Selection
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                  <p className="text-xs text-[var(--text-muted)] mt-1">
                     Choose between crisp White / Light mode, rich Dark Blue & Purple dark mode, or automatic System Default mode.
                   </p>
                 </div>
@@ -187,23 +187,23 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                     onClick={() => setThemeMode('dark')}
                     className={`p-3.5 rounded-2xl border text-left transition-all relative flex flex-col justify-between ${
                       themeMode === 'dark'
-                        ? 'bg-purple-50 border-purple-500 shadow-md ring-2 ring-purple-500/20 text-slate-900 dark:bg-[#0f1b38] dark:text-white'
-                        : 'bg-slate-50 dark:bg-[#070e20] border-slate-200 dark:border-[#1a2b4f] hover:border-slate-400 dark:hover:border-slate-600'
+                        ? 'bg-[var(--color-brand-bg)] border-[var(--color-brand)] shadow-md ring-2 ring-[var(--color-brand)]/20 text-[var(--text-primary)]'
+                        : 'bg-[var(--bg-subtle)] border-[var(--border-color)] hover:border-[var(--border-subtle)]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-3">
-                      <div className="w-8 h-8 rounded-xl bg-purple-100 border border-purple-300 dark:bg-[#23123d] dark:border-[#581c87] flex items-center justify-center text-purple-700 dark:text-purple-300">
+                      <div className="w-8 h-8 rounded-xl bg-[var(--color-brand)]/15 border border-[var(--color-brand-border)] flex items-center justify-center text-[var(--color-brand-strong)]">
                         <Moon className="w-4 h-4" />
                       </div>
                       {themeMode === 'dark' && (
-                        <span className="w-5 h-5 rounded-full bg-purple-600 flex items-center justify-center text-white text-xs">
+                        <span className="w-5 h-5 rounded-full bg-[var(--color-brand-solid)] flex items-center justify-center text-white text-xs">
                           <Check className="w-3 h-3" />
                         </span>
                       )}
                     </div>
                     <div>
                       <div className="font-bold text-xs">Dark Theme</div>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                      <p className="text-[11px] text-[var(--text-muted)] mt-0.5">
                         Deep dark blue & purple command canvas
                       </p>
                     </div>
@@ -216,7 +216,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                     className={`p-3.5 rounded-2xl border text-left transition-all relative flex flex-col justify-between ${
                       themeMode === 'light'
                         ? 'bg-blue-50/70 border-blue-600 shadow-md ring-2 ring-blue-500/20 text-slate-900'
-                        : 'bg-slate-50 dark:bg-[#070e20] border-slate-200 dark:border-[#1a2b4f] hover:border-slate-400 dark:hover:border-slate-600'
+                        : 'bg-[var(--bg-subtle)] border-[var(--border-color)] hover:border-[var(--border-subtle)]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-3">
@@ -231,7 +231,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                     </div>
                     <div>
                       <div className="font-bold text-xs">White / Light Theme</div>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                      <p className="text-[11px] text-[var(--text-muted)] mt-0.5">
                         Crisp, clean high-contrast white layout
                       </p>
                     </div>
@@ -243,8 +243,8 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                     onClick={() => setThemeMode('system')}
                     className={`p-3.5 rounded-2xl border text-left transition-all relative flex flex-col justify-between ${
                       themeMode === 'system'
-                        ? 'bg-purple-50 dark:bg-[#151c36] border-purple-500 shadow-md ring-2 ring-purple-500/20 text-slate-900 dark:text-white'
-                        : 'bg-slate-50 dark:bg-[#070e20] border-slate-200 dark:border-[#1a2b4f] hover:border-slate-400 dark:hover:border-slate-600'
+                        ? 'bg-[var(--color-brand-bg)] border-[var(--color-brand)] shadow-md ring-2 ring-[var(--color-brand)]/20 text-[var(--text-primary)]'
+                        : 'bg-[var(--bg-subtle)] border-[var(--border-color)] hover:border-[var(--border-subtle)]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-3">
@@ -252,14 +252,14 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                         <Laptop className="w-4 h-4" />
                       </div>
                       {themeMode === 'system' && (
-                        <span className="w-5 h-5 rounded-full bg-purple-600 flex items-center justify-center text-white text-xs">
+                        <span className="w-5 h-5 rounded-full bg-[var(--color-brand-solid)] flex items-center justify-center text-white text-xs">
                           <Check className="w-3 h-3" />
                         </span>
                       )}
                     </div>
                     <div>
                       <div className="font-bold text-xs">System Default</div>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                      <p className="text-[11px] text-[var(--text-muted)] mt-0.5">
                         Auto-syncs with your OS ({resolvedTheme})
                       </p>
                     </div>
@@ -268,7 +268,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
 
                 {/* Color Palette Presets */}
                 <div className="space-y-3 pt-2">
-                  <h4 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                  <h4 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider">
                     Color Accent Palette Preset
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -276,26 +276,26 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                       {
                         id: 'signature',
                         name: 'Fraud Buddy Signature',
-                        desc: 'Dark Blue, Dark Purple, Olive Green, Light Red & Cognac Orange',
-                        colors: ['#0b1736', '#23123d', '#526f33', '#ef4444', '#451a03'],
+                        desc: 'Dark Navy base with Teal brand accent — the default look',
+                        colors: ['#0c1017', '#0d9488', '#4ade80', '#f87171', '#fbbf24'],
                       },
                       {
                         id: 'emerald',
                         name: 'Cyber Emerald',
                         desc: 'Deep Navy base with vivid Emerald and Mint matrix',
-                        colors: ['#051214', '#064e3b', '#10b981', '#34d399', '#022c22'],
+                        colors: ['#05100d', '#059669', '#4ade80', '#f87171', '#fbbf24'],
                       },
                       {
                         id: 'amethyst',
                         name: 'Imperial Amethyst',
                         desc: 'Velvet Midnight Purple with Royal Orchid accents',
-                        colors: ['#120a2a', '#3b0764', '#7e22ce', '#c084fc', '#581c87'],
+                        colors: ['#0f0a1f', '#7c3aed', '#4ade80', '#f87171', '#fbbf24'],
                       },
                       {
                         id: 'monochrome',
                         name: 'Titanium Slate',
                         desc: 'Strictly neutral graphite, titanium and carbon surfaces',
-                        colors: ['#09090b', '#27272a', '#52525b', '#a1a1aa', '#f4f4f5'],
+                        colors: ['#0a0a0b', '#52525b', '#4ade80', '#f87171', '#fbbf24'],
                       },
                     ].map((preset) => (
                       <div
@@ -303,20 +303,20 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                         onClick={() => setColorPreset(preset.id as ColorPreset)}
                         className={`p-3 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
                           colorPreset === preset.id
-                            ? 'bg-slate-100 dark:bg-[#121f3d] border-purple-500 dark:border-purple-400 ring-1 ring-purple-500/30'
-                            : 'bg-slate-50 dark:bg-[#070e20] border-slate-200 dark:border-[#1a2b4f] hover:bg-slate-100/80 dark:hover:bg-[#0e172e]'
+                            ? 'bg-[var(--color-brand-bg)] border-[var(--color-brand)] ring-1 ring-[var(--color-brand)]/30'
+                            : 'bg-[var(--bg-subtle)] border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
                         }`}
                       >
                         <div>
-                          <div className="text-xs font-bold text-slate-900 dark:text-white font-sans flex items-center gap-2">
+                          <div className="text-xs font-bold text-[var(--text-primary)] font-sans flex items-center gap-2">
                             {preset.name}
                             {colorPreset === preset.id && (
-                              <span className="text-[10px] text-purple-600 dark:text-purple-400 font-mono font-semibold">
+                              <span className="text-[10px] text-[var(--color-brand-strong)] font-mono font-semibold">
                                 Active
                               </span>
                             )}
                           </div>
-                          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">{preset.desc}</p>
+                          <p className="text-[10px] text-[var(--text-muted)] mt-0.5">{preset.desc}</p>
                           <div className="flex items-center gap-1.5 mt-2">
                             {preset.colors.map((c, i) => (
                               <span
@@ -333,33 +333,33 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                 </div>
 
                 {/* Accessibility & Display Controls */}
-                <div className="space-y-3 pt-3 border-t border-slate-200 dark:border-[#19284d]">
-                  <h4 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                <div className="space-y-3 pt-3 border-t border-[var(--border-color)]">
+                  <h4 className="text-xs font-mono font-bold text-[var(--text-primary)] uppercase tracking-wider">
                     Visual & Accessibility Toggles
                   </h4>
                   <div className="space-y-2">
-                    <label className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-[#070e20] border border-slate-200 dark:border-[#1a2b4f] cursor-pointer">
+                    <label className="flex items-center justify-between p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] cursor-pointer">
                       <div>
-                        <div className="text-xs font-bold text-slate-900 dark:text-white">High-Contrast Data Borders</div>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400">Increase border definition across metric cards and signal charts</p>
+                        <div className="text-xs font-bold text-[var(--text-primary)]">High-Contrast Data Borders</div>
+                        <p className="text-[11px] text-[var(--text-muted)]">Increase border definition across metric cards and signal charts</p>
                       </div>
                       <input
                         type="checkbox"
                         checked={highContrast}
                         onChange={(e) => setHighContrast(e.target.checked)}
-                        className="w-4 h-4 rounded text-purple-600 focus:ring-purple-500"
+                        className="w-4 h-4 rounded text-[var(--color-brand-solid)] focus:ring-[var(--color-brand)]"
                       />
                     </label>
 
-                    <label className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-[#070e20] border border-slate-200 dark:border-[#1a2b4f] cursor-pointer">
+                    <label className="flex items-center justify-between p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] cursor-pointer">
                       <div>
-                        <div className="text-xs font-bold text-slate-900 dark:text-white">Tabular Telemetry Numbers</div>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400">Fixed-width numerical alignment for millisecond latencies and INR sums</p>
+                        <div className="text-xs font-bold text-[var(--text-primary)]">Tabular Telemetry Numbers</div>
+                        <p className="text-[11px] text-[var(--text-muted)]">Fixed-width numerical alignment for millisecond latencies and INR sums</p>
                       </div>
                       <input
                         type="checkbox"
                         defaultChecked={true}
-                        className="w-4 h-4 rounded text-purple-600 focus:ring-purple-500"
+                        className="w-4 h-4 rounded text-[var(--color-brand-solid)] focus:ring-[var(--color-brand)]"
                       />
                     </label>
                   </div>
@@ -371,29 +371,29 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
             {activeTab === 'account' && (
               <div className="space-y-6 animate-in fade-in">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider font-mono flex items-center gap-2">
-                    <User className="w-4 h-4 text-purple-500" />
+                  <h3 className="text-sm font-bold text-[var(--text-primary)] uppercase tracking-wider font-mono flex items-center gap-2">
+                    <User className="w-4 h-4 text-[var(--color-brand)]" />
                     Operator Profile & Credentials
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                  <p className="text-xs text-[var(--text-muted)] mt-1">
                     Manage your verified identity, administrative clearance, and enterprise directory credentials.
                   </p>
                 </div>
 
                 {/* Profile Badge Card */}
-                <div className="p-4 rounded-2xl bg-gradient-to-r from-purple-50 via-slate-50 to-blue-50 dark:from-[#1b0c2e] dark:via-[#0c1630] dark:to-[#071328] border border-purple-200 dark:border-[#381d61] flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 dark:from-[#23123d] dark:to-[#0c1938] border-2 border-purple-400/50 flex items-center justify-center text-purple-900 dark:text-white text-xl font-bold font-mono shadow-md">
+                <div className="p-4 rounded-2xl bg-gradient-to-r from-[var(--color-brand-bg)] via-[var(--bg-subtle)] to-blue-50 dark:to-[#071328] border border-[var(--color-brand-border)] flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--color-brand)]/25 to-[var(--color-brand-bg)] border-2 border-[var(--color-brand)]/50 flex items-center justify-center text-[var(--text-primary)] text-xl font-bold font-mono shadow-md">
                     {profile.name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h4 className="text-base font-bold text-slate-900 dark:text-white">{profile.name}</h4>
+                      <h4 className="text-base font-bold text-[var(--text-primary)]">{profile.name}</h4>
                       <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-emerald-100 dark:bg-[#1c2e12] text-emerald-800 dark:text-[#84a35c] border border-emerald-300 dark:border-[#364f24] font-semibold">
                         AUTHENTICATED
                       </span>
                     </div>
                     <p className="text-xs text-slate-600 dark:text-slate-300 font-mono mt-0.5">{profile.email}</p>
-                    <p className="text-[11px] text-purple-700 dark:text-purple-300 mt-1 font-semibold">
+                    <p className="text-[11px] text-[var(--color-brand-strong)] mt-1 font-semibold">
                       {profile.role} • {profile.securityTier}
                     </p>
                   </div>
@@ -407,7 +407,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                       type="text"
                       value={profile.name}
                       onChange={(e) => updateProfile({ name: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-[#070e20] border border-slate-300 dark:border-[#1d2f57] text-xs font-sans text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-subtle)] text-xs font-sans text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                     />
                   </div>
 
@@ -417,7 +417,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                       type="email"
                       value={profile.email}
                       onChange={(e) => updateProfile({ email: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-[#070e20] border border-slate-300 dark:border-[#1d2f57] text-xs font-sans text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-subtle)] text-xs font-sans text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                     />
                   </div>
 
@@ -427,7 +427,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                       type="text"
                       value={profile.role}
                       onChange={(e) => updateProfile({ role: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-[#070e20] border border-slate-300 dark:border-[#1d2f57] text-xs font-sans text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-subtle)] text-xs font-sans text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                     />
                   </div>
 
@@ -437,26 +437,26 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                       type="text"
                       value={profile.organization}
                       onChange={(e) => updateProfile({ organization: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-[#070e20] border border-slate-300 dark:border-[#1d2f57] text-xs font-sans text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-subtle)] text-xs font-sans text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                     />
                   </div>
                 </div>
 
                 {/* Session Telemetry Status */}
-                <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-[#070e20] border border-slate-200 dark:border-[#1d2f57] space-y-2">
+                <div className="p-3.5 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-2">
                   <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-slate-500 dark:text-slate-400">Live Active Node</span>
-                    <span className="font-semibold text-slate-900 dark:text-white">Cloud Run Asia-Southeast1 (Container #ais-dev)</span>
+                    <span className="text-[var(--text-muted)]">Live Active Node</span>
+                    <span className="font-semibold text-[var(--text-primary)]">Cloud Run Asia-Southeast1 (Container #ais-dev)</span>
                   </div>
                   <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-slate-500 dark:text-slate-400">Session IP Protocol</span>
-                    <span className="font-semibold text-slate-900 dark:text-white">135.35.89.43 • HTTPS TLS 1.3 Strict</span>
+                    <span className="text-[var(--text-muted)]">Session IP Protocol</span>
+                    <span className="font-semibold text-[var(--text-primary)]">135.35.89.43 • HTTPS TLS 1.3 Strict</span>
                   </div>
                 </div>
 
                 <button
                   onClick={handleSave}
-                  className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-xs transition-all shadow-xs"
+                  className="px-4 py-2 rounded-xl bg-[var(--color-brand-solid)] hover:opacity-90 text-white font-semibold text-xs transition-all shadow-xs"
                 >
                   Save Profile Changes
                 </button>
@@ -467,27 +467,27 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
             {activeTab === 'security' && (
               <div className="space-y-6 animate-in fade-in">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider font-mono flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-purple-500" />
+                  <h3 className="text-sm font-bold text-[var(--text-primary)] uppercase tracking-wider font-mono flex items-center gap-2">
+                    <Shield className="w-4 h-4 text-[var(--color-brand)]" />
                     Biometrics & Hardware Security Keys
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                  <p className="text-xs text-[var(--text-muted)] mt-1">
                     Continuous neuromuscular biometrics and FIDO2 / WebAuthn cryptographic keys guarding your session.
                   </p>
                 </div>
 
                 {/* Biometric Card */}
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#070e20] border border-slate-200 dark:border-[#1d2f57] space-y-3">
+                <div className="p-4 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-9 h-9 rounded-xl bg-emerald-100 border border-emerald-300 dark:bg-[#1c2e12] dark:border-[#364f24] flex items-center justify-center text-emerald-700 dark:text-[#84a35c]">
                         <Fingerprint className="w-5 h-5" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-slate-900 dark:text-white">
+                        <div className="text-xs font-bold text-[var(--text-primary)]">
                           Continuous Keystroke Biometric Signature
                         </div>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                        <p className="text-[11px] text-[var(--text-muted)]">
                           99.8% match rate • 14ms inter-key flight variance enrolled
                         </p>
                       </div>
@@ -499,22 +499,22 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                 </div>
 
                 {/* Yubikey Card */}
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#070e20] border border-slate-200 dark:border-[#1d2f57] space-y-3">
+                <div className="p-4 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-purple-100 border border-purple-300 dark:bg-[#23123d] dark:border-[#581c87] flex items-center justify-center text-purple-700 dark:text-purple-300">
+                      <div className="w-9 h-9 rounded-xl bg-[var(--color-brand)]/15 border border-[var(--color-brand-border)] flex items-center justify-center text-[var(--color-brand-strong)]">
                         <Key className="w-5 h-5" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-slate-900 dark:text-white">
+                        <div className="text-xs font-bold text-[var(--text-primary)]">
                           Hardware Token (YubiKey 5C NFC)
                         </div>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                        <p className="text-[11px] text-[var(--text-muted)]">
                           FIDO2 / WebAuthn Hardware Security Slot #1
                         </p>
                       </div>
                     </div>
-                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-purple-100 dark:bg-[#23123d] text-purple-800 dark:text-purple-300 border border-purple-300 dark:border-[#581c87] font-bold">
+                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-[var(--color-brand)]/15 text-[var(--color-brand-strong)] border border-[var(--color-brand-border)] font-bold">
                       ENROLLED
                     </span>
                   </div>
@@ -528,7 +528,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                   <select
                     value={profile.autoLockMinutes}
                     onChange={(e) => updateProfile({ autoLockMinutes: Number(e.target.value) })}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-[#070e20] border border-slate-300 dark:border-[#1d2f57] text-xs font-sans text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
+                    className="w-full px-3 py-2 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-subtle)] text-xs font-sans text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                   >
                     <option value={15}>15 Minutes of Inactivity</option>
                     <option value={30}>30 Minutes of Inactivity (Recommended)</option>
@@ -544,19 +544,19 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
             {activeTab === 'engine' && (
               <div className="space-y-6 animate-in fade-in">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider font-mono flex items-center gap-2">
-                    <Sliders className="w-4 h-4 text-purple-500" />
+                  <h3 className="text-sm font-bold text-[var(--text-primary)] uppercase tracking-wider font-mono flex items-center gap-2">
+                    <Sliders className="w-4 h-4 text-[var(--color-brand)]" />
                     AI Fraud Engine Thresholds
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                  <p className="text-xs text-[var(--text-muted)] mt-1">
                     Calibrate decision boundaries for step-up biometric challenges, auto-quarantine, and simulation streaming speed.
                   </p>
                 </div>
 
                 {/* Step Up Slider */}
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#070e20] border border-slate-200 dark:border-[#1d2f57] space-y-3">
+                <div className="p-4 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-slate-900 dark:text-white">
+                    <span className="text-xs font-bold text-[var(--text-primary)]">
                       Step-Up Challenge Sensitivity Threshold
                     </span>
                     <span className="text-xs font-mono font-bold text-amber-600 dark:text-amber-400">
@@ -571,15 +571,15 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                     onChange={(e) => updateProfile({ stepUpThreshold: Number(e.target.value) })}
                     className="w-full accent-amber-500"
                   />
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  <p className="text-[11px] text-[var(--text-muted)]">
                     Sessions scoring above this threshold trigger biometric re-authentication or push verification.
                   </p>
                 </div>
 
                 {/* Auto Quarantine Slider */}
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#070e20] border border-slate-200 dark:border-[#1d2f57] space-y-3">
+                <div className="p-4 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-slate-900 dark:text-white">
+                    <span className="text-xs font-bold text-[var(--text-primary)]">
                       Auto-Quarantine Risk Threshold
                     </span>
                     <span className="text-xs font-mono font-bold text-red-600 dark:text-red-400">
@@ -594,7 +594,7 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                     onChange={(e) => updateProfile({ autoQuarantineThreshold: Number(e.target.value) })}
                     className="w-full accent-red-500"
                   />
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  <p className="text-[11px] text-[var(--text-muted)]">
                     High-confidence malicious attacks are instantly quarantined before balance egress occurs.
                   </p>
                 </div>
@@ -603,8 +603,8 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                 {onResetSimulationData && (
                   <div className="p-4 rounded-2xl bg-red-50 border-red-200 dark:bg-[#3b1402]/20 dark:border-[#7c2d12]/40 flex items-center justify-between">
                     <div>
-                      <div className="text-xs font-bold text-slate-900 dark:text-white">Reset Synthetic Dataset</div>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400">Reload default transactions, tells, and zero-day threat patterns</p>
+                      <div className="text-xs font-bold text-[var(--text-primary)]">Reset Synthetic Dataset</div>
+                      <p className="text-[11px] text-[var(--text-muted)]">Reload default transactions, tells, and zero-day threat patterns</p>
                     </div>
                     <button
                       onClick={() => {
@@ -624,39 +624,39 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
             {activeTab === 'notifications' && (
               <div className="space-y-6 animate-in fade-in">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider font-mono flex items-center gap-2">
-                    <Bell className="w-4 h-4 text-purple-500" />
+                  <h3 className="text-sm font-bold text-[var(--text-primary)] uppercase tracking-wider font-mono flex items-center gap-2">
+                    <Bell className="w-4 h-4 text-[var(--color-brand)]" />
                     Alert Broadcasts & Audit Logs
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                  <p className="text-xs text-[var(--text-muted)] mt-1">
                     Manage real-time push alerts, Webhook receivers, and export compliance audit trails.
                   </p>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-[#070e20] border border-slate-200 dark:border-[#1a2b4f] cursor-pointer">
+                  <label className="flex items-center justify-between p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] cursor-pointer">
                     <div>
-                      <div className="text-xs font-bold text-slate-900 dark:text-white">Critical High-Risk Push Notification</div>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400">Real-time alert banner whenever a transaction &gt;85 risk score is detected</p>
+                      <div className="text-xs font-bold text-[var(--text-primary)]">Critical High-Risk Push Notification</div>
+                      <p className="text-[11px] text-[var(--text-muted)]">Real-time alert banner whenever a transaction &gt;85 risk score is detected</p>
                     </div>
                     <input
                       type="checkbox"
                       checked={profile.pushNotifications}
                       onChange={(e) => updateProfile({ pushNotifications: e.target.checked })}
-                      className="w-4 h-4 rounded text-purple-600 focus:ring-purple-500"
+                      className="w-4 h-4 rounded text-[var(--color-brand-solid)] focus:ring-[var(--color-brand)]"
                     />
                   </label>
 
-                  <label className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-[#070e20] border border-slate-200 dark:border-[#1a2b4f] cursor-pointer">
+                  <label className="flex items-center justify-between p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-color)] cursor-pointer">
                     <div>
-                      <div className="text-xs font-bold text-slate-900 dark:text-white">Auditory Alert Ping</div>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400">Play soft chime on zero-day pattern discovery or high-risk quarantine</p>
+                      <div className="text-xs font-bold text-[var(--text-primary)]">Auditory Alert Ping</div>
+                      <p className="text-[11px] text-[var(--text-muted)]">Play soft chime on zero-day pattern discovery or high-risk quarantine</p>
                     </div>
                     <input
                       type="checkbox"
                       checked={profile.soundAlerts}
                       onChange={(e) => updateProfile({ soundAlerts: e.target.checked })}
-                      className="w-4 h-4 rounded text-purple-600 focus:ring-purple-500"
+                      className="w-4 h-4 rounded text-[var(--color-brand-solid)] focus:ring-[var(--color-brand)]"
                     />
                   </label>
                 </div>
@@ -667,18 +667,18 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
                     type="text"
                     value={profile.webhookUrl}
                     onChange={(e) => updateProfile({ webhookUrl: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-[#070e20] border border-slate-300 dark:border-[#1d2f57] text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
+                    className="w-full px-3 py-2 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                   />
                 </div>
 
-                <div className="pt-3 border-t border-slate-200 dark:border-[#19284d] flex items-center justify-between">
+                <div className="pt-3 border-t border-[var(--border-color)] flex items-center justify-between">
                   <div>
-                    <div className="text-xs font-bold text-slate-900 dark:text-white">Compliance Audit Trail Export</div>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">Download formatted JSON with full configuration and session proofs</p>
+                    <div className="text-xs font-bold text-[var(--text-primary)]">Compliance Audit Trail Export</div>
+                    <p className="text-[11px] text-[var(--text-muted)]">Download formatted JSON with full configuration and session proofs</p>
                   </div>
                   <button
                     onClick={handleExportLogs}
-                    className="px-3.5 py-2 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 border-purple-300 dark:bg-[#23123d] dark:hover:bg-[#321957] dark:text-purple-200 dark:border-[#581c87] text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs"
+                    className="px-3.5 py-2 rounded-xl bg-[var(--color-brand-bg)] hover:bg-[var(--color-brand)]/20 text-[var(--color-brand-strong)] border-[var(--color-brand-border)] text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs"
                   >
                     <Download className="w-3.5 h-3.5" />
                     Export Audit JSON
@@ -695,8 +695,8 @@ export const SettingsAndAccountModal: React.FC<SettingsAndAccountModalProps> = (
         </div>
 
         {/* Modal Footer */}
-        <div className="p-3.5 md:p-4 border-t border-slate-200 dark:border-[#19284d] bg-slate-50 dark:bg-[#070e20] flex items-center justify-between text-xs">
-          <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 font-mono text-[11px]">
+        <div className="p-3.5 md:p-4 border-t border-[var(--border-color)] bg-slate-50 dark:bg-[#070e20] flex items-center justify-between text-xs">
+          <div className="flex items-center gap-2 text-[var(--text-muted)] font-mono text-[11px]">
             <span className="w-2 h-2 rounded-full bg-[#526f33] dark:bg-[#84a35c]" />
             Fraud Buddy Sovereign Guard Active
           </div>

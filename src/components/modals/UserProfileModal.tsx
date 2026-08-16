@@ -52,11 +52,11 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in font-sans">
       <div
-        className="w-full max-w-lg bg-white dark:bg-[#101624] border border-slate-200 dark:border-[#1c2638] rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
+        className="w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Cover Banner */}
-        <div className="h-28 bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-800 relative p-4 flex items-start justify-between text-white">
+        <div className="h-28 bg-gradient-to-r from-[var(--color-brand-solid)] via-emerald-600 to-[var(--color-brand-strong)] relative p-4 flex items-start justify-between text-white">
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/20 backdrop-blur-xs border border-white/30">
               OFFICIAL INVESTIGATOR PROFILE
@@ -75,8 +75,8 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         <div className="px-6 pb-6 pt-0 relative space-y-5">
           <div className="flex items-end justify-between -mt-12">
             <div className="relative">
-              <div className="w-22 h-22 rounded-2xl bg-white dark:bg-[#101624] p-1.5 shadow-md">
-                <div className="w-full h-full rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 text-white flex items-center justify-center text-2xl font-mono font-bold tracking-tight shadow-inner">
+              <div className="w-22 h-22 rounded-2xl bg-[var(--bg-card)] p-1.5 shadow-md">
+                <div className="w-full h-full rounded-xl bg-[var(--color-brand-solid)] text-white flex items-center justify-center text-2xl font-mono font-bold tracking-tight shadow-inner">
                   {name
                     .split(' ')
                     .map((n) => n[0])
@@ -85,21 +85,21 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                     .toUpperCase() || 'NM'}
                 </div>
               </div>
-              <span className="w-4 h-4 rounded-full bg-emerald-500 border-2 border-white dark:border-[#101624] absolute bottom-1 right-1" title="Online" />
+              <span className="w-4 h-4 rounded-full bg-emerald-500 border-2 border-[var(--bg-card)] absolute bottom-1 right-1" title="Online" />
             </div>
 
             <div className="flex items-center gap-2">
               {!isEditing ? (
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#182132] dark:hover:bg-[#202c44] border border-slate-200 dark:border-[#24324a] text-xs font-semibold text-slate-800 dark:text-slate-200 transition-colors shadow-2xs"
+                  className="px-3.5 py-1.5 rounded-xl bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-color)] text-xs font-semibold text-[var(--text-secondary)] transition-colors shadow-2xs"
                 >
                   Edit Profile
                 </button>
               ) : (
                 <button
                   onClick={() => setIsEditing(false)}
-                  className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#182132] text-xs font-semibold text-slate-600 dark:text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-xl bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] text-xs font-semibold text-[var(--text-secondary)] transition-colors"
                 >
                   Cancel
                 </button>
@@ -111,50 +111,50 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
           {!isEditing ? (
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">{name}</h2>
-                <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-teal-500/10 text-teal-700 dark:text-teal-300 border border-teal-500/30 flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3 text-teal-600 dark:text-teal-400" />
+                <h2 className="text-xl font-bold text-[var(--text-primary)] tracking-tight">{name}</h2>
+                <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-[var(--color-brand)]/10 text-[var(--color-brand-strong)] border border-[var(--color-brand)]/30 flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-[var(--color-brand)]" />
                   Active
                 </span>
               </div>
-              <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">{title}</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">{email}</p>
+              <p className="text-xs text-[var(--text-secondary)] font-medium">{title}</p>
+              <p className="text-xs text-[var(--text-muted)] font-mono">{email}</p>
             </div>
           ) : (
             <form onSubmit={handleSave} className="space-y-3 pt-2">
               <div>
-                <label className="block text-[11px] font-mono text-slate-500 dark:text-slate-400 mb-1">Full Name</label>
+                <label className="block text-[11px] font-mono text-[var(--text-muted)] mb-1">Full Name</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-1.5 bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-[#1c2638] rounded-xl text-xs text-slate-900 dark:text-white focus:outline-none focus:border-teal-500"
+                  className="w-full px-3 py-1.5 bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                   required
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-mono text-slate-500 dark:text-slate-400 mb-1">Email Address</label>
+                <label className="block text-[11px] font-mono text-[var(--text-muted)] mb-1">Email Address</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-1.5 bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-[#1c2638] rounded-xl text-xs text-slate-900 dark:text-white focus:outline-none focus:border-teal-500"
+                  className="w-full px-3 py-1.5 bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                   required
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-mono text-slate-500 dark:text-slate-400 mb-1">Role / Job Title</label>
+                <label className="block text-[11px] font-mono text-[var(--text-muted)] mb-1">Role / Job Title</label>
                 <input
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full px-3 py-1.5 bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-[#1c2638] rounded-xl text-xs text-slate-900 dark:text-white focus:outline-none focus:border-teal-500"
+                  className="w-full px-3 py-1.5 bg-[var(--bg-subtle)] border border-[var(--border-color)] rounded-xl text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--color-brand)]"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="w-full py-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold font-mono flex items-center justify-center gap-1.5 shadow-xs transition-colors"
+                className="w-full py-2 rounded-xl bg-[var(--color-brand-solid)] hover:opacity-90 text-white text-xs font-bold font-mono flex items-center justify-center gap-1.5 shadow-xs transition-colors"
               >
                 <Save className="w-3.5 h-3.5" />
                 Save Changes
@@ -172,46 +172,46 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
           {/* Role Badges & Details Grid */}
           <div className="grid grid-cols-2 gap-2.5 text-xs font-sans">
-            <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-[#1c2638] space-y-1">
-              <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 text-[10px] font-mono">
-                <Shield className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+            <div className="p-3 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-1">
+              <div className="flex items-center gap-1.5 text-[var(--text-muted)] text-[10px] font-mono">
+                <Shield className="w-3.5 h-3.5 text-[var(--color-brand)]" />
                 CLEARANCE LEVEL
               </div>
-              <p className="font-bold text-slate-900 dark:text-white">Level 3 (Senior Lead)</p>
-              <p className="text-[10px] text-slate-500">Quarantine & Rule Deploy Access</p>
+              <p className="font-bold text-[var(--text-primary)]">Level 3 (Senior Lead)</p>
+              <p className="text-[10px] text-[var(--text-muted)]">Quarantine & Rule Deploy Access</p>
             </div>
 
-            <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-[#1c2638] space-y-1">
-              <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 text-[10px] font-mono">
+            <div className="p-3 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-1">
+              <div className="flex items-center gap-1.5 text-[var(--text-muted)] text-[10px] font-mono">
                 <Clock className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                 LAST ACTIVE
               </div>
-              <p className="font-bold text-slate-900 dark:text-white">Just now (Live session)</p>
-              <p className="text-[10px] text-slate-500">Session ID #SES-4921</p>
+              <p className="font-bold text-[var(--text-primary)]">Just now (Live session)</p>
+              <p className="text-[10px] text-[var(--text-muted)]">Session ID #SES-4921</p>
             </div>
           </div>
 
           {/* Department Information */}
-          <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-[#1c2638] space-y-1.5">
-            <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase font-semibold">
+          <div className="p-3.5 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border-color)] space-y-1.5">
+            <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase font-semibold">
               Assigned Department & Scope
             </span>
-            <p className="text-xs font-semibold text-slate-900 dark:text-white leading-relaxed">
+            <p className="text-xs font-semibold text-[var(--text-primary)] leading-relaxed">
               {department}
             </p>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+            <p className="text-[11px] text-[var(--text-muted)]">
               Responsible for reviewing live transaction alerts, investigating high-risk accounts, and managing automated fraud containment policies.
             </p>
           </div>
 
           {/* Action Links */}
-          <div className="pt-2 border-t border-slate-200 dark:border-[#1c2638] flex items-center justify-between">
+          <div className="pt-2 border-t border-[var(--border-color)] flex items-center justify-between">
             <button
               onClick={() => {
                 onClose();
                 onOpenSettings();
               }}
-              className="text-xs font-medium text-teal-600 dark:text-teal-400 hover:underline flex items-center gap-1"
+              className="text-xs font-medium text-[var(--color-brand)] hover:underline flex items-center gap-1"
             >
               <Lock className="w-3.5 h-3.5" />
               Manage Security & Settings
@@ -221,7 +221,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
               onClick={() => {
                 onClose();
               }}
-              className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#182132] text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+              className="px-3.5 py-1.5 rounded-xl bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] text-xs font-semibold text-[var(--text-secondary)] transition-colors"
             >
               Done
             </button>
