@@ -318,7 +318,11 @@ export function App() {
       </div>
 
       {/* Floating AI Assistant for Simple Q&A and Guidance */}
-      <FraudGuardAssistant onNavigate={(view) => setActiveView(view)} />
+      <FraudGuardAssistant
+        onNavigate={(view) => setActiveView(view)}
+        activeView={activeView}
+        selectedTransaction={selectedTransaction}
+      />
 
       {/* Forensic Deep Dive Modal */}
       {selectedTransaction && (
