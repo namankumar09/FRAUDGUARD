@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { marked } from 'marked';
+import DOMPurify from 'dompurify';
 import {
   MessageSquare,
   X,
@@ -15,6 +17,7 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { ViewId } from './Sidebar';
+import { TransactionRecord } from '../types/fraud';
 
 interface Message {
   id: string;
@@ -27,9 +30,20 @@ interface Message {
 
 interface FraudGuardAssistantProps {
   onNavigate: (view: ViewId) => void;
+  activeView?: ViewId;
+  selectedTransaction?: TransactionRecord | null;
 }
 
-export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({ onNavigate }) => {
+function renderMarkdown(content: string): string {
+  const html = marked.parse(content, { breaks: true, async: false }) as string;
+  return DOMPurify.sanitize(html);
+}
+
+export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({
+  onNavigate,
+  activeView,
+  selectedTransaction,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -75,12 +89,37 @@ export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({ onNavi
     setIsLoading(true);
 
     try {
+      const context: Record<string, any> = { view: activeView };
+      if (selectedTransaction) {
+        context.transaction = {
+          id: selectedTransaction.id,
+          transactionRef: selectedTransaction.transactionRef,
+          amount: selectedTransaction.amount,
+          currency: selectedTransaction.currency,
+          riskScore: selectedTransaction.riskScore.totalScore,
+          riskLevel: selectedTransaction.riskScore.riskLevel,
+          decision: selectedTransaction.decision || selectedTransaction.status,
+          primaryDriver: selectedTransaction.riskScore.primaryDriver,
+          confidence: selectedTransaction.riskScore.confidence,
+          fraudGravityScore: selectedTransaction.riskScore.fraudGravityScore,
+          signals: selectedTransaction.riskScore.breakdown.map((s) => ({
+            signalName: s.signalName,
+            category: s.category,
+            contribution: s.contribution,
+            status: s.status,
+            details: s.details,
+            microEvidence: s.microEvidence,
+          })),
+        };
+      }
+
       const response = await fetch('/api/ai/assistant', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: query.trim(),
           conversationHistory: messages.map((m) => ({ role: m.role, content: m.content })),
+          context,
         }),
       });
 
@@ -221,10 +260,14 @@ export const FraudGuardAssistant: React.FC<FraudGuardAssistantProps> = ({ onNavi
                       className={`p-3 rounded-2xl text-xs leading-relaxed ${
                         isUser
                           ? 'bg-teal-600 text-white rounded-tr-xs shadow-xs font-medium'
-                          : 'bg-white dark:bg-[#141b2b] text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-[#1e2a40] rounded-tl-xs shadow-xs whitespace-pre-line'
+                          : 'bg-white dark:bg-[#141b2b] text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-[#1e2a40] rounded-tl-xs shadow-xs assistant-markdown'
                       }`}
                     >
-                      {msg.content}
+                      {isUser ? (
+                        msg.content
+                      ) : (
+                        <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }} />
+                      )}
                     </div>
 
                     {/* Direct Page Link Button if Assistant suggested a view */}
