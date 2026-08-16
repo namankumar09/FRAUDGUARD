@@ -66,7 +66,7 @@ export const BehavioralDnaMutationView: React.FC = () => {
   return (
     <div id="view-dna-mutation" className="p-4 md:p-6 space-y-6 animate-in fade-in">
       {/* Top Banner */}
-      <div className="p-4 md:p-5 rounded-2xl bg-gradient-to-r from-[#0c1836] via-[#102046] to-[#0d1630] border border-[#21355e] flex flex-col lg:flex-row lg:items-center justify-between gap-4 shadow-xl">
+      <div className="p-4 md:p-5 rounded-2xl bg-gradient-to-r from-purple-50 via-white to-purple-50 dark:from-[#0c1836] dark:via-[#102046] dark:to-[#0d1630] border border-purple-200/70 dark:border-[#21355e] flex flex-col lg:flex-row lg:items-center justify-between gap-4 shadow-xs dark:shadow-xl transition-colors">
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-purple-950 text-purple-300 border border-purple-500/40 flex items-center gap-1.5">
@@ -75,7 +75,7 @@ export const BehavioralDnaMutationView: React.FC = () => {
             </span>
             <span className="text-xs text-slate-400 font-mono">• Continuous Adaptive Baseline</span>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-white tracking-tight mt-1">
+          <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
             Detecting How a Person's Behavior Evolves Over Time
           </h2>
           <p className="text-xs md:text-sm text-slate-300 max-w-3xl leading-relaxed mt-1">
@@ -89,7 +89,7 @@ export const BehavioralDnaMutationView: React.FC = () => {
           <select
             value={selectedTxnId}
             onChange={(e) => setSelectedTxnId(e.target.value)}
-            className="bg-[#080e1e] border border-[#1e2f54] text-white text-xs rounded-xl px-3 py-2 focus:outline-none focus:border-sky-400 font-mono"
+            className="bg-white border border-slate-300 text-slate-900 dark:bg-[#080e1e] dark:border-[#1e2f54] dark:text-white text-xs rounded-xl px-3 py-2 focus:outline-none focus:border-sky-400 font-mono"
           >
             {MOCK_TRANSACTIONS.map((t) => (
               <option key={t.id} value={t.id}>
@@ -102,7 +102,7 @@ export const BehavioralDnaMutationView: React.FC = () => {
 
       {/* DNA Mutation Score Callout */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="p-5 rounded-2xl bg-[#0c1427] border border-[#1b2b4c] shadow-lg flex flex-col justify-between">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono text-slate-400">Overall DNA Mutation Drift</span>
             <Dna className="w-4 h-4 text-purple-400" />
@@ -115,7 +115,7 @@ export const BehavioralDnaMutationView: React.FC = () => {
               {adjustedMutationScore > 60 ? 'Severe Biometric Mutation Detected' : 'Normal Variance Threshold'}
             </span>
           </div>
-          <div className="w-full bg-[#070d1e] h-2.5 rounded-full overflow-hidden border border-[#192642]">
+          <div className="w-full bg-slate-100 dark:bg-[#070d1e] h-2.5 rounded-full overflow-hidden border border-slate-200 dark:border-[#192642]">
             <div
               className={`h-full rounded-full ${
                 adjustedMutationScore > 60 ? 'bg-gradient-to-r from-purple-500 to-rose-500' : 'bg-emerald-400'
@@ -125,7 +125,7 @@ export const BehavioralDnaMutationView: React.FC = () => {
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-[#0c1427] border border-[#1b2b4c] shadow-lg flex flex-col justify-between">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono text-slate-400">Navigation Style Shift</span>
             <Activity className="w-4 h-4 text-sky-400" />
@@ -143,7 +143,7 @@ export const BehavioralDnaMutationView: React.FC = () => {
           </span>
         </div>
 
-        <div className="p-5 rounded-2xl bg-[#0c1427] border border-[#1b2b4c] shadow-lg flex flex-col justify-between">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono text-slate-400">Hesitation Latency Drift</span>
             <Sliders className="w-4 h-4 text-amber-400" />
@@ -165,9 +165,9 @@ export const BehavioralDnaMutationView: React.FC = () => {
       {/* Main Comparison: Radar Chart & Divergences */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Radar Chart (6 cols) */}
-        <div className="lg:col-span-6 p-5 rounded-2xl bg-[#0c1427] border border-[#1b2b4c] shadow-lg flex flex-col justify-between space-y-4">
+        <div className="lg:col-span-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg flex flex-col justify-between space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+            <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
               Living DNA Biometric Polygon
             </h3>
             <div className="flex items-center gap-3 text-xs font-mono">
@@ -193,7 +193,7 @@ export const BehavioralDnaMutationView: React.FC = () => {
           </div>
 
           {/* Interactive Drift Simulation Slider */}
-          <div className="p-3 rounded-xl bg-[#080e1e] border border-[#1a2846] space-y-1.5">
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#080e1e] dark:border-[#1a2846] space-y-1.5">
             <div className="flex justify-between text-xs font-mono">
               <span className="text-slate-400">Simulate Attacker Mutation Variance:</span>
               <span className="text-sky-300 font-bold">{mutationDriftMultiplier.toFixed(1)}x Drift</span>
@@ -211,9 +211,9 @@ export const BehavioralDnaMutationView: React.FC = () => {
         </div>
 
         {/* Divergences Table & Living Gene Profile (6 cols) */}
-        <div className="lg:col-span-6 p-5 rounded-2xl bg-[#0c1427] border border-[#1b2b4c] shadow-lg space-y-4">
+        <div className="lg:col-span-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:shadow-lg space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+            <h3 className="text-xs font-mono font-bold text-slate-900 dark:text-white uppercase tracking-wider">
               Gene-by-Gene Mutation Matrix
             </h3>
             <span className="text-[10px] font-mono text-purple-300 bg-purple-950 px-2 py-0.5 rounded border border-purple-500/40">
@@ -223,20 +223,20 @@ export const BehavioralDnaMutationView: React.FC = () => {
 
           <div className="space-y-2.5">
             {dnaComparison.keyDivergences.map((div, idx) => (
-              <div key={idx} className="p-3 rounded-xl bg-[#091122] border border-[#1c2c4d] space-y-1.5 text-xs">
+              <div key={idx} className="p-3 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#091122] dark:border-[#1c2c4d] space-y-1.5 text-xs">
                 <div className="flex justify-between items-center">
-                  <span className="font-bold text-white">{div.metric}</span>
+                  <span className="font-bold text-slate-900 dark:text-white">{div.metric}</span>
                   <span className="font-mono text-rose-400 font-bold text-xs">
                     +{Math.round(div.deviation * mutationDriftMultiplier)}% Mutation
                   </span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 text-[11px] font-mono pt-1">
-                  <div className="p-1.5 rounded bg-[#0f1a35] text-slate-300">
+                  <div className="p-1.5 rounded bg-slate-50 text-slate-600 dark:bg-[#0f1a35] dark:text-slate-300">
                     <span className="text-slate-500 text-[10px] block">Historical Baseline</span>
                     <strong className="text-emerald-400">{div.historical}</strong>
                   </div>
-                  <div className="p-1.5 rounded bg-[#1f162b] text-slate-300">
+                  <div className="p-1.5 rounded bg-slate-50 text-slate-600 dark:bg-[#1f162b] dark:text-slate-300">
                     <span className="text-slate-500 text-[10px] block">Observed Session</span>
                     <strong className="text-rose-400">{div.current}</strong>
                   </div>

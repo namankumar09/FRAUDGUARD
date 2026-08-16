@@ -33,6 +33,7 @@ import { CaseManagementView } from './components/views/CaseManagementView';
 import { AnalyticsAndReportsView } from './components/views/AnalyticsAndReportsView';
 import { LoginScreen } from './components/LoginScreen';
 import { useAuth } from './context/AuthContext';
+import { useDeviceDetection } from './hooks/useDeviceDetection';
 import { api } from './services/api';
 
 // Mock Data & Types
@@ -45,6 +46,7 @@ import { TransactionRecord } from './types/fraud';
 
 export function App() {
   const { isAuthenticated } = useAuth();
+  const { isMobile } = useDeviceDetection();
   const [activeView, setActiveView] = useState<ViewId>('overview');
   const [transactions, setTransactions] = useState<TransactionRecord[]>(MOCK_TRANSACTIONS);
   const [selectedTransaction, setSelectedTransaction] = useState<TransactionRecord | null>(null);
@@ -219,14 +221,16 @@ export function App() {
 
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-[#f8fafc] dark:bg-[#0c1017] text-slate-900 dark:text-slate-100 font-sans transition-colors">
-      {/* Side Navigation Panel */}
-      <Sidebar
-        activeView={activeView}
-        onNavigate={(view) => setActiveView(view)}
-        alertsCount={{ highRiskTxns: transactions.filter((t) => t.riskScore.riskLevel === 'high').length, zeroDays: MOCK_ZERO_DAYS.length }}
-        onOpenSettings={() => setIsSettingsOpen(true)}
-        onOpenProfile={() => setIsProfileOpen(true)}
-      />
+      {/* Side Navigation Panel (desktop/browser only) */}
+      {!isMobile && (
+        <Sidebar
+          activeView={activeView}
+          onNavigate={(view) => setActiveView(view)}
+          alertsCount={{ highRiskTxns: transactions.filter((t) => t.riskScore.riskLevel === 'high').length, zeroDays: MOCK_ZERO_DAYS.length }}
+          onOpenSettings={() => setIsSettingsOpen(true)}
+          onOpenProfile={() => setIsProfileOpen(true)}
+        />
+      )}
 
       {/* Main App Content Area */}
       <div className="flex-1 flex flex-col h-full overflow-hidden min-w-0">
@@ -241,6 +245,7 @@ export function App() {
           onToggleInvestigatorMode={() => setInvestigatorMode(!investigatorMode)}
           onOpenSettings={() => setIsSettingsOpen(true)}
           onOpenProfile={() => setIsProfileOpen(true)}
+          isMobile={isMobile}
         />
 
         {/* Scrollable View Container */}

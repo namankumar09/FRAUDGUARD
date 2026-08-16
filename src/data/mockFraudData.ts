@@ -1694,8 +1694,14 @@ export const MOCK_ZERO_DAY_INCIDENTS: ZeroDayIncident[] = [
   {
     id: 'zd-73',
     patternCode: 'Pattern #ZD-73',
+    strainId: 'ZD-73',
+    strainName: 'Frictionless Card-Entry Automaton',
     discoveredAt: 'Today at 02:17 AM',
+    discoveredTime: 'Today at 02:17 AM',
+    description:
+      'A previously unseen behavioral topology showing zero keystroke hesitation while entering a 16-digit recipient card number, followed by an inhumanly fast Beneficiary → Limit Check → Balance → Confirm loop, with an identical mouse curve inflection point repeated across unrelated accounts.',
     accountsAffected: 7,
+    affectedAccountsCount: 7,
     behavioralSimilarity: 89.2,
     fraudProbability: 92.4,
     connectedDevices: 5,
@@ -1705,14 +1711,22 @@ export const MOCK_ZERO_DAY_INCIDENTS: ZeroDayIncident[] = [
       'Cross-account identical mouse curve trajectory inflection point (x: 412, y: 198)',
       'No prior matching signature in historical rule catalog'
     ],
+    candidateRule:
+      "IF field.holdTimeMs < 12 ON card_number AND navigation.sequence == ['beneficiary','limit_check','balance','confirm'] AND navigation.durationSec < 14 AND mouse.curveInflection ~= (412, 198 ±6px) THEN flag='ZD-73_CANDIDATE', action='STEP_UP_MFA'",
     investigatorNotes: 'Suspected new zero-day automation tool deployed by Syndicate Hydra-7 targeting retail banking API.',
     isContained: true
   },
   {
     id: 'zd-74',
     patternCode: 'Pattern #ZD-74',
+    strainId: 'ZD-74',
+    strainName: 'Synthetic Multi-Tab Invoice Skimmer',
     discoveredAt: 'Yesterday at 22:45 PM',
+    discoveredTime: 'Yesterday at 22:45 PM',
+    description:
+      'Simultaneous multi-tab session initiation across four unrelated corporate accounts, each with an identical 3.4-second dwell time on the tax invoice download button and a synthetic touch radius of exactly 0.0mm, consistent with a headless Chrome container rather than a human operator.',
     accountsAffected: 4,
+    affectedAccountsCount: 4,
     behavioralSimilarity: 94.1,
     fraudProbability: 86.8,
     connectedDevices: 3,
@@ -1721,6 +1735,8 @@ export const MOCK_ZERO_DAY_INCIDENTS: ZeroDayIncident[] = [
       'Identical 3.4-second dwell time on tax invoice download button',
       'Synthetic touch radius exactly 0.0mm (headless Chrome container)'
     ],
+    candidateRule:
+      "IF session.concurrentTabs >= 4 AND touch.radiusMm == 0.0 AND dwellTime('invoice_download') ~= 3.4s (±0.1s) ACROSS accounts.unrelated THEN flag='ZD-74_CANDIDATE', action='SOFT_DELAY'",
     investigatorNotes: 'Automated invoice scraper attempting secondary payroll diversion.',
     isContained: true
   }
