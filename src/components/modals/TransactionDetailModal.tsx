@@ -48,6 +48,39 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
 
   if (!transaction) return null;
 
+  // Defensive guard: this modal renders a rich, deeply-nested shape
+  // (riskScore.breakdown, customer, beneficiary, etc.). If a caller ever
+  // passes a record missing that shape (e.g. a raw/partial API row), show
+  // a clear error state instead of crashing into a blank page.
+  const isWellFormed =
+    !!transaction.riskScore &&
+    typeof transaction.riskScore === 'object' &&
+    typeof transaction.riskScore.totalScore === 'number' &&
+    !!transaction.customer &&
+    !!transaction.beneficiary;
+
+  if (!isWellFormed) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-black/80 backdrop-blur-xs animate-in fade-in duration-150">
+        <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl w-full max-w-sm shadow-2xl overflow-hidden text-[var(--text-primary)] font-sans p-6 text-center space-y-3">
+          <div className="w-12 h-12 mx-auto rounded-xl bg-[var(--color-tier-medium)]/10 border border-[var(--color-tier-medium)]/30 flex items-center justify-center text-[var(--color-tier-medium)]">
+            <AlertTriangle className="w-6 h-6" />
+          </div>
+          <h3 className="text-base font-bold">Transaction not found</h3>
+          <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+            We couldn't load full details for this transaction — its record may be incomplete or still loading. Please try again from the feed.
+          </p>
+          <button
+            onClick={onClose}
+            className="w-full px-4 py-2 rounded-xl bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-color)] text-[var(--text-secondary)] font-semibold text-xs transition-colors cursor-pointer"
+          >
+            Back to Feed
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   const txnId = transaction.id || transaction.transactionRef;
   const sessionId = (transaction as any).sessionId || transaction.customer?.id || txnId;
   const recordedAction = actionRecords[txnId];

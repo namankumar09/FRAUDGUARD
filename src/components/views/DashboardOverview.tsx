@@ -66,7 +66,6 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
   const [filterRisk, setFilterRisk] = useState<string>('all');
   const [exported, setExported] = useState(false);
   const [analyticsData, setAnalyticsData] = useState<any>(null);
-  const [liveTxns, setLiveTxns] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [openActionMenuId, setOpenActionMenuId] = useState<string | null>(null);
 
@@ -81,16 +80,10 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
   const loadDashboardData = async () => {
     setIsLoading(true);
     try {
-      const [analyticsRes, txnsRes] = await Promise.all([
-        api.getAnalytics().catch(() => null),
-        api.getTransactions({ limit: 20 }).catch(() => null),
-      ]);
+      const analyticsRes = await api.getAnalytics().catch(() => null);
 
       if (analyticsRes?.success) {
         setAnalyticsData(analyticsRes);
-      }
-      if (txnsRes?.success && txnsRes.transactions) {
-        setLiveTxns(txnsRes.transactions);
       }
     } catch (err) {
       console.error('Error fetching dashboard data:', err);
@@ -171,7 +164,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
               fraudRate,
             },
             distribution: donutData,
-            recentTransactions: liveTxns.slice(0, 10),
+            recentTransactions: initialTransactions.slice(0, 10),
           },
           null,
           2
@@ -188,8 +181,11 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
     setTimeout(() => setExported(false), 2500);
   };
 
-  // Filter transactions for table
-  const displayTxns = liveTxns.length > 0 ? liveTxns : initialTransactions;
+  // Filter transactions for table. Always use the fully-shaped TransactionRecord[]
+  // prop (same data LiveTransactionStream uses) rather than the raw DB rows fetched
+  // above — the detail modal needs the nested riskScore/customer/beneficiary/etc.
+  // shape that only initialTransactions provides.
+  const displayTxns = initialTransactions;
   const filteredTxns = displayTxns.filter((t) => {
     const level = t.riskLevel || t.riskScore?.riskLevel;
     if (filterRisk === 'high') return level === 'high' || level === 'critical';
