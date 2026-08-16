@@ -6,9 +6,11 @@ import {
   Zap,
   CheckCircle2,
   Lock,
+  Unlock,
   Layers,
   ArrowRight,
-  TrendingDown
+  TrendingDown,
+  X
 } from 'lucide-react';
 import { MOCK_ZERO_DAYS } from '../../data/mockFraudData';
 import { ZeroDayIncident } from '../../types/fraud';
@@ -17,9 +19,19 @@ export const ZeroDayRadarView: React.FC = () => {
   const [incidents, setIncidents] = useState<ZeroDayIncident[]>(MOCK_ZERO_DAYS);
   const [selectedIncident, setSelectedIncident] = useState<ZeroDayIncident>(MOCK_ZERO_DAYS[0]);
   const [quarantinedIds, setQuarantinedIds] = useState<string[]>([]);
+  const [confirmAction, setConfirmAction] = useState<{ type: 'deploy' | 'release'; incident: ZeroDayIncident } | null>(null);
 
-  const handleQuarantine = (id: string) => {
-    setQuarantinedIds((prev) => [...prev, id]);
+  const requestDeploy = (incident: ZeroDayIncident) => setConfirmAction({ type: 'deploy', incident });
+  const requestRelease = (incident: ZeroDayIncident) => setConfirmAction({ type: 'release', incident });
+
+  const confirmDeploy = (id: string) => {
+    setQuarantinedIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
+    setConfirmAction(null);
+  };
+
+  const confirmRelease = (id: string) => {
+    setQuarantinedIds((prev) => prev.filter((qid) => qid !== id));
+    setConfirmAction(null);
   };
 
   return (
@@ -110,20 +122,29 @@ export const ZeroDayRadarView: React.FC = () => {
                   </h3>
                 </div>
 
-                <button
-                  disabled={quarantinedIds.includes(selectedIncident.id)}
-                  onClick={() => handleQuarantine(selectedIncident.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 ${
-                    quarantinedIds.includes(selectedIncident.id)
-                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-300 dark:bg-emerald-950 dark:text-emerald-300 dark:border-emerald-500/40 cursor-default'
-                      : 'bg-rose-600 hover:bg-rose-500 text-white shadow-lg shadow-rose-200 dark:shadow-rose-950'
-                  }`}
-                >
-                  <Lock className="w-3.5 h-3.5" />
-                  {quarantinedIds.includes(selectedIncident.id)
-                    ? 'Strain Quarantined'
-                    : 'Deploy Ephemeral Quarantine Rule'}
-                </button>
+                {quarantinedIds.includes(selectedIncident.id) ? (
+                  <div className="flex items-center gap-2">
+                    <span className="px-4 py-2 rounded-xl text-xs font-mono font-bold flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-300 dark:bg-emerald-950 dark:text-emerald-300 dark:border-emerald-500/40">
+                      <Lock className="w-3.5 h-3.5" />
+                      Strain Quarantined
+                    </span>
+                    <button
+                      onClick={() => requestRelease(selectedIncident)}
+                      className="px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 bg-white border border-rose-300 text-rose-600 hover:bg-rose-50 dark:bg-[#0c1427] dark:border-rose-500/40 dark:text-rose-400 dark:hover:bg-rose-950/30 cursor-pointer"
+                    >
+                      <Unlock className="w-3.5 h-3.5" />
+                      Release Quarantine
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => requestDeploy(selectedIncident)}
+                    className="px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 bg-rose-600 hover:bg-rose-500 text-white shadow-lg shadow-rose-200 dark:shadow-rose-950 cursor-pointer"
+                  >
+                    <Lock className="w-3.5 h-3.5" />
+                    Deploy Ephemeral Quarantine Rule
+                  </button>
+                )}
               </div>
 
               {/* Behavior Breakdown */}
@@ -158,6 +179,90 @@ export const ZeroDayRadarView: React.FC = () => {
           )}
         </div>
       </div>
+
+      {/* Deploy / Release Confirmation Dialog */}
+      {confirmAction && (
+        <div
+          id="modal-zero-day-quarantine-confirm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-black/80 backdrop-blur-xs animate-in fade-in duration-150"
+          onClick={() => setConfirmAction(null)}
+        >
+          <div
+            className="bg-white border border-slate-200 dark:bg-[#0c1427] dark:border-[#1b2b4c] rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-slate-900 dark:text-white font-sans transition-colors"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="p-5 border-b border-slate-100 dark:border-[#1b2b4c] bg-slate-50 dark:bg-[#080e1e] flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div
+                  className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                    confirmAction.type === 'deploy'
+                      ? 'bg-rose-100 border border-rose-300 text-rose-600 dark:bg-rose-500/10 dark:border-rose-500/30 dark:text-rose-400'
+                      : 'bg-emerald-100 border border-emerald-300 text-emerald-600 dark:bg-emerald-500/10 dark:border-emerald-500/30 dark:text-emerald-400'
+                  }`}
+                >
+                  {confirmAction.type === 'deploy' ? <Lock className="w-5 h-5" /> : <Unlock className="w-5 h-5" />}
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                    {confirmAction.type === 'deploy'
+                      ? 'Deploy quarantine rule for this strain?'
+                      : 'Release this strain from quarantine?'}
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">
+                    Strain: {confirmAction.incident.strainId}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setConfirmAction(null)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#182132] transition-colors cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Body */}
+            <div className="p-5">
+              <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                {confirmAction.type === 'deploy'
+                  ? `This flags all accounts matching this behavioral signature (currently ${confirmAction.incident.affectedAccountsCount} accounts) for review and blocks matching new sessions until released. This action can be reversed at any time from this same screen.`
+                  : 'Accounts matching this signature will no longer be automatically flagged. This does not delete the incident record or undo the original detection — only the quarantine action.'}
+              </p>
+            </div>
+
+            {/* Actions */}
+            <div className="p-4 bg-slate-50 dark:bg-[#080e1e] border-t border-slate-100 dark:border-[#1b2b4c] flex flex-col sm:flex-row items-center justify-end gap-2.5">
+              <button
+                type="button"
+                onClick={() => setConfirmAction(null)}
+                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 dark:bg-[#0c1427] dark:border-[#1b2b4c] dark:hover:bg-[#0f1a35] dark:text-slate-300 font-semibold text-xs transition-colors cursor-pointer"
+              >
+                Cancel
+              </button>
+              {confirmAction.type === 'deploy' ? (
+                <button
+                  type="button"
+                  onClick={() => confirmDeploy(confirmAction.incident.id)}
+                  className="w-full sm:w-auto px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs shadow-md flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <Lock className="w-3.5 h-3.5" />
+                  <span>Confirm Deploy</span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => confirmRelease(confirmAction.incident.id)}
+                  className="w-full sm:w-auto px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <Unlock className="w-3.5 h-3.5" />
+                  <span>Confirm Release</span>
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
